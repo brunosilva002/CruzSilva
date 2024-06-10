@@ -1,0 +1,8 @@
+package br.cruzsilva.CruzSilva.repository.nameDbDataBase;
+
+import br.cruzsilva.CruzSilva.model.nameDbDataBase.Basic;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+
+public interface BasicRepository extends JpaRepository<Basic, Long>, JpaSpecificationExecutor<Basic> {
+}

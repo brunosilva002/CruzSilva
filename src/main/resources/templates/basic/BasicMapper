@@ -1,0 +1,9 @@
+package br.cruzsilva.CruzSilva.mapper;
+
+import br.cruzsilva.CruzSilva.dto.BasicDTO;
+import br.cruzsilva.CruzSilva.model.nameDbDataBase.Basic;
+import org.mapstruct.Mapper;
+
+@Mapper(componentModel = "spring", uses = {})
+public interface BasicMapper  extends EntityMapper<BasicDTO, Basic>{
+}
