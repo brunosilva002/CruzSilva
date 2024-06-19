@@ -1,6 +1,5 @@
 package br.cruzsilva.CruzSilva.dto;
 
-import br.cruzsilva.CruzSilva.enums.Gender;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
@@ -18,7 +17,7 @@ public class CompetitorDTO implements Serializable {
     private Long cdnCompetitor;
     private String name;
     private String nickName;
-    private Gender gender;
+    private GenderDTO gender;
     private String cpf;
     private String handcapHeader;
     private String handcapHeeler;

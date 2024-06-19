@@ -1,7 +1,6 @@
 package br.cruzsilva.CruzSilva.model.masterDataBase;
 
 
-import br.cruzsilva.CruzSilva.enums.Gender;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -37,7 +36,9 @@ public class Judge implements Serializable {
     @Column(name = "cpf")
     private String cpf;
 
-    @Column(name = "gender")
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "cdn_gender", referencedColumnName = "cdn_gender")
+    @Fetch(FetchMode.SELECT)
     private Gender gender;
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)

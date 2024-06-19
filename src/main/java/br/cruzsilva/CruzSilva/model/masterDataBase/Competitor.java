@@ -1,7 +1,6 @@
 package br.cruzsilva.CruzSilva.model.masterDataBase;
 
 
-import br.cruzsilva.CruzSilva.enums.Gender;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -34,9 +33,6 @@ public class Competitor implements Serializable {
     @Column(name = "nick_name")
     private String nickName;
 
-    @Column(name = "gender")
-    private Gender gender;
-
     @Column(name = "cpf")
     private String cpf;
 
@@ -53,6 +49,11 @@ public class Competitor implements Serializable {
     @JoinColumn(name = "cdn_address", referencedColumnName = "cdn_address")
     @Fetch(FetchMode.SELECT)
     private Address address;
+
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "cdn_gender", referencedColumnName = "cdn_gender")
+    @Fetch(FetchMode.SELECT)
+    private Gender gender;
 
     @Column(name = "creation_date")
     private LocalDateTime creationDate;

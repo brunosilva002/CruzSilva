@@ -1,7 +1,51 @@
 {
-  "Name": {
-    "singular": "Nome",
-    "plural": "Nomes"
+  "Judge": {
+    "singular": "Juiz",
+    "plural": "Juizes"
+  },
+  "Animal": {
+    "singular": "Animal",
+    "plural": "Animais"
+  },
+  "Competitor": {
+    "singular": "Competidor",
+    "plural": "Competidores"
+  },
+  "Roping": {
+    "singular": "Prova",
+    "plural": "Provas"
+  },
+  "Dvision": {
+    "singular": "Divisão",
+    "plural": "Divisões"
+  },
+  "RegistrationForm": {
+    "singular": "Ficha de Inscrição",
+    "plural": "Fichas de Incrições"
+  },
+  "Registration": {
+    "singular": "Ficha",
+    "plural": "Fichas"
+  },
+  "Panel": {
+    "singular": "Painel",
+    "plural": "Paines"
+  },
+  "Confirmation": {
+    "singular": "Confirmação",
+    "plural": "Confirmações"
+  },
+  "Run": {
+    "singular": "Corrida",
+    "plural": "Corridas"
+  },
+  "Report": {
+    "singular": "Relátorio",
+    "plural": "Relátorios"
+  },
+  "About": {
+    "singular": "Sobre",
+    "plural": "Sobres"
   },
   "Showing": "Mostrando",
   "toAte": "até",

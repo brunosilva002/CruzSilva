@@ -20,8 +20,8 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class RopingDivisionDTO implements Serializable {
     private Long cdnRopingDivision;
-    private Divison divison;
-    private RewardKind rewardKind;
+    private DivisionDTO divison;
+    private RewardKindDTO rewardKind;
     private BigDecimal valueRate;
     private BigDecimal valuePrice;
     private Long displayOrder;
@@ -35,16 +35,16 @@ public class RopingDivisionDTO implements Serializable {
     private BigDecimal paceValue2;
     private BigDecimal paceValue3;
     private BigDecimal paceValue4;
-    private BarrelType barrelType;
-    private TypeClassification typeClassification;
-    private TypeClassificationTime typeClassificationTime;
+    private BarrelTypeDTO barrelType;
+    private TypeClassificationDTO typeClassification;
+    private TypeClassificationTimeDTO typeClassificationTime;
     private Long minAge;
     private Long maxAge;
     private Boolean isGeneratePaceNextClassification;
     private Boolean isRodeo;
     private Boolean isAllowChangeAnimalFinal;
     private Boolean isFinalRodeoDraw;
-    private Roping roping;
+    private RopingDTO roping;
     private List<RopingDivisionRankDTO> ropingDivisionRanks = new ArrayList<>();
     private LocalDateTime creationDate;
     private String creationUser;

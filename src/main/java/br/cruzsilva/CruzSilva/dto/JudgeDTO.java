@@ -1,6 +1,5 @@
 package br.cruzsilva.CruzSilva.dto;
 
-import br.cruzsilva.CruzSilva.enums.Gender;
 import br.cruzsilva.CruzSilva.model.masterDataBase.Address;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
@@ -20,7 +19,7 @@ public class JudgeDTO implements Serializable {
     private String name;
     private String nickName;
     private String cpf;
-    private Gender gender;
+    private GenderDTO gender;
     private Address address;
     private LocalDateTime creationDate;
     private String creationUser;

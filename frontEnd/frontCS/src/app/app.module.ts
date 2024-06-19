@@ -105,9 +105,19 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { SpinnerDefaultService } from './common/spinner-default/spinner-default.service';
 import { SpinnerDefaultComponent } from './common/spinner-default/spinner-default.component';
 import { UtilsService } from './shared/utils.service';
-import { AxiosAuthenticationResourceClient } from './shared/java-objects';
+import { AxiosAnimalResourceClient, AxiosAuthenticationResourceClient, AxiosCompetitorResourceClient, AxiosJudgeResourceClient, AxiosRopingDivisionResourceClient, AxiosRopingProductResourceClient, AxiosRopingResourceClient } from './shared/java-objects';
 import { ListEndPoints } from './shared/list-endpoints';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { LoginComponent } from './common/login/login.component';
+import { EditHeaderDivComponent } from './shared/edit-header-div/edit-header-div.component';
+import { MainMenuComponent } from './common/main-menu/main-menu.component';
+import { MainPageComponent } from './common/main-page/main-page.component';
+import { JudgeComponent } from './pages/judge/judge.component';
+import { AnimalComponent } from './pages/animal/animal.component';
+import { CompetitorComponent } from './pages/competitor/competitor.component';
+import { RopingDivisionComponent } from './pages/roping-division/roping-division.component';
+import { RopingComponent } from './pages/roping/roping.component';
+import { RopingProductComponent } from './pages/roping-product/roping-product.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -119,7 +129,17 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    SpinnerDefaultComponent
+    SpinnerDefaultComponent,
+    LoginComponent,
+    EditHeaderDivComponent,
+    MainMenuComponent,
+    MainPageComponent,
+    JudgeComponent,
+    AnimalComponent,
+    CompetitorComponent,
+    RopingDivisionComponent,
+    RopingComponent,
+    RopingProductComponent
   ],
   imports: [
     BrowserModule,
@@ -249,6 +269,13 @@ export function HttpLoaderFactory(http: HttpClient) {
   providers: [
     
     {provide: AxiosAuthenticationResourceClient   , useValue: ListEndPoints.authenticResourceClient()},
+    {provide: AxiosJudgeResourceClient            , useValue: ListEndPoints.judgeResourceClient()},
+    {provide: AxiosAnimalResourceClient           , useValue: ListEndPoints.animalResourceClient()},
+    {provide: AxiosCompetitorResourceClient       , useValue: ListEndPoints.competitorResourceClient()},
+    {provide: AxiosRopingDivisionResourceClient   , useValue: ListEndPoints.ropingDivisionResourceClient()},
+    {provide: AxiosRopingResourceClient           , useValue: ListEndPoints.ropingResourceClient()},
+    {provide: AxiosRopingProductResourceClient    , useValue: ListEndPoints.ropingProductResourceClient()},
+
 
 
     ConfirmationService,

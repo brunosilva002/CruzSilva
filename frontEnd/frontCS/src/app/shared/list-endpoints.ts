@@ -1,7 +1,7 @@
 import { environment } from 'src/environments/environment'
 import axios, { AxiosError } from 'axios'
 import { config } from 'rxjs';
-import { AxiosAuthenticationResourceClient, AxiosCustomerResourceClient} from './java-objects';
+import { AxiosAnimalResourceClient, AxiosAuthenticationResourceClient, AxiosCompetitorResourceClient, AxiosCustomerResourceClient, AxiosJudgeResourceClient, AxiosRopingDivisionResourceClient, AxiosRopingProductResourceClient, AxiosRopingResourceClient} from './java-objects';
 
 // Função para obter um novo token a partir do AxiosAuthenticationResourceClient
 async function getNewToken() {
@@ -66,5 +66,30 @@ export class ListEndPoints {
     static authenticResourceClient(){
       return new AxiosAuthenticationResourceClient(environment.apiBaseUrl,ListEndPoints.createAxiosInstance());
     }    
+
+    static judgeResourceClient(){
+      return new AxiosJudgeResourceClient(environment.apiBaseUrl,ListEndPoints.createAxiosInstance());
+    }  
+    
+    static animalResourceClient(){
+      return new AxiosAnimalResourceClient(environment.apiBaseUrl,ListEndPoints.createAxiosInstance());
+    }  
+
+    static competitorResourceClient(){
+      return new AxiosCompetitorResourceClient(environment.apiBaseUrl,ListEndPoints.createAxiosInstance());
+    }
+    
+    static ropingDivisionResourceClient(){
+      return new AxiosRopingDivisionResourceClient(environment.apiBaseUrl,ListEndPoints.createAxiosInstance());
+    }
+
+    static ropingResourceClient(){
+      return new AxiosRopingResourceClient(environment.apiBaseUrl,ListEndPoints.createAxiosInstance());
+    }
+
+    static ropingProductResourceClient(){
+      return new AxiosRopingProductResourceClient(environment.apiBaseUrl,ListEndPoints.createAxiosInstance());
+    }
+
 
 }

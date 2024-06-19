@@ -48,6 +48,7 @@ public class MasterDataBaseConfiguration {
         properties.put("hibernate.jdbc.lob.non_contextual_creation", "true");
         properties.put("hibernate.show_sql", "true");
         properties.put("hibernate.format_sql", "true");
+        properties.put("hibernate.enable_lazy_load_no_trans", "true");
         em.setJpaPropertyMap(properties);
 
         return em;

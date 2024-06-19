@@ -31,12 +31,6 @@ public class RopingDivision implements Serializable {
     @Column(name = "cdn_roping_division")
     private Long cdnRopingDivision;
 
-    @Column(name = "division")
-    private Divison divison;
-
-    @Column(name = "reward_kind")
-    private RewardKind rewardKind;
-
     @Column(name = "value_rate")
     private BigDecimal valueRate;
 
@@ -76,15 +70,6 @@ public class RopingDivision implements Serializable {
     @Column(name = "pace_value_4")
     private BigDecimal paceValue4;
 
-    @Column(name = "barrel_type")
-    private BarrelType barrelType;
-
-    @Column(name = "type_classification")
-    private TypeClassification typeClassification;
-
-    @Column(name = "type_classification_time")
-    private TypeClassificationTime typeClassificationTime;
-
     @Column(name = "min_age")
     private Long minAge;
 
@@ -107,6 +92,31 @@ public class RopingDivision implements Serializable {
     @JoinColumn(name = "cdn_roping", referencedColumnName = "cdn_roping")
     @Fetch(FetchMode.SELECT)
     private Roping roping;
+
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "cdn_barrel_type", referencedColumnName = "cdn_barrel_type")
+    @Fetch(FetchMode.SELECT)
+    private BarrelType barrelType;
+
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "cdn_division", referencedColumnName = "cdn_division")
+    @Fetch(FetchMode.SELECT)
+    private Division divison;
+
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "cdn_reward_kind", referencedColumnName = "cdn_reward_kind")
+    @Fetch(FetchMode.SELECT)
+    private RewardKind rewardKind;
+
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "cdn_type_classification", referencedColumnName = "cdn_type_classification")
+    @Fetch(FetchMode.SELECT)
+    private TypeClassification typeClassification;
+
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "cdn_type_classification_time", referencedColumnName = "cdn_type_classification_time")
+    @Fetch(FetchMode.SELECT)
+    private TypeClassificationTime typeClassificationTime;
 
     @OneToMany(cascade = {CascadeType.ALL}, orphanRemoval = true)
     @JoinColumn(name = "cdn_roping_division", referencedColumnName = "cdn_roping_division")

@@ -187,12 +187,12 @@ $warningButtonTextActiveColor:$warningButtonTextColor !default;
 $warningButtonActiveBorderColor:#B45309 !default;
 $warningButtonFocusShadow:0 0 0 0.2rem #FDE68A !default;
 
-$helpButtonBg:#A855F7 !default;
+$helpButtonBg:#EF6401 !default;
 $helpButtonTextColor:#ffffff !default;
 $helpButtonBorder:1px solid $helpButtonBg !default;
-$helpButtonHoverBg:#9333EA !default;
+$helpButtonHoverBg:darken($helpButtonBg,10%) !default;
 $helpButtonTextHoverColor:$helpButtonTextColor !default;
-$helpButtonHoverBorderColor:#9333EA !default;
+$helpButtonHoverBorderColor:darken($helpButtonBg,20%) !default;
 $helpButtonActiveBg:#7E22CE !default;
 $helpButtonTextActiveColor:$helpButtonTextColor !default;
 $helpButtonActiveBorderColor:#7E22CE !default;
