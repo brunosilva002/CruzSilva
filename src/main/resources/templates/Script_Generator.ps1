@@ -1,4 +1,6 @@
-﻿param (
+﻿#.\Script_Generator.ps1 -dataBase master -tabelas Animals, City, Competitor, Country, Estate, Judge, Roping, RopingDivision, RopingDivisionRank, RopingProduct
+
+param (
     [string]$dataBase,
     [string[]]$tabelas
 )

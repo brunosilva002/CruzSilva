@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public enum DivisonEnum {
+public enum DivisionEnum {
     MALE    (1L),
     FEMALE  (2L)
     ;
