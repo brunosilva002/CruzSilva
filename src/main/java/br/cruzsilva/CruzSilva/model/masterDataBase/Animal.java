@@ -50,9 +50,8 @@ public class Animal implements Serializable {
     @Fetch(FetchMode.SELECT)
     private Address address;
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @ManyToOne
     @JoinColumn(name = "cdn_gender_animal", referencedColumnName = "cdn_gender_animal")
-    @Fetch(FetchMode.SELECT)
     private GenderAnimal genderAnimal;
 
     @Column(name = "creation_date")

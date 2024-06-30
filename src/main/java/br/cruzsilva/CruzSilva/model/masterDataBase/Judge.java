@@ -36,7 +36,7 @@ public class Judge implements Serializable {
     @Column(name = "cpf")
     private String cpf;
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @ManyToOne
     @JoinColumn(name = "cdn_gender", referencedColumnName = "cdn_gender")
     @Fetch(FetchMode.SELECT)
     private Gender gender;

@@ -15,6 +15,34 @@
     "singular": "Prova",
     "plural": "Provas"
   },
+  "StartDate": {
+    "singular": "Início",
+    "plural": "Início"
+  },
+  "RewardKind": {
+    "singular": "Tipo de Prêmio",
+    "plural": "Tipos de Prêmios"
+  },
+  "OfficialDivision": {
+    "singular": "Divisão Oficial",
+    "plural": "Divisões Oficiais"
+  },
+  "ForUnion": {
+    "singular": "Para União",
+    "plural": "Para União"
+  },
+  "TypeClassification": {
+    "singular": "Tipo de Classificação",
+    "plural": "Tipos de Classificações"
+  },
+  "TypeClassificationTime": {
+    "singular": "Tipo de Tempo de Classificação",
+    "plural": "Tipos de Tempos de Classificações"
+  },
+  "EndDate": {
+    "singular": "Fim",
+    "plural": "Fim"
+  },
   "Dvision": {
     "singular": "Divisão",
     "plural": "Divisões"
@@ -111,6 +139,22 @@
   "EanCode": {
     "singular": "Código de Barra",
     "plural": "Códigos de Barras"
+  },
+  "Birthday": {
+    "singular": "Aniversário",
+    "plural": "Aniversários"
+  },
+  "AnimalBreed": {
+    "singular": "Raça",
+    "plural": "Raças"
+  },
+  "Owner": {
+    "singular": "Proprietário",
+    "plural": "Proprietários"
+  },
+  "CPF": {
+    "singular": "CPF",
+    "plural": "CPF's"
   },
   "productFamily": {
     "1": {
@@ -215,10 +259,6 @@
     "singular": "CEP",
     "plural": "CEP's"
   },
-  "Street": {
-    "singular": "Rua",
-    "plural": "Ruas"
-  },
   "Number": {
     "singular": "Número",
     "plural": "Números"
@@ -310,6 +350,14 @@
     "singular":"Razão Social",
     "plural":"Razões Sociais"
   },
+  "Name":{
+    "singular":"Nome",
+    "plural":"Nomes"
+  },
+  "Register":{
+    "singular":"Registro",
+    "plural":"Registros"
+  },
   "CodeERP":{
     "singular":"Código ERP",
     "plural":"Códigos ERP"
@@ -358,6 +406,18 @@
     "singular":"Status Integração",
     "plural":"Status Integreções"
   },
+  "GenderAnimal":{
+    "singular":"Gênero",
+    "plural":"Gêneros"
+  },
+  "Gender":{
+    "singular":"Gênero",
+    "plural":"Gêneros"
+  },
+  "NickName":{
+    "singular":"Apelido",
+    "plural":"Apelidos"
+  },
   "ErpIntegrationDate":{
     "singular":"Data Integração",
     "plural":"Datas Integrações"
@@ -381,6 +441,18 @@
   "QuoteDate":{
     "singular":"Data Cotação",
     "plural":"Datas Cotações"
+  },
+  "Street":{
+    "singular":"Rua",
+    "plural":"Ruas"
+  },
+  "HandcapHeader":{
+    "singular":"!HandcapHeader",
+    "plural":"!HandcapHeader"
+  },
+  "HandcapHeeler":{
+    "singular":"!HandcapHeeler",
+    "plural":"!HandcapHeeler"
   },
   "primeng": {
     "startsWith": "Começa com",

@@ -3,9 +3,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { MessageService } from 'primeng/api';
 import { DialogService } from 'primeng/dynamicdialog';
-import { SpinnerDefaultService } from 'src/app/common/spinner-default/spinner-default.service';
-import { AnimalDTO, AxiosAnimalResourceClient } from 'src/app/shared/java-objects';
+import { SpinnerDefaultService } from 'src/app/shared/spinner-default/spinner-default.service';
+import { AddressDTO, AnimalDTO, AxiosAnimalResourceClient, AxiosGenderAnimalResourceClient, GenderAnimalDTO } from 'src/app/shared/java-objects';
 import { UtilsService } from 'src/app/shared/utils.service';
+import { AutoCompleteCompleteEvent } from 'primeng/autocomplete';
 
 @Component({
   selector: 'app-animal',
@@ -14,10 +15,12 @@ import { UtilsService } from 'src/app/shared/utils.service';
 })
 export class AnimalComponent implements OnInit{
 
+
   tabRef: string = 'animal';
   cdnTabRef: string = 'cdnAnimal';
-  activeRegister: AnimalDTO = {}
+  activeRegister: AnimalDTO ={};
   cdnParam: any
+  genderAnimalFiltred: GenderAnimalDTO[] = [];
 
   constructor(
     private activatedRoute      : ActivatedRoute,
@@ -28,9 +31,12 @@ export class AnimalComponent implements OnInit{
     private spinner             : SpinnerDefaultService,
     private utilService         : UtilsService,
     private router              : Router,
-  ){}
+    private genderAnimalApi     : AxiosGenderAnimalResourceClient,
+  ){
+  }
 
   ngOnInit(): void {
+    this.activeRegister.address =  new AddressDTO({})
     this.activatedRoute.queryParamMap.subscribe((params) => {
       this.cdnParam = params.get(this.cdnTabRef);
       if (this.cdnParam) {
@@ -60,7 +66,7 @@ export class AnimalComponent implements OnInit{
     .then(resp=>{
       this.utilService.showToast(resp.data.messagens!,'success')
       this.activeRegister = resp.data.data!
-      this.router.navigate(['/animalEdit'], { queryParams: { cdnanimal: this.activeRegister.cdnAnimal } });
+      this.router.navigate(['/animal'], { queryParams: { cdnAnimal: this.activeRegister.cdnAnimal } });
       this.loadData()
     })
     .catch( err=>{
@@ -76,9 +82,27 @@ export class AnimalComponent implements OnInit{
   }
 
   onBack() {
-    this.router.navigate(['/animalList'], {
+    this.router.navigate(['/animal-list'], {
       
     });
   }
+
+
+  selectGenderAnimal($event: AutoCompleteCompleteEvent) {
+    let query = $event.query;
+    const filtered: any[] = [];
+
+    this.genderAnimalApi.paginationFull({
+      name: {
+        value: query,
+        matchMode: 'contains'
+      }
+    }).then((response)=>{
+      this.genderAnimalFiltred = response.data.data!.content!
+    }).finally(()=>{
+
+    })
+  }
+
 
 }

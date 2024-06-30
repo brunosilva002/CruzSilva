@@ -1,7 +1,7 @@
 import { environment } from 'src/environments/environment'
 import axios, { AxiosError } from 'axios'
 import { config } from 'rxjs';
-import { AxiosAnimalResourceClient, AxiosAuthenticationResourceClient, AxiosCompetitorResourceClient, AxiosCustomerResourceClient, AxiosJudgeResourceClient, AxiosRopingDivisionResourceClient, AxiosRopingProductResourceClient, AxiosRopingResourceClient} from './java-objects';
+import { AxiosAddressResourceClient, AxiosAnimalResourceClient, AxiosAuthenticationResourceClient, AxiosBarrelTypeResourceClient, AxiosCityResourceClient, AxiosCompetitorResourceClient, AxiosCountryResourceClient, AxiosCustomerResourceClient, AxiosDivisionResourceClient, AxiosEstateResourceClient, AxiosGenderAnimalResourceClient, AxiosGenderResourceClient, AxiosJudgeResourceClient, AxiosRewardKindResourceClient, AxiosRopingDivisionRankResourceClient, AxiosRopingDivisionResourceClient, AxiosRopingProductResourceClient, AxiosRopingResourceClient, AxiosTypeClassificationResourceClient, AxiosTypeClassificationTimeResourceClient} from './java-objects';
 
 // Função para obter um novo token a partir do AxiosAuthenticationResourceClient
 async function getNewToken() {
@@ -63,33 +63,79 @@ export class ListEndPoints {
         return axios;
     }
 
+    static addressResourceClient(){
+      return new AxiosAddressResourceClient(environment.apiBaseUrl,ListEndPoints.createAxiosInstance());
+    }  
+
+    static animalResourceClient(){
+      return new AxiosAnimalResourceClient(environment.apiBaseUrl,ListEndPoints.createAxiosInstance());
+    }  
+
     static authenticResourceClient(){
       return new AxiosAuthenticationResourceClient(environment.apiBaseUrl,ListEndPoints.createAxiosInstance());
     }    
 
-    static judgeResourceClient(){
-      return new AxiosJudgeResourceClient(environment.apiBaseUrl,ListEndPoints.createAxiosInstance());
+    static barrelTypeResourceClient(){
+      return new AxiosBarrelTypeResourceClient(environment.apiBaseUrl,ListEndPoints.createAxiosInstance());
     }  
-    
-    static animalResourceClient(){
-      return new AxiosAnimalResourceClient(environment.apiBaseUrl,ListEndPoints.createAxiosInstance());
+
+    static cityResourceClient(){
+      return new AxiosCityResourceClient(environment.apiBaseUrl,ListEndPoints.createAxiosInstance());
     }  
 
     static competitorResourceClient(){
       return new AxiosCompetitorResourceClient(environment.apiBaseUrl,ListEndPoints.createAxiosInstance());
     }
-    
-    static ropingDivisionResourceClient(){
-      return new AxiosRopingDivisionResourceClient(environment.apiBaseUrl,ListEndPoints.createAxiosInstance());
+
+    static countryResourceClient(){
+      return new AxiosCountryResourceClient(environment.apiBaseUrl,ListEndPoints.createAxiosInstance());
     }
 
-    static ropingResourceClient(){
-      return new AxiosRopingResourceClient(environment.apiBaseUrl,ListEndPoints.createAxiosInstance());
+    static divisionResourceClient(){
+      return new AxiosDivisionResourceClient(environment.apiBaseUrl,ListEndPoints.createAxiosInstance());
+    }
+
+    static estateResourceClient(){
+      return new AxiosEstateResourceClient(environment.apiBaseUrl,ListEndPoints.createAxiosInstance());
+    }
+
+    static genderAnimalResourceClient(){
+      return new AxiosGenderAnimalResourceClient(environment.apiBaseUrl,ListEndPoints.createAxiosInstance());
+    }
+
+    static genderResourceClient(){
+      return new AxiosGenderResourceClient(environment.apiBaseUrl,ListEndPoints.createAxiosInstance());
+    }
+
+    static judgeResourceClient(){
+      return new AxiosJudgeResourceClient(environment.apiBaseUrl,ListEndPoints.createAxiosInstance());
+    }  
+    
+    static rewardKindResourceClient(){
+      return new AxiosRewardKindResourceClient(environment.apiBaseUrl,ListEndPoints.createAxiosInstance());
+    }
+
+    static ropingDivisionRankResourceClient(){
+      return new AxiosRopingDivisionRankResourceClient(environment.apiBaseUrl,ListEndPoints.createAxiosInstance());
+    }
+
+    static ropingDivisionResourceClient(){
+      return new AxiosRopingDivisionResourceClient(environment.apiBaseUrl,ListEndPoints.createAxiosInstance());
     }
 
     static ropingProductResourceClient(){
       return new AxiosRopingProductResourceClient(environment.apiBaseUrl,ListEndPoints.createAxiosInstance());
     }
 
+    static ropingResourceClient(){
+      return new AxiosRopingResourceClient(environment.apiBaseUrl,ListEndPoints.createAxiosInstance());
+    }
 
+    static typeClassificationResourceClient(){
+      return new AxiosTypeClassificationResourceClient(environment.apiBaseUrl,ListEndPoints.createAxiosInstance());
+    }
+
+    static typeClassificationTimeResourceClient(){
+      return new AxiosTypeClassificationTimeResourceClient(environment.apiBaseUrl,ListEndPoints.createAxiosInstance());
+    }
 }

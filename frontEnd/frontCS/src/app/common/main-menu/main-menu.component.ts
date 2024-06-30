@@ -34,19 +34,19 @@ export class MainMenuComponent implements OnInit{
               {
                   label: this.translate.instant('Judge.plural'),
                   icon: 'pi pi-building',
-                  routerLink:"/productList",
+                  routerLink:"/judge-list",
                   command: this.onClickMenu.bind(this) 
               },
               {
                 label: this.translate.instant('Animal.plural'),
                 icon: 'pi pi-building',
-                routerLink:"/customerList",
+                routerLink:"/animal-list",
                 command: this.onClickMenu.bind(this)
               },
               {
                 label: this.translate.instant('Competitor.plural'),
                 icon: 'pi pi-building',
-                routerLink:"/customerList",
+                routerLink:"/competitor-list",
                 command: this.onClickMenu.bind(this)
               },
           ]
@@ -55,16 +55,22 @@ export class MainMenuComponent implements OnInit{
           label: this.translate.instant('Roping.plural'),
           icon: 'pi pi-fw pi-file',
           items: [
+                {
+                  label: this.translate.instant('Roping.plural'),
+                  icon: 'pi pi-building',
+                  routerLink:"/roping-list",
+                  command:this.onClickMenu.bind(this),
+              },
               {
                   label: this.translate.instant('Dvision.plural'),
                   icon: 'pi pi-building',
-                  routerLink:"/salesQuoteList",
+                  routerLink:"/roping-division-list",
                   command:this.onClickMenu.bind(this),
               },
               {
                 label: this.translate.instant('Product.plural'),
                 icon: 'pi pi-building',
-                routerLink:"/salesQuoteList",
+                routerLink:"/roping-product-list",
                 command:this.onClickMenu.bind(this),
             },
             {

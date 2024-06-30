@@ -102,10 +102,10 @@ import { AnimateModule } from 'primeng/animate';
 import { CardModule } from 'primeng/card';
 import { BlockUIModule } from 'primeng/blockui';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
-import { SpinnerDefaultService } from './common/spinner-default/spinner-default.service';
-import { SpinnerDefaultComponent } from './common/spinner-default/spinner-default.component';
+import { SpinnerDefaultService } from './shared/spinner-default/spinner-default.service';
+import { SpinnerDefaultComponent } from './shared/spinner-default/spinner-default.component';
 import { UtilsService } from './shared/utils.service';
-import { AxiosAnimalResourceClient, AxiosAuthenticationResourceClient, AxiosCompetitorResourceClient, AxiosJudgeResourceClient, AxiosRopingDivisionResourceClient, AxiosRopingProductResourceClient, AxiosRopingResourceClient } from './shared/java-objects';
+import { AxiosAddressResourceClient, AxiosAnimalResourceClient, AxiosAuthenticationResourceClient, AxiosBarrelTypeResourceClient, AxiosCityResourceClient, AxiosCompetitorResourceClient, AxiosCountryResourceClient, AxiosDivisionResourceClient, AxiosEstateResourceClient, AxiosGenderAnimalResourceClient, AxiosGenderResourceClient, AxiosJudgeResourceClient, AxiosRewardKindResourceClient, AxiosRopingDivisionRankResourceClient, AxiosRopingDivisionResourceClient, AxiosRopingProductResourceClient, AxiosRopingResourceClient, AxiosTypeClassificationResourceClient, AxiosTypeClassificationTimeResourceClient } from './shared/java-objects';
 import { ListEndPoints } from './shared/list-endpoints';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { LoginComponent } from './common/login/login.component';
@@ -118,6 +118,15 @@ import { CompetitorComponent } from './pages/competitor/competitor.component';
 import { RopingDivisionComponent } from './pages/roping-division/roping-division.component';
 import { RopingComponent } from './pages/roping/roping.component';
 import { RopingProductComponent } from './pages/roping-product/roping-product.component';
+import { CalendarCustomComponent } from './common/calendar-custom/calendar-custom.component';
+import { JudgeListComponent } from './pages/judge/judge-list/judge-list.component';
+import { AnimalListComponent } from './pages/animal/animal-list/animal-list.component';
+import { CompetitorListComponent } from './pages/competitor/competitor-list/competitor-list.component';
+import { RopingDivisionListComponent } from './pages/roping-division/roping-division-list/roping-division-list.component';
+import { RopingListComponent } from './pages/roping/roping-list/roping-list.component';
+import { RopingProductListComponent } from './pages/roping-product/roping-product-list/roping-product-list.component';
+import { AddressComponent } from './common/address/address.component';
+import { DateFormatPipe } from './common/pipess/date-format.pipe';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -139,7 +148,16 @@ export function HttpLoaderFactory(http: HttpClient) {
     CompetitorComponent,
     RopingDivisionComponent,
     RopingComponent,
-    RopingProductComponent
+    RopingProductComponent,
+    CalendarCustomComponent,
+    JudgeListComponent,
+    AnimalListComponent,
+    CompetitorListComponent,
+    RopingDivisionListComponent,
+    RopingListComponent,
+    RopingProductListComponent,
+    AddressComponent,
+    DateFormatPipe
   ],
   imports: [
     BrowserModule,
@@ -268,13 +286,25 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   providers: [
     
-    {provide: AxiosAuthenticationResourceClient   , useValue: ListEndPoints.authenticResourceClient()},
-    {provide: AxiosJudgeResourceClient            , useValue: ListEndPoints.judgeResourceClient()},
-    {provide: AxiosAnimalResourceClient           , useValue: ListEndPoints.animalResourceClient()},
-    {provide: AxiosCompetitorResourceClient       , useValue: ListEndPoints.competitorResourceClient()},
-    {provide: AxiosRopingDivisionResourceClient   , useValue: ListEndPoints.ropingDivisionResourceClient()},
-    {provide: AxiosRopingResourceClient           , useValue: ListEndPoints.ropingResourceClient()},
-    {provide: AxiosRopingProductResourceClient    , useValue: ListEndPoints.ropingProductResourceClient()},
+    {provide: AxiosAddressResourceClient                , useValue: ListEndPoints.addressResourceClient()},
+    {provide: AxiosAnimalResourceClient                 , useValue: ListEndPoints.animalResourceClient()},
+    {provide: AxiosAuthenticationResourceClient         , useValue: ListEndPoints.authenticResourceClient()},
+    {provide: AxiosBarrelTypeResourceClient             , useValue: ListEndPoints.barrelTypeResourceClient()},
+    {provide: AxiosCityResourceClient                   , useValue: ListEndPoints.cityResourceClient()},
+    {provide: AxiosCompetitorResourceClient             , useValue: ListEndPoints.competitorResourceClient()},
+    {provide: AxiosCountryResourceClient                , useValue: ListEndPoints.countryResourceClient()},
+    {provide: AxiosDivisionResourceClient               , useValue: ListEndPoints.divisionResourceClient()},
+    {provide: AxiosEstateResourceClient                 , useValue: ListEndPoints.estateResourceClient()},
+    {provide: AxiosGenderAnimalResourceClient           , useValue: ListEndPoints.genderAnimalResourceClient()},
+    {provide: AxiosGenderResourceClient                 , useValue: ListEndPoints.genderResourceClient()},
+    {provide: AxiosJudgeResourceClient                  , useValue: ListEndPoints.judgeResourceClient()},
+    {provide: AxiosRewardKindResourceClient             , useValue: ListEndPoints.rewardKindResourceClient()},
+    {provide: AxiosRopingDivisionRankResourceClient     , useValue: ListEndPoints.ropingDivisionResourceClient()},
+    {provide: AxiosRopingDivisionResourceClient         , useValue: ListEndPoints.ropingDivisionResourceClient()},
+    {provide: AxiosRopingProductResourceClient          , useValue: ListEndPoints.ropingProductResourceClient()},
+    {provide: AxiosRopingResourceClient                 , useValue: ListEndPoints.ropingResourceClient()},
+    {provide: AxiosTypeClassificationResourceClient     , useValue: ListEndPoints.typeClassificationResourceClient()},
+    {provide: AxiosTypeClassificationTimeResourceClient , useValue: ListEndPoints.typeClassificationTimeResourceClient()},
 
 
 

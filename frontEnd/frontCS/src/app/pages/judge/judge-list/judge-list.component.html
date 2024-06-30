@@ -1,0 +1,72 @@
+<app-spinner-default></app-spinner-default>
+<p-toast></p-toast>
+
+<div class="flex flex-column h-screen ">
+    <div class="flex justify-content-between divEditTop">
+        <div class="flex">
+            <app-main-menu class="align-self-center"></app-main-menu>
+            <p class="text-2xl font-bold m-2 align-self-center">{{'Judge.plural' | translate}}</p>
+        </div>
+        <div class="flex">
+            <p-button icon="pi pi-plus" severity="help" class="mr-2" (onClick)="onNewRegister()"></p-button>          
+        </div>
+    </div>
+    <div class="flex-grow-1 overflow-hidden divEditCenter">
+        <p-table 
+        styleClass="p-datatable-striped"
+        [value]="judgeList" 
+        selectionMode="single"
+        [(selection)]="selectJudge" 
+        (onRowSelect)="onRowSelect($event)"
+        dataKey="cdnJudge"
+        [scrollable]="true" scrollHeight="calc(100vh - 200px)" 
+        [resizableColumns]="true"  
+        [paginator]="true"
+        [rows]="paginationRows"
+        currentPageReportTemplate="{{'Showing' | translate}} {first} {{'toAte' | translate}} {last} {{'ofDe' | translate}} {totalRecords} {{'Record.plural' | translate }}"
+        [showCurrentPageReport]="true"
+        [rowsPerPageOptions]="environment.rowsPerPageOptions"
+        [rows]="environment.rowsInitial"
+        [totalRecords]="paginationTotal"
+        (onLazyLoad)="onLazyLoad($event)"
+        [lazy]="true"
+        >
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="cdnJudge"             pResizableColumn>{{'Code.singular'          | translate }}<p-sortIcon field="cdnJudge"></p-sortIcon></th>
+                    <th pSortableColumn="name"                      pResizableColumn>{{'Name.singular'          | translate }}<p-sortIcon field="name"></p-sortIcon></th>
+                    <th pSortableColumn="nickName"                  pResizableColumn>{{'NickName.singular'      | translate }}<p-sortIcon field="nickNamee"></p-sortIcon></th>
+                    <th pSortableColumn="gender.name"               pResizableColumn>{{'Gender.singular'        | translate }}<p-sortIcon field="gender.name"></p-sortIcon></th>
+                    <th pSortableColumn="address.country.name"      pResizableColumn>{{'Country.singular'       | translate }}<p-sortIcon field="address.country.name"></p-sortIcon></th>
+                    <th pSortableColumn="address.estate.name"       pResizableColumn>{{'Estate.singular'        | translate }}<p-sortIcon field="address.estate.name"></p-sortIcon></th>
+                </tr>
+                <tr>
+                    <th><p-columnFilter type="text" field="cdnJudge"></p-columnFilter></th>
+                    <th><p-columnFilter type="text" field="name"></p-columnFilter></th>
+                    <th><p-columnFilter type="text" field="nickName"></p-columnFilter></th>
+                    <th><p-columnFilter type="text" field="gender.name"></p-columnFilter></th>
+                    <th><p-columnFilter type="text" field="address.country.name"></p-columnFilter></th>
+                    <th><p-columnFilter type="text" field="address.estate.name"></p-columnFilter></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-judge>
+                <tr [pSelectableRow]="judge">
+                    <td style="width:30%">{{ judge.cdnJudge }}</td>
+                    <td>{{ judge.name }}</td>
+                    <td>{{ judge.nickName }}</td>
+                    <td>{{ judge.gender?.name }}</td>
+                    <td>{{ judge.address?.country?.name }}</td>
+                    <td>{{ judge.address?.estate?.name }}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+    <div class="flex divEditBottom">
+        <div class="flex justify-content-end flex-wrap  w-full">
+            <p-button icon="pi pi-trash" styleClass="p-button-danger"></p-button>
+            <p-button icon="pi pi-save" styleClass="p-button-success" ></p-button>
+            <p-button icon="pi pi-sign-in" ></p-button>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,64 @@
+
+<div class="formgrid grid">
+    <div class="flex flex-column col-6 md:col-2 ">
+        <label for="firstname2">{{'Country.singular' | translate}}</label>
+        <p-autoComplete 
+            [(ngModel)]="address.country!"
+            [dropdown]="true" 
+            [suggestions]="countryListFiltred" 
+            (completeMethod)="selectCountry($event)" 
+            [forceSelection]="true"
+            [virtualScroll]="true"
+            [delay]=300
+            [virtualScrollItemSize]="34"
+            autocomplete="new-password"
+            field="name">
+        </p-autoComplete>
+    </div>
+    <div class="flex flex-column col-6 md:col-3 ">
+        <label for="firstname2">{{'Estate.singular' | translate}}</label>
+        <p-autoComplete 
+            [(ngModel)]="address.estate!"
+            [dropdown]="true" 
+            [suggestions]="estateListFiltred" 
+            (completeMethod)="selectEstate($event)" 
+            [forceSelection]="true"
+            [virtualScroll]="true"
+            [delay]=300
+            [virtualScrollItemSize]="34"
+            autocomplete="new-password"
+            field="name">
+        </p-autoComplete>
+    </div>
+    <div class="flex flex-column col-6 md:col-4 ">
+        <label for="firstname2">{{'City.singular' | translate}}</label>
+        <p-autoComplete 
+            [(ngModel)]="address.city!"
+            [dropdown]="true" 
+            [suggestions]="cityListFiltred" 
+            (completeMethod)="selectCity($event)" 
+            [forceSelection]="true"
+            [virtualScroll]="true"
+            [delay]=300
+            [virtualScrollItemSize]="34"
+            autocomplete="new-password"
+            field="name">
+        </p-autoComplete>
+    </div>
+    <div class="flex flex-column col-6 md:col-3 ">
+        <label for="firstname2">{{'PostalCode.singular' | translate}}</label>
+        <input pInputText [(ngModel)]="address!.postalCode"/>
+    </div>
+    <div class="flex flex-column col-6 md:col-6 ">
+        <label for="firstname2">{{'Street.singular' | translate}}</label>
+        <input pInputText [(ngModel)]="address!.street"/>
+    </div>
+    <div class="flex flex-column col-6 md:col-1 ">
+        <label for="firstname2">{{'Number.singular' | translate}}</label>
+        <input pInputText [(ngModel)]="address!.number"/>
+    </div>
+    <div class="flex flex-column col-6 md:col-2 ">
+        <label for="firstname2">{{'Phone.singular' | translate}}</label>
+        <input pInputText [(ngModel)]="address!.phone"/>
+    </div>
+</div>
