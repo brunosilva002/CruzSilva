@@ -1,9 +1,13 @@
 .p-selectbutton {
+    display: flex;
+    height: $heightComponentsStd;
     .p-button {
         background: $toggleButtonBg;
         border: $toggleButtonBorder;
         color: $toggleButtonTextColor;
         transition: $formElementTransition;
+        flex: 1;
+        text-align: center;
 
         .p-button-icon-left,
         .p-button-icon-right {

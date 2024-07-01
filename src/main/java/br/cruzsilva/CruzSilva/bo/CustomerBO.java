@@ -29,17 +29,17 @@ public class CustomerBO {
     @Autowired
     CustomerMapper customerMapper;
 
-    public CustomerDTO save(CustomerDTO customerDTO) throws IllegalAccessException {
+    public CustomerDTO save(CustomerDTO CustomerDTO) throws IllegalAccessException {
 
-        Customer customer = customerMapper.toEntity(customerDTO, new CycleAvoidingMappingContext());
+        Customer customer = customerMapper.toEntity(CustomerDTO, new CycleAvoidingMappingContext());
 
         utilBO.assingObjectToList(customer, "customer");
 
         customerRepository.save(customer);
 
-        utilBO.entityToDtoCustom(customer, customerDTO, new ArrayList<>());
+        utilBO.entityToDtoCustom(customer, CustomerDTO, new ArrayList<>());
 
-        return customerDTO;
+        return CustomerDTO;
 
     }
 
@@ -48,11 +48,11 @@ public class CustomerBO {
 
         customer = customerRepository.getReferenceById(cdnCustomer);
 
-        CustomerDTO customerDTO = new CustomerDTO(); //customerMapper.toDto(customer, new CycleAvoidingMappingContext());
+        CustomerDTO CustomerDTO = new CustomerDTO(); //customerMapper.toDto(customer, new CycleAvoidingMappingContext());
 
-        utilBO.entityToDtoCustom(customer, customerDTO, new ArrayList<>());
+        utilBO.entityToDtoCustom(customer, CustomerDTO, new ArrayList<>());
 
-        return customerDTO;
+        return CustomerDTO;
     }
 
     public void delete(Long cdnCustomer) {
@@ -91,10 +91,10 @@ public class CustomerBO {
         return customerDTOList;
     }
 
-    public Object listExample(CustomerDTO customerDTO) {
+    public Object listExample(CustomerDTO CustomerDTO) {
         List<Customer> customer = new ArrayList<>();
 
-        Customer customerExemple = customerMapper.toEntity(customerDTO, new CycleAvoidingMappingContext());
+        Customer customerExemple = customerMapper.toEntity(CustomerDTO, new CycleAvoidingMappingContext());
 
         customer = customerRepository.findAll(Example.of(customerExemple));
 

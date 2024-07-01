@@ -20,7 +20,7 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class RopingDivisionDTO implements Serializable {
     private Long cdnRopingDivision;
-    private DivisionDTO divison;
+    private DivisionDTO division;
     private RewardKindDTO rewardKind;
     private BigDecimal valueRate;
     private BigDecimal valuePrice;

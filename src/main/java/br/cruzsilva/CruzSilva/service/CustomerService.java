@@ -11,7 +11,7 @@ import java.util.List;
 
 @Component
 public interface CustomerService {
-    ResponseDTO<CustomerDTO> save(CustomerDTO customerDTO);
+    ResponseDTO<CustomerDTO> save(CustomerDTO CustomerDTO);
 
     ResponseDTO<CustomerDTO> obtain(Long cdnCustomer);
 
@@ -19,7 +19,7 @@ public interface CustomerService {
 
     ResponseDTO<List<CustomerDTO>> listAll();
 
-    ResponseDTO<List<CustomerDTO>> listExample(CustomerDTO customerDTO);
+    ResponseDTO<List<CustomerDTO>> listExample(CustomerDTO CustomerDTO);
 
     ResponseDTO delete(Long cdnCustomer);
 

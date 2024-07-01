@@ -11,7 +11,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^16.0.0",
-    "@angular/cdk": "^16.2.12",
+    "@angular/cdk": "^16.2.14",
     "@angular/common": "^16.0.0",
     "@angular/compiler": "^16.0.0",
     "@angular/core": "^16.0.0",
@@ -28,7 +28,7 @@
     "ngx-translate-messageformat-compiler": "^7.0.0",
     "primeflex": "^3.3.1",
     "primeicons": "^7.0.0",
-    "primeng": "^16.9.1",
+    "primeng": "16.9.12-lts",
     "quill": "^2.0.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

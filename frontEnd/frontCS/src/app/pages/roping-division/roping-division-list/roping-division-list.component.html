@@ -34,32 +34,51 @@
             <ng-template pTemplate="header">
                 <tr>
                     <th pSortableColumn="cdnRopingDivision"                 pResizableColumn>{{'Code.singular'                          | translate }}<p-sortIcon field="cdnRopingDivision"></p-sortIcon></th>
-                    <th pSortableColumn="divison.name"                      pResizableColumn>{{'Division.singular'                      | translate }}<p-sortIcon field="divison.name"></p-sortIcon></th>
+                    <th pSortableColumn="division.name"                     pResizableColumn>{{'Division.singular'                      | translate }}<p-sortIcon field="division.name"></p-sortIcon></th>
                     <th pSortableColumn="rewardKind.name"                   pResizableColumn>{{'StartDate.singular'                     | translate }}<p-sortIcon field="rewardKind.name"></p-sortIcon></th>
                     <th pSortableColumn="isOfficialDivision"                pResizableColumn>{{'OfficialDivision.singular'              | translate }}<p-sortIcon field="isOfficialDivision"></p-sortIcon></th>
-                    <th pSortableColumn="isForUnion"                        pResizableColumn>{{'ForUnion.singular'                      | translate }}<p-sortIcon field="isForUnion"></p-sortIcon></th>
+                    <!-- <th pSortableColumn="isForUnion"                        pResizableColumn>{{'ForUnion.singular'                      | translate }}<p-sortIcon field="isForUnion"></p-sortIcon></th>
                     <th pSortableColumn="typeClassification.name"           pResizableColumn>{{'TypeClassification'                     | translate }}<p-sortIcon field="typeClassification.name"></p-sortIcon></th>
-                    <th pSortableColumn="typeClassificationTime.name"       pResizableColumn>{{'typeClassificationTime.singular'        | translate }}<p-sortIcon field="typeClassificationTime.name"></p-sortIcon></th>
+                    <th pSortableColumn="typeClassificationTime.name"       pResizableColumn>{{'typeClassificationTime.singular'        | translate }}<p-sortIcon field="typeClassificationTime.name"></p-sortIcon></th> -->
                 </tr>
                 <tr>
                     <th><p-columnFilter type="text" field="cdnRopingDivision"></p-columnFilter></th>
-                    <th><p-columnFilter type="text" field="divison.name"></p-columnFilter></th>
+                    <th><p-columnFilter type="text" field="division.name"></p-columnFilter></th>
                     <th><p-columnFilter type="text" field="rewardKind.name"></p-columnFilter></th>
-                    <th><p-columnFilter type="text" field="isOfficialDivision"></p-columnFilter></th>
-                    <th><p-columnFilter type="text" field="isForUnion"></p-columnFilter></th>
+                    <th><p-columnFilter field="isOfficialDivision" matchMode="in" [showMenu]="false">
+                            <ng-template pTemplate="filter" let-value let-filter="filterCallback" >
+                                <p-multiSelect 
+                                    [ngModel]="value" 
+                                    [options]="menusOptions.isOfficialDivisionOptions" 
+                                    [showToggleAll]="false"
+                                    (onChange)="filter($event.value)" 
+                                    optionLabel="name"
+                                    appendTo="body"
+                                    [ngStyle]="{'z-index': '99999'}"
+                                >
+                                    <ng-template let-option pTemplate="item">
+                                        <div class="inline-block vertical-align-middle">
+                                            <span class="ml-1 mt-1">{{ option.name }}</span>
+                                        </div>
+                                    </ng-template>
+                                </p-multiSelect>
+                            </ng-template>
+                        </p-columnFilter>
+                    </th>
+                    <!-- <th><p-columnFilter type="text" field="isForUnion"></p-columnFilter></th>
                     <th><p-columnFilter type="text" field="typeClassification.name"></p-columnFilter></th>
-                    <th><p-columnFilter type="text" field="typeClassificationTime.name"></p-columnFilter></th>
+                    <th><p-columnFilter type="text" field="typeClassificationTime.name"></p-columnFilter></th> -->
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-ropingDivision>
                 <tr [pSelectableRow]="ropingDivision">
                     <td style="width:30%">{{ ropingDivision.cdnRopingDivision }}</td>
-                    <td>{{ ropingDivision.divison.name }}</td>
-                    <td>{{ ropingDivision.rewardKind.name}}</td>
-                    <td>{{ ropingDivision.isOfficialDivision}}</td>
-                    <td>{{ ropingDivision.isForUnion }}</td>
-                    <td>{{ ropingDivision.typeClassification.name}}</td>
-                    <td>{{ ropingDivision.typeClassificationTime.name}}</td>
+                    <td>{{ ropingDivision.division?.name }}</td>
+                    <td>{{ ropingDivision.rewardKind?.name}}</td>
+                    <td>{{ menusOptions.getName(ropingDivision.isOfficialDivision,menusOptions.isOfficialDivisionOptions)}}</td>
+                    <!-- <td>{{ menusOptions.getName(ropingDivision.isForUnion,menusOptions.isForUnionOptions)}}</td>
+                    <td>{{ ropingDivision.typeClassification?.name}}</td>
+                    <td>{{ ropingDivision.typeClassificationTime?.name}}</td> -->
                 </tr>
             </ng-template>
         </p-table>

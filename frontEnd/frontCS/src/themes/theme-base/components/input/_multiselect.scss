@@ -5,6 +5,7 @@
     border: $inputBorder;
     transition: $formElementTransition;
     border-radius: $borderRadius;
+    height: $heightComponentsStd;
 
     &:not(.p-disabled):hover {
         border-color: $inputHoverBorderColor;
@@ -17,7 +18,9 @@
     .p-multiselect-label {
         padding: $inputPadding;
         transition: $formElementTransition;
-
+        display: flex;
+        align-items: center;
+        height: 100%; /* Garantir que a altura seja 100% do contêiner pai */
         &.p-placeholder {
             color: $inputPlaceholderTextColor;
         }

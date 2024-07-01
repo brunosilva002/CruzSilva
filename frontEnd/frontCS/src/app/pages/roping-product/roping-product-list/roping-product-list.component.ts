@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { TableRowSelectEvent, TableLazyLoadEvent } from 'primeng/table';
-import { RopingProductDTO, AxiosRopingResourceClient } from 'src/app/shared/java-objects';
+import { EnvironmentService } from 'src/app/shared/environment.service';
+import { RopingProductDTO, AxiosRopingResourceClient, AxiosRopingProductResourceClient } from 'src/app/shared/java-objects';
 import { SpinnerDefaultService } from 'src/app/shared/spinner-default/spinner-default.service';
 import { UtilsService } from 'src/app/shared/utils.service';
 
@@ -14,23 +15,24 @@ import { UtilsService } from 'src/app/shared/utils.service';
 export class RopingProductListComponent implements OnInit {
 
   ropingProductList: RopingProductDTO[] | any
-  selectRopingDivison: RopingProductDTO | any
+  selectRopingProduct: RopingProductDTO | any
   paginationTotal: number = 0
   paginationRows:   number = 10
   teste: number=0;
 
   constructor (
-    private ropingProductApi: AxiosRopingResourceClient,
+    private ropingProductApi: AxiosRopingProductResourceClient,
     private utilService: UtilsService,
     private spinner: SpinnerDefaultService,
     private translate: TranslateService,
     private router: Router,
+    public environment      : EnvironmentService,
     ){
   } 
 
   onRowSelect(event:TableRowSelectEvent){
     this.router.navigate(['/roping-product'], {
-      queryParams: { cdnRopingDivison: event.data.cdnRopingDivison },
+      queryParams: { cdnRopingDivisionProduct: event.data.cdnRopingDivisionProduct },
     });
   }
 

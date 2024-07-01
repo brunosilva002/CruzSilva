@@ -24,19 +24,19 @@ public class RopingProductResource extends BaseResource {
     }
 
     @GetMapping("/obtain")
-    public ResponseEntity<ResponseDTO<RopingProductDTO>> obtain (@RequestParam Long cdnRopingProduct){
-        return (ResponseEntity<ResponseDTO<RopingProductDTO>>) findCodeReturn(ropingproductService.obtain(cdnRopingProduct));
+    public ResponseEntity<ResponseDTO<RopingProductDTO>> obtain (@RequestParam Long cdnRopingDivisionProduct){
+        return (ResponseEntity<ResponseDTO<RopingProductDTO>>) findCodeReturn(ropingproductService.obtain(cdnRopingDivisionProduct));
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<ResponseDTO> delete (@RequestParam Long cdnRopingProduct){
-        return (ResponseEntity<ResponseDTO>) findCodeReturn(ropingproductService.delete(cdnRopingProduct));
+    public ResponseEntity<ResponseDTO> delete (@RequestParam Long cdnRopingDivisionProduct){
+        return (ResponseEntity<ResponseDTO>) findCodeReturn(ropingproductService.delete(cdnRopingDivisionProduct));
     }
 
     @GetMapping("/pagination")
     ResponseEntity<ResponseDTO<Page<RopingProductDTO>>> pagination(@RequestParam(name= "page", defaultValue = "0") Integer page,
                                @RequestParam(name= "pageSize", defaultValue = "10") Integer pageSize,
-                               @RequestParam(name= "sortBy", defaultValue = "cdnRopingProduct") String sortBy,
+                               @RequestParam(name= "sortBy", defaultValue = "cdnRopingDivisionProduct") String sortBy,
                                @RequestParam(name= "direction", defaultValue = "DESC") String direction,
                                @RequestParam(name = "filter",required = false) Long filter) {
         return (ResponseEntity<ResponseDTO<Page<RopingProductDTO>>>) findCodeReturn(ropingproductService.pagination(page,pageSize,sortBy,direction,filter));
@@ -45,7 +45,7 @@ public class RopingProductResource extends BaseResource {
     @PostMapping("/paginationFull")
     ResponseEntity<ResponseDTO<Page<RopingProductDTO>>> paginationFull(   @RequestParam(name= "page", defaultValue = "0") Integer page,
                                                                     @RequestParam(name= "pageSize", defaultValue = "10") Integer pageSize,
-                                                                    @RequestParam(name= "sortBy", defaultValue = "cdnRopingProduct") String sortBy,
+                                                                    @RequestParam(name= "sortBy", defaultValue = "cdnRopingDivisionProduct") String sortBy,
                                                                     @RequestParam(name= "direction", defaultValue = "DESC") String direction,
                                                                     @RequestBody Map<String, Object> filterMap) {
         return (ResponseEntity<ResponseDTO<Page<RopingProductDTO>>>) findCodeReturn(ropingproductService.paginationFull(page,pageSize,sortBy,direction,filterMap));

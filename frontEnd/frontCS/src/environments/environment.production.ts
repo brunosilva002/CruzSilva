@@ -1,4 +1,4 @@
 export const environment = {
-    production: true,
+    production: false,
     apiBaseUrl:"https://bruno3430.c35.integrator.host",
 };

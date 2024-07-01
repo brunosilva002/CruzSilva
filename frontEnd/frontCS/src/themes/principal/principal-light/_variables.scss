@@ -13,6 +13,8 @@ $colors: (
     "primary": $primaryColor
 );
 
+$heightComponentsStd:1.9rem;
+
 //reused color variables
 $shade000:#ffffff !default;    //surface
 $shade100:#f8f9fa !default;    //header background
@@ -124,12 +126,12 @@ $passwordStrongBg:#29c76f !default;
 $buttonPadding:.75rem 1.25rem !default;
 $buttonIconOnlyWidth:3rem !default;
 $buttonIconOnlyPadding:.75rem 0 !default;
-$buttonBg:$primaryColor !default;
-$buttonTextColor:$primaryTextColor !default;
-$buttonBorder:1px solid $primaryColor !default;
-$buttonHoverBg:$primaryDarkColor !default;
-$buttonTextHoverColor:$primaryTextColor !default;
-$buttonHoverBorderColor:$primaryDarkColor !default;
+$buttonBg:$bkgButtonStd !default;
+$buttonTextColor:$bkgButtonStdText !default;
+$buttonBorder:1px solid $bkgButtonStd !default;
+$buttonHoverBg:$bkgButtonStdLight !default;
+$buttonTextHoverColor:$bkgButtonStdDarken !default;
+$buttonHoverBorderColor:$bkgButtonStdDarken !default;
 $buttonActiveBg:$primaryDarkerColor !default;
 $buttonTextActiveColor:$primaryTextColor !default;
 $buttonActiveBorderColor:$primaryDarkerColor !default;
@@ -345,8 +347,8 @@ $inputSwitchHandleOnBg:$shade000 !default;
 $panelHeaderBorderColor:$shade300 !default;
 $panelHeaderBorder:1px solid $shade300 !default;
 $panelHeaderBg:$secundaryLighterColor !default;
-$panelHeaderTextColor:$shade800 !default;
-$panelHeaderBgLigth:$shade300 !default;
+$panelHeaderTextColor:$bkgButtonStdText !default;
+$panelHeaderBgLigth:$bkgButtonStdLight !default;
 $panelHeaderFontWeight:700 !default;
 $panelHeaderPadding:1.25rem !default;
 $panelToggleableHeaderPadding:.75rem 1.25rem !default;
@@ -356,7 +358,7 @@ $panelHeaderHoverBorderColor:$shade300 !default;
 $panelHeaderTextHoverColor:$shade800 !default;
 
 $panelContentBorderColor: $shade300 !default;
-$panelContentBorder:1px solid $shade300 !default;
+$panelContentBorder:1px solid $primaryLighterColor !default;
 $panelContentBg:$shade000 !default;
 $panelContentEvenRowBg:scale-color($panelContentBg, $lightness: -1%) !default;
 $panelContentTextColor:$shade700 !default;

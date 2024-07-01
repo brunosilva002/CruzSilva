@@ -13,11 +13,13 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CustomerDTO implements Serializable {
-    private Long cdnCustomer;
-    private String cdnX3Customer;
-    private Boolean status;
-    private String razaoSocial;
+public class PessoaDTO implements Serializable {
+    private Long cdnPessoa;
+    private String name;
+    private String code;
+    private EstateDTO estate;
+    private LocalDateTime dateCreated;
+    private LocalDateTime dateUpdated;
     private LocalDateTime creationDate;
     private String creationUser;
     private LocalDateTime updateDate;

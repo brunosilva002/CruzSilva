@@ -14,11 +14,13 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class RopingDivisionRankDTO implements Serializable {    private Long cdnRopingDivisionRank;
+public class RopingDivisionRankDTO implements Serializable {
+    private Long cdnRopingDivisionRank;
     private Long rankNumber;
-    private BigDecimal valueRate;
-    private BigDecimal valueReward;
+    private BigDecimal valueRatePrice;
+    private BigDecimal valueRewardPrice;
     private Long point;
+    private String name;
     private RopingDivisionDTO ropingDivision;
     private LocalDateTime creationDate;
     private String creationUser;

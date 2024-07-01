@@ -22,8 +22,11 @@ import java.util.*;
 @Component
 public class UtilBO {
 
+//    @Autowired
+//    @Qualifier("masterDataBaseEntityManagerFactory")
+//    private EntityManager entityManager;
+
     @Autowired
-    @Qualifier("masterDataBaseEntityManagerFactory")
     private EntityManager entityManager;
 
     @Autowired
@@ -296,7 +299,11 @@ public class UtilBO {
                     Method metodoGetter = source.getClass().getMethod(nomeMetodoGetter);
                     Object valor = metodoGetter.invoke(source);
 
-                    if (valor != null && (!campo.getType().getPackage().getName().equals("java.lang") && !campo.getType().getPackage().getName().equals("java.time"))) {
+                    if (valor != null
+                            && (!campo.getType().getPackage().getName().equals("java.lang")
+                            && !campo.getType().getPackage().getName().equals("java.math")
+                            && !campo.getType().getPackage().getName().equals("java.time"))
+                    ) {
 
                         String nomeMetodoSetter = "set" + campo.getName().substring(0, 1).toUpperCase() +
                                 campo.getName().substring(1);

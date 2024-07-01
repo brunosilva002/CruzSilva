@@ -1,6 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
-// Generated using typescript-generator version 2.32.889 on 2024-06-19 21:13:01.
+// Generated using typescript-generator version 2.32.889 on 2024-07-13 09:26:28.
 
 export class AddressDTO implements Serializable {
     cdnAddress?: number;
@@ -294,6 +294,32 @@ export class JudgeDTO implements Serializable {
     }
 }
 
+export class PessoaDTO implements Serializable {
+    cdnPessoa?: number;
+    name?: string;
+    code?: string;
+    estate?: EstateDTO;
+    dateCreated?: Date;
+    dateUpdated?: Date;
+    creationDate?: Date;
+    creationUser?: string;
+    updateDate?: Date;
+    updateUser?: string;
+
+    constructor(data: PessoaDTO) {
+        this.cdnPessoa = data.cdnPessoa;
+        this.name = data.name;
+        this.code = data.code;
+        this.estate = data.estate;
+        this.dateCreated = data.dateCreated;
+        this.dateUpdated = data.dateUpdated;
+        this.creationDate = data.creationDate;
+        this.creationUser = data.creationUser;
+        this.updateDate = data.updateDate;
+        this.updateUser = data.updateUser;
+    }
+}
+
 export class RegisterRequestDTO {
     firstName?: string;
     lastName?: string;
@@ -372,7 +398,7 @@ export class RopingDTO implements Serializable {
 
 export class RopingDivisionDTO implements Serializable {
     cdnRopingDivision?: number;
-    divison?: DivisionDTO;
+    division?: DivisionDTO;
     rewardKind?: RewardKindDTO;
     valueRate?: number;
     valuePrice?: number;
@@ -405,7 +431,7 @@ export class RopingDivisionDTO implements Serializable {
 
     constructor(data: RopingDivisionDTO) {
         this.cdnRopingDivision = data.cdnRopingDivision;
-        this.divison = data.divison;
+        this.division = data.division;
         this.rewardKind = data.rewardKind;
         this.valueRate = data.valueRate;
         this.valuePrice = data.valuePrice;
@@ -441,9 +467,10 @@ export class RopingDivisionDTO implements Serializable {
 export class RopingDivisionRankDTO implements Serializable {
     cdnRopingDivisionRank?: number;
     rankNumber?: number;
-    valueRate?: number;
-    valueReward?: number;
+    valueRatePrice?: number;
+    valueRewardPrice?: number;
     point?: number;
+    name?: string;
     ropingDivision?: RopingDivisionDTO;
     creationDate?: Date;
     creationUser?: string;
@@ -453,9 +480,10 @@ export class RopingDivisionRankDTO implements Serializable {
     constructor(data: RopingDivisionRankDTO) {
         this.cdnRopingDivisionRank = data.cdnRopingDivisionRank;
         this.rankNumber = data.rankNumber;
-        this.valueRate = data.valueRate;
-        this.valueReward = data.valueReward;
+        this.valueRatePrice = data.valueRatePrice;
+        this.valueRewardPrice = data.valueRewardPrice;
         this.point = data.point;
+        this.name = data.name;
         this.ropingDivision = data.ropingDivision;
         this.creationDate = data.creationDate;
         this.creationUser = data.creationUser;
@@ -665,10 +693,10 @@ export class Sort implements Streamable<Order>, Serializable {
 export interface Pageable {
     offset?: number;
     sort?: Sort;
-    paged?: boolean;
     unpaged?: boolean;
-    pageNumber?: number;
     pageSize?: number;
+    paged?: boolean;
+    pageNumber?: number;
 }
 
 export interface Slice<T> extends Streamable<T> {
@@ -677,9 +705,9 @@ export interface Slice<T> extends Streamable<T> {
     number?: number;
     sort?: Sort;
     first?: boolean;
+    numberOfElements?: number;
     last?: boolean;
     pageable?: Pageable;
-    numberOfElements?: number;
 }
 
 export interface Streamable<T> extends Iterable<T>, Supplier<Stream<T>> {
@@ -691,16 +719,16 @@ export class Order implements Serializable {
     property?: string;
     ignoreCase?: boolean;
     nullHandling?: NullHandling;
-    ascending?: boolean;
     descending?: boolean;
+    ascending?: boolean;
 
     constructor(data: Order) {
         this.direction = data.direction;
         this.property = data.property;
         this.ignoreCase = data.ignoreCase;
         this.nullHandling = data.nullHandling;
-        this.ascending = data.ascending;
         this.descending = data.descending;
+        this.ascending = data.ascending;
     }
 }
 
@@ -725,65 +753,127 @@ export interface HttpClient<O> {
     request<R>(requestConfig: { method: string; url: string; queryParams?: any; data?: any; copyFn?: (data: R) => R; options?: O; }): RestResponse<R>;
 }
 
-export class JudgeResourceClient<O> {
+export class RopingResourceClient<O> {
 
     constructor(protected httpClient: HttpClient<O>) {
     }
 
     /**
-     * HTTP DELETE /api/v1/judge/delete
-     * Java method: br.cruzsilva.CruzSilva.rest.JudgeResource.delete
+     * HTTP DELETE /api/v1/roping/delete
+     * Java method: br.cruzsilva.CruzSilva.rest.RopingResource.delete
      */
-    delete(queryParams: { cdnJudge: number; }, options?: O): RestResponse<ResponseDTO<any>> {
-        return this.httpClient.request({ method: "DELETE", url: uriEncoding`api/v1/judge/delete`, queryParams: queryParams, options: options });
+    delete(queryParams: { cdnRoping: number; }, options?: O): RestResponse<ResponseDTO<any>> {
+        return this.httpClient.request({ method: "DELETE", url: uriEncoding`api/v1/roping/delete`, queryParams: queryParams, options: options });
     }
 
     /**
-     * HTTP POST /api/v1/judge/listAll
-     * Java method: br.cruzsilva.CruzSilva.rest.JudgeResource.listAll
+     * HTTP POST /api/v1/roping/listAll
+     * Java method: br.cruzsilva.CruzSilva.rest.RopingResource.listAll
      */
-    listAll(options?: O): RestResponse<ResponseDTO<JudgeDTO[]>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/judge/listAll`, options: options });
+    listAll(options?: O): RestResponse<ResponseDTO<RopingDTO[]>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/roping/listAll`, options: options });
     }
 
     /**
-     * HTTP POST /api/v1/judge/listExample
-     * Java method: br.cruzsilva.CruzSilva.rest.JudgeResource.listExample
+     * HTTP POST /api/v1/roping/listExample
+     * Java method: br.cruzsilva.CruzSilva.rest.RopingResource.listExample
      */
-    listExample(judgeDTO: JudgeDTO, options?: O): RestResponse<ResponseDTO<JudgeDTO[]>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/judge/listExample`, data: judgeDTO, options: options });
+    listExample(ropingDTO: RopingDTO, options?: O): RestResponse<ResponseDTO<RopingDTO[]>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/roping/listExample`, data: ropingDTO, options: options });
     }
 
     /**
-     * HTTP GET /api/v1/judge/obtain
-     * Java method: br.cruzsilva.CruzSilva.rest.JudgeResource.obtain
+     * HTTP GET /api/v1/roping/obtain
+     * Java method: br.cruzsilva.CruzSilva.rest.RopingResource.obtain
      */
-    obtain(queryParams: { cdnJudge: number; }, options?: O): RestResponse<ResponseDTO<JudgeDTO>> {
-        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/judge/obtain`, queryParams: queryParams, options: options });
+    obtain(queryParams: { cdnRoping: number; }, options?: O): RestResponse<ResponseDTO<RopingDTO>> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/roping/obtain`, queryParams: queryParams, options: options });
     }
 
     /**
-     * HTTP GET /api/v1/judge/pagination
-     * Java method: br.cruzsilva.CruzSilva.rest.JudgeResource.pagination
+     * HTTP GET /api/v1/roping/pagination
+     * Java method: br.cruzsilva.CruzSilva.rest.RopingResource.pagination
      */
-    pagination(queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; filter?: number; }, options?: O): RestResponse<ResponseDTO<Page<JudgeDTO>>> {
-        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/judge/pagination`, queryParams: queryParams, options: options });
+    pagination(queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; filter?: number; }, options?: O): RestResponse<ResponseDTO<Page<RopingDTO>>> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/roping/pagination`, queryParams: queryParams, options: options });
     }
 
     /**
-     * HTTP POST /api/v1/judge/paginationFull
-     * Java method: br.cruzsilva.CruzSilva.rest.JudgeResource.paginationFull
+     * HTTP POST /api/v1/roping/paginationFull
+     * Java method: br.cruzsilva.CruzSilva.rest.RopingResource.paginationFull
      */
-    paginationFull(filterMap: { [index: string]: any }, queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; }, options?: O): RestResponse<ResponseDTO<Page<JudgeDTO>>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/judge/paginationFull`, queryParams: queryParams, data: filterMap, options: options });
+    paginationFull(filterMap: { [index: string]: any }, queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; }, options?: O): RestResponse<ResponseDTO<Page<RopingDTO>>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/roping/paginationFull`, queryParams: queryParams, data: filterMap, options: options });
     }
 
     /**
-     * HTTP POST /api/v1/judge/save
-     * Java method: br.cruzsilva.CruzSilva.rest.JudgeResource.save
+     * HTTP POST /api/v1/roping/save
+     * Java method: br.cruzsilva.CruzSilva.rest.RopingResource.save
      */
-    save(judgeDTO: JudgeDTO, options?: O): RestResponse<ResponseDTO<JudgeDTO>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/judge/save`, data: judgeDTO, options: options });
+    save(ropingDTO: RopingDTO, options?: O): RestResponse<ResponseDTO<RopingDTO>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/roping/save`, data: ropingDTO, options: options });
+    }
+}
+
+export class RewardKindResourceClient<O> {
+
+    constructor(protected httpClient: HttpClient<O>) {
+    }
+
+    /**
+     * HTTP DELETE /api/v1/rewardkind/delete
+     * Java method: br.cruzsilva.CruzSilva.rest.RewardKindResource.delete
+     */
+    delete(queryParams: { cdnRewardKind: number; }, options?: O): RestResponse<ResponseDTO<any>> {
+        return this.httpClient.request({ method: "DELETE", url: uriEncoding`api/v1/rewardkind/delete`, queryParams: queryParams, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/rewardkind/listAll
+     * Java method: br.cruzsilva.CruzSilva.rest.RewardKindResource.listAll
+     */
+    listAll(options?: O): RestResponse<ResponseDTO<RewardKindDTO[]>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/rewardkind/listAll`, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/rewardkind/listExample
+     * Java method: br.cruzsilva.CruzSilva.rest.RewardKindResource.listExample
+     */
+    listExample(rewardkindDTO: RewardKindDTO, options?: O): RestResponse<ResponseDTO<RewardKindDTO[]>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/rewardkind/listExample`, data: rewardkindDTO, options: options });
+    }
+
+    /**
+     * HTTP GET /api/v1/rewardkind/obtain
+     * Java method: br.cruzsilva.CruzSilva.rest.RewardKindResource.obtain
+     */
+    obtain(queryParams: { cdnRewardKind: number; }, options?: O): RestResponse<ResponseDTO<RewardKindDTO>> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/rewardkind/obtain`, queryParams: queryParams, options: options });
+    }
+
+    /**
+     * HTTP GET /api/v1/rewardkind/pagination
+     * Java method: br.cruzsilva.CruzSilva.rest.RewardKindResource.pagination
+     */
+    pagination(queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; filter?: number; }, options?: O): RestResponse<ResponseDTO<Page<RewardKindDTO>>> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/rewardkind/pagination`, queryParams: queryParams, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/rewardkind/paginationFull
+     * Java method: br.cruzsilva.CruzSilva.rest.RewardKindResource.paginationFull
+     */
+    paginationFull(filterMap: { [index: string]: any }, queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; }, options?: O): RestResponse<ResponseDTO<Page<RewardKindDTO>>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/rewardkind/paginationFull`, queryParams: queryParams, data: filterMap, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/rewardkind/save
+     * Java method: br.cruzsilva.CruzSilva.rest.RewardKindResource.save
+     */
+    save(rewardkindDTO: RewardKindDTO, options?: O): RestResponse<ResponseDTO<RewardKindDTO>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/rewardkind/save`, data: rewardkindDTO, options: options });
     }
 }
 
@@ -849,6 +939,316 @@ export class CityResourceClient<O> {
     }
 }
 
+export class GenderAnimalResourceClient<O> {
+
+    constructor(protected httpClient: HttpClient<O>) {
+    }
+
+    /**
+     * HTTP DELETE /api/v1/genderanimal/delete
+     * Java method: br.cruzsilva.CruzSilva.rest.GenderAnimalResource.delete
+     */
+    delete(queryParams: { cdnGenderAnimal: number; }, options?: O): RestResponse<ResponseDTO<any>> {
+        return this.httpClient.request({ method: "DELETE", url: uriEncoding`api/v1/genderanimal/delete`, queryParams: queryParams, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/genderanimal/listAll
+     * Java method: br.cruzsilva.CruzSilva.rest.GenderAnimalResource.listAll
+     */
+    listAll(options?: O): RestResponse<ResponseDTO<GenderAnimalDTO[]>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/genderanimal/listAll`, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/genderanimal/listExample
+     * Java method: br.cruzsilva.CruzSilva.rest.GenderAnimalResource.listExample
+     */
+    listExample(genderanimalDTO: GenderAnimalDTO, options?: O): RestResponse<ResponseDTO<GenderAnimalDTO[]>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/genderanimal/listExample`, data: genderanimalDTO, options: options });
+    }
+
+    /**
+     * HTTP GET /api/v1/genderanimal/obtain
+     * Java method: br.cruzsilva.CruzSilva.rest.GenderAnimalResource.obtain
+     */
+    obtain(queryParams: { cdnGenderAnimal: number; }, options?: O): RestResponse<ResponseDTO<GenderAnimalDTO>> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/genderanimal/obtain`, queryParams: queryParams, options: options });
+    }
+
+    /**
+     * HTTP GET /api/v1/genderanimal/pagination
+     * Java method: br.cruzsilva.CruzSilva.rest.GenderAnimalResource.pagination
+     */
+    pagination(queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; filter?: number; }, options?: O): RestResponse<ResponseDTO<Page<GenderAnimalDTO>>> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/genderanimal/pagination`, queryParams: queryParams, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/genderanimal/paginationFull
+     * Java method: br.cruzsilva.CruzSilva.rest.GenderAnimalResource.paginationFull
+     */
+    paginationFull(filterMap: { [index: string]: any }, queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; }, options?: O): RestResponse<ResponseDTO<Page<GenderAnimalDTO>>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/genderanimal/paginationFull`, queryParams: queryParams, data: filterMap, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/genderanimal/save
+     * Java method: br.cruzsilva.CruzSilva.rest.GenderAnimalResource.save
+     */
+    save(genderanimalDTO: GenderAnimalDTO, options?: O): RestResponse<ResponseDTO<GenderAnimalDTO>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/genderanimal/save`, data: genderanimalDTO, options: options });
+    }
+}
+
+export class AnimalResourceClient<O> {
+
+    constructor(protected httpClient: HttpClient<O>) {
+    }
+
+    /**
+     * HTTP DELETE /api/v1/animal/delete
+     * Java method: br.cruzsilva.CruzSilva.rest.AnimalResource.delete
+     */
+    delete(queryParams: { cdnAnimal: number; }, options?: O): RestResponse<ResponseDTO<any>> {
+        return this.httpClient.request({ method: "DELETE", url: uriEncoding`api/v1/animal/delete`, queryParams: queryParams, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/animal/listAll
+     * Java method: br.cruzsilva.CruzSilva.rest.AnimalResource.listAll
+     */
+    listAll(options?: O): RestResponse<ResponseDTO<AnimalDTO[]>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/animal/listAll`, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/animal/listExample
+     * Java method: br.cruzsilva.CruzSilva.rest.AnimalResource.listExample
+     */
+    listExample(animalDTO: AnimalDTO, options?: O): RestResponse<ResponseDTO<AnimalDTO[]>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/animal/listExample`, data: animalDTO, options: options });
+    }
+
+    /**
+     * HTTP GET /api/v1/animal/obtain
+     * Java method: br.cruzsilva.CruzSilva.rest.AnimalResource.obtain
+     */
+    obtain(queryParams: { cdnAnimal: number; }, options?: O): RestResponse<ResponseDTO<AnimalDTO>> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/animal/obtain`, queryParams: queryParams, options: options });
+    }
+
+    /**
+     * HTTP GET /api/v1/animal/pagination
+     * Java method: br.cruzsilva.CruzSilva.rest.AnimalResource.pagination
+     */
+    pagination(queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; filter?: number; }, options?: O): RestResponse<ResponseDTO<Page<AnimalDTO>>> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/animal/pagination`, queryParams: queryParams, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/animal/paginationFull
+     * Java method: br.cruzsilva.CruzSilva.rest.AnimalResource.paginationFull
+     */
+    paginationFull(filterMap: { [index: string]: any }, queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; }, options?: O): RestResponse<ResponseDTO<Page<AnimalDTO>>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/animal/paginationFull`, queryParams: queryParams, data: filterMap, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/animal/save
+     * Java method: br.cruzsilva.CruzSilva.rest.AnimalResource.save
+     */
+    save(animalDTO: AnimalDTO, options?: O): RestResponse<ResponseDTO<AnimalDTO>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/animal/save`, data: animalDTO, options: options });
+    }
+}
+
+export class PessoaResourceClient<O> {
+
+    constructor(protected httpClient: HttpClient<O>) {
+    }
+
+    /**
+     * HTTP DELETE /api/v1/pessoa/delete
+     * Java method: br.cruzsilva.CruzSilva.rest.PessoaResource.delete
+     */
+    delete(queryParams: { cdnPessoa: number; }, options?: O): RestResponse<ResponseDTO<any>> {
+        return this.httpClient.request({ method: "DELETE", url: uriEncoding`api/v1/pessoa/delete`, queryParams: queryParams, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/pessoa/listAll
+     * Java method: br.cruzsilva.CruzSilva.rest.PessoaResource.listAll
+     */
+    listAll(options?: O): RestResponse<ResponseDTO<PessoaDTO[]>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/pessoa/listAll`, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/pessoa/listExample
+     * Java method: br.cruzsilva.CruzSilva.rest.PessoaResource.listExample
+     */
+    listExample(pessoaDTO: PessoaDTO, options?: O): RestResponse<ResponseDTO<PessoaDTO[]>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/pessoa/listExample`, data: pessoaDTO, options: options });
+    }
+
+    /**
+     * HTTP GET /api/v1/pessoa/obtain
+     * Java method: br.cruzsilva.CruzSilva.rest.PessoaResource.obtain
+     */
+    obtain(queryParams: { cdnPessoa: number; }, options?: O): RestResponse<ResponseDTO<PessoaDTO>> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/pessoa/obtain`, queryParams: queryParams, options: options });
+    }
+
+    /**
+     * HTTP GET /api/v1/pessoa/pagination
+     * Java method: br.cruzsilva.CruzSilva.rest.PessoaResource.pagination
+     */
+    pagination(queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; filter?: number; }, options?: O): RestResponse<ResponseDTO<Page<PessoaDTO>>> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/pessoa/pagination`, queryParams: queryParams, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/pessoa/paginationFull
+     * Java method: br.cruzsilva.CruzSilva.rest.PessoaResource.paginationFull
+     */
+    paginationFull(filterMap: { [index: string]: any }, queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; }, options?: O): RestResponse<ResponseDTO<Page<PessoaDTO>>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/pessoa/paginationFull`, queryParams: queryParams, data: filterMap, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/pessoa/save
+     * Java method: br.cruzsilva.CruzSilva.rest.PessoaResource.save
+     */
+    save(pessoaDTO: PessoaDTO, options?: O): RestResponse<ResponseDTO<PessoaDTO>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/pessoa/save`, data: pessoaDTO, options: options });
+    }
+}
+
+export class RopingProductResourceClient<O> {
+
+    constructor(protected httpClient: HttpClient<O>) {
+    }
+
+    /**
+     * HTTP DELETE /api/v1/ropingproduct/delete
+     * Java method: br.cruzsilva.CruzSilva.rest.RopingProductResource.delete
+     */
+    delete(queryParams: { cdnRopingDivisionProduct: number; }, options?: O): RestResponse<ResponseDTO<any>> {
+        return this.httpClient.request({ method: "DELETE", url: uriEncoding`api/v1/ropingproduct/delete`, queryParams: queryParams, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/ropingproduct/listAll
+     * Java method: br.cruzsilva.CruzSilva.rest.RopingProductResource.listAll
+     */
+    listAll(options?: O): RestResponse<ResponseDTO<RopingProductDTO[]>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/ropingproduct/listAll`, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/ropingproduct/listExample
+     * Java method: br.cruzsilva.CruzSilva.rest.RopingProductResource.listExample
+     */
+    listExample(ropingproductDTO: RopingProductDTO, options?: O): RestResponse<ResponseDTO<RopingProductDTO[]>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/ropingproduct/listExample`, data: ropingproductDTO, options: options });
+    }
+
+    /**
+     * HTTP GET /api/v1/ropingproduct/obtain
+     * Java method: br.cruzsilva.CruzSilva.rest.RopingProductResource.obtain
+     */
+    obtain(queryParams: { cdnRopingDivisionProduct: number; }, options?: O): RestResponse<ResponseDTO<RopingProductDTO>> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/ropingproduct/obtain`, queryParams: queryParams, options: options });
+    }
+
+    /**
+     * HTTP GET /api/v1/ropingproduct/pagination
+     * Java method: br.cruzsilva.CruzSilva.rest.RopingProductResource.pagination
+     */
+    pagination(queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; filter?: number; }, options?: O): RestResponse<ResponseDTO<Page<RopingProductDTO>>> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/ropingproduct/pagination`, queryParams: queryParams, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/ropingproduct/paginationFull
+     * Java method: br.cruzsilva.CruzSilva.rest.RopingProductResource.paginationFull
+     */
+    paginationFull(filterMap: { [index: string]: any }, queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; }, options?: O): RestResponse<ResponseDTO<Page<RopingProductDTO>>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/ropingproduct/paginationFull`, queryParams: queryParams, data: filterMap, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/ropingproduct/save
+     * Java method: br.cruzsilva.CruzSilva.rest.RopingProductResource.save
+     */
+    save(ropingproductDTO: RopingProductDTO, options?: O): RestResponse<ResponseDTO<RopingProductDTO>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/ropingproduct/save`, data: ropingproductDTO, options: options });
+    }
+}
+
+export class DivisionResourceClient<O> {
+
+    constructor(protected httpClient: HttpClient<O>) {
+    }
+
+    /**
+     * HTTP DELETE /api/v1/division/delete
+     * Java method: br.cruzsilva.CruzSilva.rest.DivisionResource.delete
+     */
+    delete(queryParams: { cdnDivision: number; }, options?: O): RestResponse<ResponseDTO<any>> {
+        return this.httpClient.request({ method: "DELETE", url: uriEncoding`api/v1/division/delete`, queryParams: queryParams, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/division/listAll
+     * Java method: br.cruzsilva.CruzSilva.rest.DivisionResource.listAll
+     */
+    listAll(options?: O): RestResponse<ResponseDTO<DivisionDTO[]>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/division/listAll`, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/division/listExample
+     * Java method: br.cruzsilva.CruzSilva.rest.DivisionResource.listExample
+     */
+    listExample(divisionDTO: DivisionDTO, options?: O): RestResponse<ResponseDTO<DivisionDTO[]>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/division/listExample`, data: divisionDTO, options: options });
+    }
+
+    /**
+     * HTTP GET /api/v1/division/obtain
+     * Java method: br.cruzsilva.CruzSilva.rest.DivisionResource.obtain
+     */
+    obtain(queryParams: { cdnDivision: number; }, options?: O): RestResponse<ResponseDTO<DivisionDTO>> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/division/obtain`, queryParams: queryParams, options: options });
+    }
+
+    /**
+     * HTTP GET /api/v1/division/pagination
+     * Java method: br.cruzsilva.CruzSilva.rest.DivisionResource.pagination
+     */
+    pagination(queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; filter?: number; }, options?: O): RestResponse<ResponseDTO<Page<DivisionDTO>>> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/division/pagination`, queryParams: queryParams, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/division/paginationFull
+     * Java method: br.cruzsilva.CruzSilva.rest.DivisionResource.paginationFull
+     */
+    paginationFull(filterMap: { [index: string]: any }, queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; }, options?: O): RestResponse<ResponseDTO<Page<DivisionDTO>>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/division/paginationFull`, queryParams: queryParams, data: filterMap, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/division/save
+     * Java method: br.cruzsilva.CruzSilva.rest.DivisionResource.save
+     */
+    save(divisionDTO: DivisionDTO, options?: O): RestResponse<ResponseDTO<DivisionDTO>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/division/save`, data: divisionDTO, options: options });
+    }
+}
+
 export class CompetitorResourceClient<O> {
 
     constructor(protected httpClient: HttpClient<O>) {
@@ -908,6 +1308,408 @@ export class CompetitorResourceClient<O> {
      */
     save(competitorDTO: CompetitorDTO, options?: O): RestResponse<ResponseDTO<CompetitorDTO>> {
         return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/competitor/save`, data: competitorDTO, options: options });
+    }
+}
+
+export class EstateResourceClient<O> {
+
+    constructor(protected httpClient: HttpClient<O>) {
+    }
+
+    /**
+     * HTTP DELETE /api/v1/estate/delete
+     * Java method: br.cruzsilva.CruzSilva.rest.EstateResource.delete
+     */
+    delete(queryParams: { cdnEstate: number; }, options?: O): RestResponse<ResponseDTO<any>> {
+        return this.httpClient.request({ method: "DELETE", url: uriEncoding`api/v1/estate/delete`, queryParams: queryParams, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/estate/listAll
+     * Java method: br.cruzsilva.CruzSilva.rest.EstateResource.listAll
+     */
+    listAll(options?: O): RestResponse<ResponseDTO<EstateDTO[]>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/estate/listAll`, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/estate/listExample
+     * Java method: br.cruzsilva.CruzSilva.rest.EstateResource.listExample
+     */
+    listExample(estateDTO: EstateDTO, options?: O): RestResponse<ResponseDTO<EstateDTO[]>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/estate/listExample`, data: estateDTO, options: options });
+    }
+
+    /**
+     * HTTP GET /api/v1/estate/obtain
+     * Java method: br.cruzsilva.CruzSilva.rest.EstateResource.obtain
+     */
+    obtain(queryParams: { cdnEstate: number; }, options?: O): RestResponse<ResponseDTO<EstateDTO>> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/estate/obtain`, queryParams: queryParams, options: options });
+    }
+
+    /**
+     * HTTP GET /api/v1/estate/pagination
+     * Java method: br.cruzsilva.CruzSilva.rest.EstateResource.pagination
+     */
+    pagination(queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; filter?: number; }, options?: O): RestResponse<ResponseDTO<Page<EstateDTO>>> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/estate/pagination`, queryParams: queryParams, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/estate/paginationFull
+     * Java method: br.cruzsilva.CruzSilva.rest.EstateResource.paginationFull
+     */
+    paginationFull(filterMap: { [index: string]: any }, queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; }, options?: O): RestResponse<ResponseDTO<Page<EstateDTO>>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/estate/paginationFull`, queryParams: queryParams, data: filterMap, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/estate/save
+     * Java method: br.cruzsilva.CruzSilva.rest.EstateResource.save
+     */
+    save(estateDTO: EstateDTO, options?: O): RestResponse<ResponseDTO<EstateDTO>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/estate/save`, data: estateDTO, options: options });
+    }
+}
+
+export class JudgeResourceClient<O> {
+
+    constructor(protected httpClient: HttpClient<O>) {
+    }
+
+    /**
+     * HTTP DELETE /api/v1/judge/delete
+     * Java method: br.cruzsilva.CruzSilva.rest.JudgeResource.delete
+     */
+    delete(queryParams: { cdnJudge: number; }, options?: O): RestResponse<ResponseDTO<any>> {
+        return this.httpClient.request({ method: "DELETE", url: uriEncoding`api/v1/judge/delete`, queryParams: queryParams, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/judge/listAll
+     * Java method: br.cruzsilva.CruzSilva.rest.JudgeResource.listAll
+     */
+    listAll(options?: O): RestResponse<ResponseDTO<JudgeDTO[]>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/judge/listAll`, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/judge/listExample
+     * Java method: br.cruzsilva.CruzSilva.rest.JudgeResource.listExample
+     */
+    listExample(judgeDTO: JudgeDTO, options?: O): RestResponse<ResponseDTO<JudgeDTO[]>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/judge/listExample`, data: judgeDTO, options: options });
+    }
+
+    /**
+     * HTTP GET /api/v1/judge/obtain
+     * Java method: br.cruzsilva.CruzSilva.rest.JudgeResource.obtain
+     */
+    obtain(queryParams: { cdnJudge: number; }, options?: O): RestResponse<ResponseDTO<JudgeDTO>> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/judge/obtain`, queryParams: queryParams, options: options });
+    }
+
+    /**
+     * HTTP GET /api/v1/judge/pagination
+     * Java method: br.cruzsilva.CruzSilva.rest.JudgeResource.pagination
+     */
+    pagination(queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; filter?: number; }, options?: O): RestResponse<ResponseDTO<Page<JudgeDTO>>> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/judge/pagination`, queryParams: queryParams, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/judge/paginationFull
+     * Java method: br.cruzsilva.CruzSilva.rest.JudgeResource.paginationFull
+     */
+    paginationFull(filterMap: { [index: string]: any }, queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; }, options?: O): RestResponse<ResponseDTO<Page<JudgeDTO>>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/judge/paginationFull`, queryParams: queryParams, data: filterMap, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/judge/save
+     * Java method: br.cruzsilva.CruzSilva.rest.JudgeResource.save
+     */
+    save(judgeDTO: JudgeDTO, options?: O): RestResponse<ResponseDTO<JudgeDTO>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/judge/save`, data: judgeDTO, options: options });
+    }
+}
+
+export class CustomerResourceClient<O> {
+
+    constructor(protected httpClient: HttpClient<O>) {
+    }
+
+    /**
+     * HTTP DELETE /api/v1/customer/delete
+     * Java method: br.cruzsilva.CruzSilva.rest.CustomerResource.delete
+     */
+    delete(queryParams: { cdnCustomer: number; }, options?: O): RestResponse<ResponseDTO<any>> {
+        return this.httpClient.request({ method: "DELETE", url: uriEncoding`api/v1/customer/delete`, queryParams: queryParams, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/customer/listAll
+     * Java method: br.cruzsilva.CruzSilva.rest.CustomerResource.listAll
+     */
+    listAll(options?: O): RestResponse<ResponseDTO<CustomerDTO[]>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/customer/listAll`, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/customer/listExample
+     * Java method: br.cruzsilva.CruzSilva.rest.CustomerResource.listExample
+     */
+    listExample(CustomerDTO: CustomerDTO, options?: O): RestResponse<ResponseDTO<CustomerDTO[]>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/customer/listExample`, data: CustomerDTO, options: options });
+    }
+
+    /**
+     * HTTP GET /api/v1/customer/obtain
+     * Java method: br.cruzsilva.CruzSilva.rest.CustomerResource.obtain
+     */
+    obtain(queryParams: { cdnCustomer: number; }, options?: O): RestResponse<ResponseDTO<CustomerDTO>> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/customer/obtain`, queryParams: queryParams, options: options });
+    }
+
+    /**
+     * HTTP GET /api/v1/customer/pagination
+     * Java method: br.cruzsilva.CruzSilva.rest.CustomerResource.pagination
+     */
+    pagination(queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; filter?: number; }, options?: O): RestResponse<ResponseDTO<Page<CustomerDTO>>> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/customer/pagination`, queryParams: queryParams, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/customer/paginationFull
+     * Java method: br.cruzsilva.CruzSilva.rest.CustomerResource.paginationFull
+     */
+    paginationFull(filterMap: { [index: string]: any }, queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; }, options?: O): RestResponse<ResponseDTO<Page<CustomerDTO>>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/customer/paginationFull`, queryParams: queryParams, data: filterMap, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/customer/save
+     * Java method: br.cruzsilva.CruzSilva.rest.CustomerResource.save
+     */
+    save(CustomerDTO: CustomerDTO, options?: O): RestResponse<ResponseDTO<CustomerDTO>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/customer/save`, data: CustomerDTO, options: options });
+    }
+}
+
+export class AuthenticationResourceClient<O> {
+
+    constructor(protected httpClient: HttpClient<O>) {
+    }
+
+    /**
+     * HTTP POST /api/v1/auth/authenticate
+     * Java method: br.cruzsilva.CruzSilva.rest.AuthenticationResource.authenticate
+     */
+    authenticate(request: AuthenticationRequestDTO, options?: O): RestResponse<ResponseDTO<AuthenticatoinResponseDTO>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/auth/authenticate`, data: request, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/auth/reNewToken
+     * Java method: br.cruzsilva.CruzSilva.rest.AuthenticationResource.reNewToken
+     */
+    reNewToken(queryParams: { email: string; }, options?: O): RestResponse<ResponseDTO<UserDTO>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/auth/reNewToken`, queryParams: queryParams, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/auth/register
+     * Java method: br.cruzsilva.CruzSilva.rest.AuthenticationResource.register
+     */
+    register(register: RegisterRequestDTO, options?: O): RestResponse<ResponseDTO<UserDTO>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/auth/register`, data: register, options: options });
+    }
+}
+
+export class TypeClassificationResourceClient<O> {
+
+    constructor(protected httpClient: HttpClient<O>) {
+    }
+
+    /**
+     * HTTP DELETE /api/v1/typeclassification/delete
+     * Java method: br.cruzsilva.CruzSilva.rest.TypeClassificationResource.delete
+     */
+    delete(queryParams: { cdnTypeClassification: number; }, options?: O): RestResponse<ResponseDTO<any>> {
+        return this.httpClient.request({ method: "DELETE", url: uriEncoding`api/v1/typeclassification/delete`, queryParams: queryParams, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/typeclassification/listAll
+     * Java method: br.cruzsilva.CruzSilva.rest.TypeClassificationResource.listAll
+     */
+    listAll(options?: O): RestResponse<ResponseDTO<TypeClassificationDTO[]>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/typeclassification/listAll`, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/typeclassification/listExample
+     * Java method: br.cruzsilva.CruzSilva.rest.TypeClassificationResource.listExample
+     */
+    listExample(typeclassificationDTO: TypeClassificationDTO, options?: O): RestResponse<ResponseDTO<TypeClassificationDTO[]>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/typeclassification/listExample`, data: typeclassificationDTO, options: options });
+    }
+
+    /**
+     * HTTP GET /api/v1/typeclassification/obtain
+     * Java method: br.cruzsilva.CruzSilva.rest.TypeClassificationResource.obtain
+     */
+    obtain(queryParams: { cdnTypeClassification: number; }, options?: O): RestResponse<ResponseDTO<TypeClassificationDTO>> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/typeclassification/obtain`, queryParams: queryParams, options: options });
+    }
+
+    /**
+     * HTTP GET /api/v1/typeclassification/pagination
+     * Java method: br.cruzsilva.CruzSilva.rest.TypeClassificationResource.pagination
+     */
+    pagination(queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; filter?: number; }, options?: O): RestResponse<ResponseDTO<Page<TypeClassificationDTO>>> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/typeclassification/pagination`, queryParams: queryParams, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/typeclassification/paginationFull
+     * Java method: br.cruzsilva.CruzSilva.rest.TypeClassificationResource.paginationFull
+     */
+    paginationFull(filterMap: { [index: string]: any }, queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; }, options?: O): RestResponse<ResponseDTO<Page<TypeClassificationDTO>>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/typeclassification/paginationFull`, queryParams: queryParams, data: filterMap, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/typeclassification/save
+     * Java method: br.cruzsilva.CruzSilva.rest.TypeClassificationResource.save
+     */
+    save(typeclassificationDTO: TypeClassificationDTO, options?: O): RestResponse<ResponseDTO<TypeClassificationDTO>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/typeclassification/save`, data: typeclassificationDTO, options: options });
+    }
+}
+
+export class GenderResourceClient<O> {
+
+    constructor(protected httpClient: HttpClient<O>) {
+    }
+
+    /**
+     * HTTP DELETE /api/v1/gender/delete
+     * Java method: br.cruzsilva.CruzSilva.rest.GenderResource.delete
+     */
+    delete(queryParams: { cdnGender: number; }, options?: O): RestResponse<ResponseDTO<any>> {
+        return this.httpClient.request({ method: "DELETE", url: uriEncoding`api/v1/gender/delete`, queryParams: queryParams, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/gender/listAll
+     * Java method: br.cruzsilva.CruzSilva.rest.GenderResource.listAll
+     */
+    listAll(options?: O): RestResponse<ResponseDTO<GenderDTO[]>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/gender/listAll`, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/gender/listExample
+     * Java method: br.cruzsilva.CruzSilva.rest.GenderResource.listExample
+     */
+    listExample(genderDTO: GenderDTO, options?: O): RestResponse<ResponseDTO<GenderDTO[]>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/gender/listExample`, data: genderDTO, options: options });
+    }
+
+    /**
+     * HTTP GET /api/v1/gender/obtain
+     * Java method: br.cruzsilva.CruzSilva.rest.GenderResource.obtain
+     */
+    obtain(queryParams: { cdnGender: number; }, options?: O): RestResponse<ResponseDTO<GenderDTO>> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/gender/obtain`, queryParams: queryParams, options: options });
+    }
+
+    /**
+     * HTTP GET /api/v1/gender/pagination
+     * Java method: br.cruzsilva.CruzSilva.rest.GenderResource.pagination
+     */
+    pagination(queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; filter?: number; }, options?: O): RestResponse<ResponseDTO<Page<GenderDTO>>> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/gender/pagination`, queryParams: queryParams, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/gender/paginationFull
+     * Java method: br.cruzsilva.CruzSilva.rest.GenderResource.paginationFull
+     */
+    paginationFull(filterMap: { [index: string]: any }, queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; }, options?: O): RestResponse<ResponseDTO<Page<GenderDTO>>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/gender/paginationFull`, queryParams: queryParams, data: filterMap, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/gender/save
+     * Java method: br.cruzsilva.CruzSilva.rest.GenderResource.save
+     */
+    save(genderDTO: GenderDTO, options?: O): RestResponse<ResponseDTO<GenderDTO>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/gender/save`, data: genderDTO, options: options });
+    }
+}
+
+export class AddressResourceClient<O> {
+
+    constructor(protected httpClient: HttpClient<O>) {
+    }
+
+    /**
+     * HTTP DELETE /api/v1/address/delete
+     * Java method: br.cruzsilva.CruzSilva.rest.AddressResource.delete
+     */
+    delete(queryParams: { cdnAddress: number; }, options?: O): RestResponse<ResponseDTO<any>> {
+        return this.httpClient.request({ method: "DELETE", url: uriEncoding`api/v1/address/delete`, queryParams: queryParams, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/address/listAll
+     * Java method: br.cruzsilva.CruzSilva.rest.AddressResource.listAll
+     */
+    listAll(options?: O): RestResponse<ResponseDTO<AddressDTO[]>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/address/listAll`, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/address/listExample
+     * Java method: br.cruzsilva.CruzSilva.rest.AddressResource.listExample
+     */
+    listExample(addressDTO: AddressDTO, options?: O): RestResponse<ResponseDTO<AddressDTO[]>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/address/listExample`, data: addressDTO, options: options });
+    }
+
+    /**
+     * HTTP GET /api/v1/address/obtain
+     * Java method: br.cruzsilva.CruzSilva.rest.AddressResource.obtain
+     */
+    obtain(queryParams: { cdnAddress: number; }, options?: O): RestResponse<ResponseDTO<AddressDTO>> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/address/obtain`, queryParams: queryParams, options: options });
+    }
+
+    /**
+     * HTTP GET /api/v1/address/pagination
+     * Java method: br.cruzsilva.CruzSilva.rest.AddressResource.pagination
+     */
+    pagination(queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; filter?: number; }, options?: O): RestResponse<ResponseDTO<Page<AddressDTO>>> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/address/pagination`, queryParams: queryParams, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/address/paginationFull
+     * Java method: br.cruzsilva.CruzSilva.rest.AddressResource.paginationFull
+     */
+    paginationFull(filterMap: { [index: string]: any }, queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; }, options?: O): RestResponse<ResponseDTO<Page<AddressDTO>>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/address/paginationFull`, queryParams: queryParams, data: filterMap, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/address/save
+     * Java method: br.cruzsilva.CruzSilva.rest.AddressResource.save
+     */
+    save(addressDTO: AddressDTO, options?: O): RestResponse<ResponseDTO<AddressDTO>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/address/save`, data: addressDTO, options: options });
     }
 }
 
@@ -973,65 +1775,127 @@ export class RopingDivisionRankResourceClient<O> {
     }
 }
 
-export class AnimalResourceClient<O> {
+export class BarrelTypeResourceClient<O> {
 
     constructor(protected httpClient: HttpClient<O>) {
     }
 
     /**
-     * HTTP DELETE /api/v1/animal/delete
-     * Java method: br.cruzsilva.CruzSilva.rest.AnimalResource.delete
+     * HTTP DELETE /api/v1/barreltype/delete
+     * Java method: br.cruzsilva.CruzSilva.rest.BarrelTypeResource.delete
      */
-    delete(queryParams: { cdnAnimal: number; }, options?: O): RestResponse<ResponseDTO<any>> {
-        return this.httpClient.request({ method: "DELETE", url: uriEncoding`api/v1/animal/delete`, queryParams: queryParams, options: options });
+    delete(queryParams: { cdnBarrelType: number; }, options?: O): RestResponse<ResponseDTO<any>> {
+        return this.httpClient.request({ method: "DELETE", url: uriEncoding`api/v1/barreltype/delete`, queryParams: queryParams, options: options });
     }
 
     /**
-     * HTTP POST /api/v1/animal/listAll
-     * Java method: br.cruzsilva.CruzSilva.rest.AnimalResource.listAll
+     * HTTP POST /api/v1/barreltype/listAll
+     * Java method: br.cruzsilva.CruzSilva.rest.BarrelTypeResource.listAll
      */
-    listAll(options?: O): RestResponse<ResponseDTO<AnimalDTO[]>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/animal/listAll`, options: options });
+    listAll(options?: O): RestResponse<ResponseDTO<BarrelTypeDTO[]>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/barreltype/listAll`, options: options });
     }
 
     /**
-     * HTTP POST /api/v1/animal/listExample
-     * Java method: br.cruzsilva.CruzSilva.rest.AnimalResource.listExample
+     * HTTP POST /api/v1/barreltype/listExample
+     * Java method: br.cruzsilva.CruzSilva.rest.BarrelTypeResource.listExample
      */
-    listExample(animalDTO: AnimalDTO, options?: O): RestResponse<ResponseDTO<AnimalDTO[]>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/animal/listExample`, data: animalDTO, options: options });
+    listExample(barreltypeDTO: BarrelTypeDTO, options?: O): RestResponse<ResponseDTO<BarrelTypeDTO[]>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/barreltype/listExample`, data: barreltypeDTO, options: options });
     }
 
     /**
-     * HTTP GET /api/v1/animal/obtain
-     * Java method: br.cruzsilva.CruzSilva.rest.AnimalResource.obtain
+     * HTTP GET /api/v1/barreltype/obtain
+     * Java method: br.cruzsilva.CruzSilva.rest.BarrelTypeResource.obtain
      */
-    obtain(queryParams: { cdnAnimal: number; }, options?: O): RestResponse<ResponseDTO<AnimalDTO>> {
-        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/animal/obtain`, queryParams: queryParams, options: options });
+    obtain(queryParams: { cdnBarrelType: number; }, options?: O): RestResponse<ResponseDTO<BarrelTypeDTO>> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/barreltype/obtain`, queryParams: queryParams, options: options });
     }
 
     /**
-     * HTTP GET /api/v1/animal/pagination
-     * Java method: br.cruzsilva.CruzSilva.rest.AnimalResource.pagination
+     * HTTP GET /api/v1/barreltype/pagination
+     * Java method: br.cruzsilva.CruzSilva.rest.BarrelTypeResource.pagination
      */
-    pagination(queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; filter?: number; }, options?: O): RestResponse<ResponseDTO<Page<AnimalDTO>>> {
-        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/animal/pagination`, queryParams: queryParams, options: options });
+    pagination(queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; filter?: number; }, options?: O): RestResponse<ResponseDTO<Page<BarrelTypeDTO>>> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/barreltype/pagination`, queryParams: queryParams, options: options });
     }
 
     /**
-     * HTTP POST /api/v1/animal/paginationFull
-     * Java method: br.cruzsilva.CruzSilva.rest.AnimalResource.paginationFull
+     * HTTP POST /api/v1/barreltype/paginationFull
+     * Java method: br.cruzsilva.CruzSilva.rest.BarrelTypeResource.paginationFull
      */
-    paginationFull(filterMap: { [index: string]: any }, queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; }, options?: O): RestResponse<ResponseDTO<Page<AnimalDTO>>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/animal/paginationFull`, queryParams: queryParams, data: filterMap, options: options });
+    paginationFull(filterMap: { [index: string]: any }, queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; }, options?: O): RestResponse<ResponseDTO<Page<BarrelTypeDTO>>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/barreltype/paginationFull`, queryParams: queryParams, data: filterMap, options: options });
     }
 
     /**
-     * HTTP POST /api/v1/animal/save
-     * Java method: br.cruzsilva.CruzSilva.rest.AnimalResource.save
+     * HTTP POST /api/v1/barreltype/save
+     * Java method: br.cruzsilva.CruzSilva.rest.BarrelTypeResource.save
      */
-    save(animalDTO: AnimalDTO, options?: O): RestResponse<ResponseDTO<AnimalDTO>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/animal/save`, data: animalDTO, options: options });
+    save(barreltypeDTO: BarrelTypeDTO, options?: O): RestResponse<ResponseDTO<BarrelTypeDTO>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/barreltype/save`, data: barreltypeDTO, options: options });
+    }
+}
+
+export class TypeClassificationTimeResourceClient<O> {
+
+    constructor(protected httpClient: HttpClient<O>) {
+    }
+
+    /**
+     * HTTP DELETE /api/v1/typeclassificationtime/delete
+     * Java method: br.cruzsilva.CruzSilva.rest.TypeClassificationTimeResource.delete
+     */
+    delete(queryParams: { cdnTypeClassificationTime: number; }, options?: O): RestResponse<ResponseDTO<any>> {
+        return this.httpClient.request({ method: "DELETE", url: uriEncoding`api/v1/typeclassificationtime/delete`, queryParams: queryParams, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/typeclassificationtime/listAll
+     * Java method: br.cruzsilva.CruzSilva.rest.TypeClassificationTimeResource.listAll
+     */
+    listAll(options?: O): RestResponse<ResponseDTO<TypeClassificationTimeDTO[]>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/typeclassificationtime/listAll`, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/typeclassificationtime/listExample
+     * Java method: br.cruzsilva.CruzSilva.rest.TypeClassificationTimeResource.listExample
+     */
+    listExample(typeclassificationtimeDTO: TypeClassificationTimeDTO, options?: O): RestResponse<ResponseDTO<TypeClassificationTimeDTO[]>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/typeclassificationtime/listExample`, data: typeclassificationtimeDTO, options: options });
+    }
+
+    /**
+     * HTTP GET /api/v1/typeclassificationtime/obtain
+     * Java method: br.cruzsilva.CruzSilva.rest.TypeClassificationTimeResource.obtain
+     */
+    obtain(queryParams: { cdnTypeClassificationTime: number; }, options?: O): RestResponse<ResponseDTO<TypeClassificationTimeDTO>> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/typeclassificationtime/obtain`, queryParams: queryParams, options: options });
+    }
+
+    /**
+     * HTTP GET /api/v1/typeclassificationtime/pagination
+     * Java method: br.cruzsilva.CruzSilva.rest.TypeClassificationTimeResource.pagination
+     */
+    pagination(queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; filter?: number; }, options?: O): RestResponse<ResponseDTO<Page<TypeClassificationTimeDTO>>> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/typeclassificationtime/pagination`, queryParams: queryParams, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/typeclassificationtime/paginationFull
+     * Java method: br.cruzsilva.CruzSilva.rest.TypeClassificationTimeResource.paginationFull
+     */
+    paginationFull(filterMap: { [index: string]: any }, queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; }, options?: O): RestResponse<ResponseDTO<Page<TypeClassificationTimeDTO>>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/typeclassificationtime/paginationFull`, queryParams: queryParams, data: filterMap, options: options });
+    }
+
+    /**
+     * HTTP POST /api/v1/typeclassificationtime/save
+     * Java method: br.cruzsilva.CruzSilva.rest.TypeClassificationTimeResource.save
+     */
+    save(typeclassificationtimeDTO: TypeClassificationTimeDTO, options?: O): RestResponse<ResponseDTO<TypeClassificationTimeDTO>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/typeclassificationtime/save`, data: typeclassificationtimeDTO, options: options });
     }
 }
 
@@ -1159,780 +2023,6 @@ export class CountryResourceClient<O> {
     }
 }
 
-export class RopingResourceClient<O> {
-
-    constructor(protected httpClient: HttpClient<O>) {
-    }
-
-    /**
-     * HTTP DELETE /api/v1/roping/delete
-     * Java method: br.cruzsilva.CruzSilva.rest.RopingResource.delete
-     */
-    delete(queryParams: { cdnRoping: number; }, options?: O): RestResponse<ResponseDTO<any>> {
-        return this.httpClient.request({ method: "DELETE", url: uriEncoding`api/v1/roping/delete`, queryParams: queryParams, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/roping/listAll
-     * Java method: br.cruzsilva.CruzSilva.rest.RopingResource.listAll
-     */
-    listAll(options?: O): RestResponse<ResponseDTO<RopingDTO[]>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/roping/listAll`, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/roping/listExample
-     * Java method: br.cruzsilva.CruzSilva.rest.RopingResource.listExample
-     */
-    listExample(ropingDTO: RopingDTO, options?: O): RestResponse<ResponseDTO<RopingDTO[]>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/roping/listExample`, data: ropingDTO, options: options });
-    }
-
-    /**
-     * HTTP GET /api/v1/roping/obtain
-     * Java method: br.cruzsilva.CruzSilva.rest.RopingResource.obtain
-     */
-    obtain(queryParams: { cdnRoping: number; }, options?: O): RestResponse<ResponseDTO<RopingDTO>> {
-        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/roping/obtain`, queryParams: queryParams, options: options });
-    }
-
-    /**
-     * HTTP GET /api/v1/roping/pagination
-     * Java method: br.cruzsilva.CruzSilva.rest.RopingResource.pagination
-     */
-    pagination(queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; filter?: number; }, options?: O): RestResponse<ResponseDTO<Page<RopingDTO>>> {
-        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/roping/pagination`, queryParams: queryParams, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/roping/paginationFull
-     * Java method: br.cruzsilva.CruzSilva.rest.RopingResource.paginationFull
-     */
-    paginationFull(filterMap: { [index: string]: any }, queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; }, options?: O): RestResponse<ResponseDTO<Page<RopingDTO>>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/roping/paginationFull`, queryParams: queryParams, data: filterMap, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/roping/save
-     * Java method: br.cruzsilva.CruzSilva.rest.RopingResource.save
-     */
-    save(ropingDTO: RopingDTO, options?: O): RestResponse<ResponseDTO<RopingDTO>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/roping/save`, data: ropingDTO, options: options });
-    }
-}
-
-export class TypeClassificationResourceClient<O> {
-
-    constructor(protected httpClient: HttpClient<O>) {
-    }
-
-    /**
-     * HTTP DELETE /api/v1/typeclassification/delete
-     * Java method: br.cruzsilva.CruzSilva.rest.TypeClassificationResource.delete
-     */
-    delete(queryParams: { cdnTypeClassification: number; }, options?: O): RestResponse<ResponseDTO<any>> {
-        return this.httpClient.request({ method: "DELETE", url: uriEncoding`api/v1/typeclassification/delete`, queryParams: queryParams, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/typeclassification/listAll
-     * Java method: br.cruzsilva.CruzSilva.rest.TypeClassificationResource.listAll
-     */
-    listAll(options?: O): RestResponse<ResponseDTO<TypeClassificationDTO[]>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/typeclassification/listAll`, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/typeclassification/listExample
-     * Java method: br.cruzsilva.CruzSilva.rest.TypeClassificationResource.listExample
-     */
-    listExample(typeclassificationDTO: TypeClassificationDTO, options?: O): RestResponse<ResponseDTO<TypeClassificationDTO[]>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/typeclassification/listExample`, data: typeclassificationDTO, options: options });
-    }
-
-    /**
-     * HTTP GET /api/v1/typeclassification/obtain
-     * Java method: br.cruzsilva.CruzSilva.rest.TypeClassificationResource.obtain
-     */
-    obtain(queryParams: { cdnTypeClassification: number; }, options?: O): RestResponse<ResponseDTO<TypeClassificationDTO>> {
-        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/typeclassification/obtain`, queryParams: queryParams, options: options });
-    }
-
-    /**
-     * HTTP GET /api/v1/typeclassification/pagination
-     * Java method: br.cruzsilva.CruzSilva.rest.TypeClassificationResource.pagination
-     */
-    pagination(queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; filter?: number; }, options?: O): RestResponse<ResponseDTO<Page<TypeClassificationDTO>>> {
-        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/typeclassification/pagination`, queryParams: queryParams, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/typeclassification/paginationFull
-     * Java method: br.cruzsilva.CruzSilva.rest.TypeClassificationResource.paginationFull
-     */
-    paginationFull(filterMap: { [index: string]: any }, queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; }, options?: O): RestResponse<ResponseDTO<Page<TypeClassificationDTO>>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/typeclassification/paginationFull`, queryParams: queryParams, data: filterMap, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/typeclassification/save
-     * Java method: br.cruzsilva.CruzSilva.rest.TypeClassificationResource.save
-     */
-    save(typeclassificationDTO: TypeClassificationDTO, options?: O): RestResponse<ResponseDTO<TypeClassificationDTO>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/typeclassification/save`, data: typeclassificationDTO, options: options });
-    }
-}
-
-export class DivisionResourceClient<O> {
-
-    constructor(protected httpClient: HttpClient<O>) {
-    }
-
-    /**
-     * HTTP DELETE /api/v1/division/delete
-     * Java method: br.cruzsilva.CruzSilva.rest.DivisionResource.delete
-     */
-    delete(queryParams: { cdnDivision: number; }, options?: O): RestResponse<ResponseDTO<any>> {
-        return this.httpClient.request({ method: "DELETE", url: uriEncoding`api/v1/division/delete`, queryParams: queryParams, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/division/listAll
-     * Java method: br.cruzsilva.CruzSilva.rest.DivisionResource.listAll
-     */
-    listAll(options?: O): RestResponse<ResponseDTO<DivisionDTO[]>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/division/listAll`, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/division/listExample
-     * Java method: br.cruzsilva.CruzSilva.rest.DivisionResource.listExample
-     */
-    listExample(divisionDTO: DivisionDTO, options?: O): RestResponse<ResponseDTO<DivisionDTO[]>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/division/listExample`, data: divisionDTO, options: options });
-    }
-
-    /**
-     * HTTP GET /api/v1/division/obtain
-     * Java method: br.cruzsilva.CruzSilva.rest.DivisionResource.obtain
-     */
-    obtain(queryParams: { cdnDivision: number; }, options?: O): RestResponse<ResponseDTO<DivisionDTO>> {
-        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/division/obtain`, queryParams: queryParams, options: options });
-    }
-
-    /**
-     * HTTP GET /api/v1/division/pagination
-     * Java method: br.cruzsilva.CruzSilva.rest.DivisionResource.pagination
-     */
-    pagination(queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; filter?: number; }, options?: O): RestResponse<ResponseDTO<Page<DivisionDTO>>> {
-        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/division/pagination`, queryParams: queryParams, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/division/paginationFull
-     * Java method: br.cruzsilva.CruzSilva.rest.DivisionResource.paginationFull
-     */
-    paginationFull(filterMap: { [index: string]: any }, queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; }, options?: O): RestResponse<ResponseDTO<Page<DivisionDTO>>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/division/paginationFull`, queryParams: queryParams, data: filterMap, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/division/save
-     * Java method: br.cruzsilva.CruzSilva.rest.DivisionResource.save
-     */
-    save(divisionDTO: DivisionDTO, options?: O): RestResponse<ResponseDTO<DivisionDTO>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/division/save`, data: divisionDTO, options: options });
-    }
-}
-
-export class BarrelTypeResourceClient<O> {
-
-    constructor(protected httpClient: HttpClient<O>) {
-    }
-
-    /**
-     * HTTP DELETE /api/v1/barreltype/delete
-     * Java method: br.cruzsilva.CruzSilva.rest.BarrelTypeResource.delete
-     */
-    delete(queryParams: { cdnBarrelType: number; }, options?: O): RestResponse<ResponseDTO<any>> {
-        return this.httpClient.request({ method: "DELETE", url: uriEncoding`api/v1/barreltype/delete`, queryParams: queryParams, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/barreltype/listAll
-     * Java method: br.cruzsilva.CruzSilva.rest.BarrelTypeResource.listAll
-     */
-    listAll(options?: O): RestResponse<ResponseDTO<BarrelTypeDTO[]>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/barreltype/listAll`, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/barreltype/listExample
-     * Java method: br.cruzsilva.CruzSilva.rest.BarrelTypeResource.listExample
-     */
-    listExample(barreltypeDTO: BarrelTypeDTO, options?: O): RestResponse<ResponseDTO<BarrelTypeDTO[]>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/barreltype/listExample`, data: barreltypeDTO, options: options });
-    }
-
-    /**
-     * HTTP GET /api/v1/barreltype/obtain
-     * Java method: br.cruzsilva.CruzSilva.rest.BarrelTypeResource.obtain
-     */
-    obtain(queryParams: { cdnBarrelType: number; }, options?: O): RestResponse<ResponseDTO<BarrelTypeDTO>> {
-        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/barreltype/obtain`, queryParams: queryParams, options: options });
-    }
-
-    /**
-     * HTTP GET /api/v1/barreltype/pagination
-     * Java method: br.cruzsilva.CruzSilva.rest.BarrelTypeResource.pagination
-     */
-    pagination(queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; filter?: number; }, options?: O): RestResponse<ResponseDTO<Page<BarrelTypeDTO>>> {
-        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/barreltype/pagination`, queryParams: queryParams, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/barreltype/paginationFull
-     * Java method: br.cruzsilva.CruzSilva.rest.BarrelTypeResource.paginationFull
-     */
-    paginationFull(filterMap: { [index: string]: any }, queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; }, options?: O): RestResponse<ResponseDTO<Page<BarrelTypeDTO>>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/barreltype/paginationFull`, queryParams: queryParams, data: filterMap, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/barreltype/save
-     * Java method: br.cruzsilva.CruzSilva.rest.BarrelTypeResource.save
-     */
-    save(barreltypeDTO: BarrelTypeDTO, options?: O): RestResponse<ResponseDTO<BarrelTypeDTO>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/barreltype/save`, data: barreltypeDTO, options: options });
-    }
-}
-
-export class AddressResourceClient<O> {
-
-    constructor(protected httpClient: HttpClient<O>) {
-    }
-
-    /**
-     * HTTP DELETE /api/v1/address/delete
-     * Java method: br.cruzsilva.CruzSilva.rest.AddressResource.delete
-     */
-    delete(queryParams: { cdnAddress: number; }, options?: O): RestResponse<ResponseDTO<any>> {
-        return this.httpClient.request({ method: "DELETE", url: uriEncoding`api/v1/address/delete`, queryParams: queryParams, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/address/listAll
-     * Java method: br.cruzsilva.CruzSilva.rest.AddressResource.listAll
-     */
-    listAll(options?: O): RestResponse<ResponseDTO<AddressDTO[]>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/address/listAll`, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/address/listExample
-     * Java method: br.cruzsilva.CruzSilva.rest.AddressResource.listExample
-     */
-    listExample(addressDTO: AddressDTO, options?: O): RestResponse<ResponseDTO<AddressDTO[]>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/address/listExample`, data: addressDTO, options: options });
-    }
-
-    /**
-     * HTTP GET /api/v1/address/obtain
-     * Java method: br.cruzsilva.CruzSilva.rest.AddressResource.obtain
-     */
-    obtain(queryParams: { cdnAddress: number; }, options?: O): RestResponse<ResponseDTO<AddressDTO>> {
-        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/address/obtain`, queryParams: queryParams, options: options });
-    }
-
-    /**
-     * HTTP GET /api/v1/address/pagination
-     * Java method: br.cruzsilva.CruzSilva.rest.AddressResource.pagination
-     */
-    pagination(queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; filter?: number; }, options?: O): RestResponse<ResponseDTO<Page<AddressDTO>>> {
-        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/address/pagination`, queryParams: queryParams, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/address/paginationFull
-     * Java method: br.cruzsilva.CruzSilva.rest.AddressResource.paginationFull
-     */
-    paginationFull(filterMap: { [index: string]: any }, queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; }, options?: O): RestResponse<ResponseDTO<Page<AddressDTO>>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/address/paginationFull`, queryParams: queryParams, data: filterMap, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/address/save
-     * Java method: br.cruzsilva.CruzSilva.rest.AddressResource.save
-     */
-    save(addressDTO: AddressDTO, options?: O): RestResponse<ResponseDTO<AddressDTO>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/address/save`, data: addressDTO, options: options });
-    }
-}
-
-export class CustomerResourceClient<O> {
-
-    constructor(protected httpClient: HttpClient<O>) {
-    }
-
-    /**
-     * HTTP DELETE /api/v1/customer/delete
-     * Java method: br.cruzsilva.CruzSilva.rest.CustomerResource.delete
-     */
-    delete(queryParams: { cdnCustomer: number; }, options?: O): RestResponse<ResponseDTO<any>> {
-        return this.httpClient.request({ method: "DELETE", url: uriEncoding`api/v1/customer/delete`, queryParams: queryParams, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/customer/listAll
-     * Java method: br.cruzsilva.CruzSilva.rest.CustomerResource.listAll
-     */
-    listAll(options?: O): RestResponse<ResponseDTO<CustomerDTO[]>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/customer/listAll`, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/customer/listExample
-     * Java method: br.cruzsilva.CruzSilva.rest.CustomerResource.listExample
-     */
-    listExample(customerDTO: CustomerDTO, options?: O): RestResponse<ResponseDTO<CustomerDTO[]>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/customer/listExample`, data: customerDTO, options: options });
-    }
-
-    /**
-     * HTTP GET /api/v1/customer/obtain
-     * Java method: br.cruzsilva.CruzSilva.rest.CustomerResource.obtain
-     */
-    obtain(queryParams: { cdnCustomer: number; }, options?: O): RestResponse<ResponseDTO<CustomerDTO>> {
-        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/customer/obtain`, queryParams: queryParams, options: options });
-    }
-
-    /**
-     * HTTP GET /api/v1/customer/pagination
-     * Java method: br.cruzsilva.CruzSilva.rest.CustomerResource.pagination
-     */
-    pagination(queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; filter?: number; }, options?: O): RestResponse<ResponseDTO<Page<CustomerDTO>>> {
-        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/customer/pagination`, queryParams: queryParams, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/customer/paginationFull
-     * Java method: br.cruzsilva.CruzSilva.rest.CustomerResource.paginationFull
-     */
-    paginationFull(filterMap: { [index: string]: any }, queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; }, options?: O): RestResponse<ResponseDTO<Page<CustomerDTO>>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/customer/paginationFull`, queryParams: queryParams, data: filterMap, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/customer/save
-     * Java method: br.cruzsilva.CruzSilva.rest.CustomerResource.save
-     */
-    save(customerDTO: CustomerDTO, options?: O): RestResponse<ResponseDTO<CustomerDTO>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/customer/save`, data: customerDTO, options: options });
-    }
-}
-
-export class GenderAnimalResourceClient<O> {
-
-    constructor(protected httpClient: HttpClient<O>) {
-    }
-
-    /**
-     * HTTP DELETE /api/v1/genderanimal/delete
-     * Java method: br.cruzsilva.CruzSilva.rest.GenderAnimalResource.delete
-     */
-    delete(queryParams: { cdnGenderAnimal: number; }, options?: O): RestResponse<ResponseDTO<any>> {
-        return this.httpClient.request({ method: "DELETE", url: uriEncoding`api/v1/genderanimal/delete`, queryParams: queryParams, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/genderanimal/listAll
-     * Java method: br.cruzsilva.CruzSilva.rest.GenderAnimalResource.listAll
-     */
-    listAll(options?: O): RestResponse<ResponseDTO<GenderAnimalDTO[]>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/genderanimal/listAll`, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/genderanimal/listExample
-     * Java method: br.cruzsilva.CruzSilva.rest.GenderAnimalResource.listExample
-     */
-    listExample(genderanimalDTO: GenderAnimalDTO, options?: O): RestResponse<ResponseDTO<GenderAnimalDTO[]>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/genderanimal/listExample`, data: genderanimalDTO, options: options });
-    }
-
-    /**
-     * HTTP GET /api/v1/genderanimal/obtain
-     * Java method: br.cruzsilva.CruzSilva.rest.GenderAnimalResource.obtain
-     */
-    obtain(queryParams: { cdnGenderAnimal: number; }, options?: O): RestResponse<ResponseDTO<GenderAnimalDTO>> {
-        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/genderanimal/obtain`, queryParams: queryParams, options: options });
-    }
-
-    /**
-     * HTTP GET /api/v1/genderanimal/pagination
-     * Java method: br.cruzsilva.CruzSilva.rest.GenderAnimalResource.pagination
-     */
-    pagination(queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; filter?: number; }, options?: O): RestResponse<ResponseDTO<Page<GenderAnimalDTO>>> {
-        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/genderanimal/pagination`, queryParams: queryParams, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/genderanimal/paginationFull
-     * Java method: br.cruzsilva.CruzSilva.rest.GenderAnimalResource.paginationFull
-     */
-    paginationFull(filterMap: { [index: string]: any }, queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; }, options?: O): RestResponse<ResponseDTO<Page<GenderAnimalDTO>>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/genderanimal/paginationFull`, queryParams: queryParams, data: filterMap, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/genderanimal/save
-     * Java method: br.cruzsilva.CruzSilva.rest.GenderAnimalResource.save
-     */
-    save(genderanimalDTO: GenderAnimalDTO, options?: O): RestResponse<ResponseDTO<GenderAnimalDTO>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/genderanimal/save`, data: genderanimalDTO, options: options });
-    }
-}
-
-export class EstateResourceClient<O> {
-
-    constructor(protected httpClient: HttpClient<O>) {
-    }
-
-    /**
-     * HTTP DELETE /api/v1/estate/delete
-     * Java method: br.cruzsilva.CruzSilva.rest.EstateResource.delete
-     */
-    delete(queryParams: { cdnEstate: number; }, options?: O): RestResponse<ResponseDTO<any>> {
-        return this.httpClient.request({ method: "DELETE", url: uriEncoding`api/v1/estate/delete`, queryParams: queryParams, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/estate/listAll
-     * Java method: br.cruzsilva.CruzSilva.rest.EstateResource.listAll
-     */
-    listAll(options?: O): RestResponse<ResponseDTO<EstateDTO[]>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/estate/listAll`, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/estate/listExample
-     * Java method: br.cruzsilva.CruzSilva.rest.EstateResource.listExample
-     */
-    listExample(estateDTO: EstateDTO, options?: O): RestResponse<ResponseDTO<EstateDTO[]>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/estate/listExample`, data: estateDTO, options: options });
-    }
-
-    /**
-     * HTTP GET /api/v1/estate/obtain
-     * Java method: br.cruzsilva.CruzSilva.rest.EstateResource.obtain
-     */
-    obtain(queryParams: { cdnEstate: number; }, options?: O): RestResponse<ResponseDTO<EstateDTO>> {
-        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/estate/obtain`, queryParams: queryParams, options: options });
-    }
-
-    /**
-     * HTTP GET /api/v1/estate/pagination
-     * Java method: br.cruzsilva.CruzSilva.rest.EstateResource.pagination
-     */
-    pagination(queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; filter?: number; }, options?: O): RestResponse<ResponseDTO<Page<EstateDTO>>> {
-        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/estate/pagination`, queryParams: queryParams, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/estate/paginationFull
-     * Java method: br.cruzsilva.CruzSilva.rest.EstateResource.paginationFull
-     */
-    paginationFull(filterMap: { [index: string]: any }, queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; }, options?: O): RestResponse<ResponseDTO<Page<EstateDTO>>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/estate/paginationFull`, queryParams: queryParams, data: filterMap, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/estate/save
-     * Java method: br.cruzsilva.CruzSilva.rest.EstateResource.save
-     */
-    save(estateDTO: EstateDTO, options?: O): RestResponse<ResponseDTO<EstateDTO>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/estate/save`, data: estateDTO, options: options });
-    }
-}
-
-export class RewardKindResourceClient<O> {
-
-    constructor(protected httpClient: HttpClient<O>) {
-    }
-
-    /**
-     * HTTP DELETE /api/v1/rewardkind/delete
-     * Java method: br.cruzsilva.CruzSilva.rest.RewardKindResource.delete
-     */
-    delete(queryParams: { cdnRewardKind: number; }, options?: O): RestResponse<ResponseDTO<any>> {
-        return this.httpClient.request({ method: "DELETE", url: uriEncoding`api/v1/rewardkind/delete`, queryParams: queryParams, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/rewardkind/listAll
-     * Java method: br.cruzsilva.CruzSilva.rest.RewardKindResource.listAll
-     */
-    listAll(options?: O): RestResponse<ResponseDTO<RewardKindDTO[]>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/rewardkind/listAll`, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/rewardkind/listExample
-     * Java method: br.cruzsilva.CruzSilva.rest.RewardKindResource.listExample
-     */
-    listExample(rewardkindDTO: RewardKindDTO, options?: O): RestResponse<ResponseDTO<RewardKindDTO[]>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/rewardkind/listExample`, data: rewardkindDTO, options: options });
-    }
-
-    /**
-     * HTTP GET /api/v1/rewardkind/obtain
-     * Java method: br.cruzsilva.CruzSilva.rest.RewardKindResource.obtain
-     */
-    obtain(queryParams: { cdnRewardKind: number; }, options?: O): RestResponse<ResponseDTO<RewardKindDTO>> {
-        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/rewardkind/obtain`, queryParams: queryParams, options: options });
-    }
-
-    /**
-     * HTTP GET /api/v1/rewardkind/pagination
-     * Java method: br.cruzsilva.CruzSilva.rest.RewardKindResource.pagination
-     */
-    pagination(queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; filter?: number; }, options?: O): RestResponse<ResponseDTO<Page<RewardKindDTO>>> {
-        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/rewardkind/pagination`, queryParams: queryParams, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/rewardkind/paginationFull
-     * Java method: br.cruzsilva.CruzSilva.rest.RewardKindResource.paginationFull
-     */
-    paginationFull(filterMap: { [index: string]: any }, queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; }, options?: O): RestResponse<ResponseDTO<Page<RewardKindDTO>>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/rewardkind/paginationFull`, queryParams: queryParams, data: filterMap, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/rewardkind/save
-     * Java method: br.cruzsilva.CruzSilva.rest.RewardKindResource.save
-     */
-    save(rewardkindDTO: RewardKindDTO, options?: O): RestResponse<ResponseDTO<RewardKindDTO>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/rewardkind/save`, data: rewardkindDTO, options: options });
-    }
-}
-
-export class RopingProductResourceClient<O> {
-
-    constructor(protected httpClient: HttpClient<O>) {
-    }
-
-    /**
-     * HTTP DELETE /api/v1/ropingproduct/delete
-     * Java method: br.cruzsilva.CruzSilva.rest.RopingProductResource.delete
-     */
-    delete(queryParams: { cdnRopingProduct: number; }, options?: O): RestResponse<ResponseDTO<any>> {
-        return this.httpClient.request({ method: "DELETE", url: uriEncoding`api/v1/ropingproduct/delete`, queryParams: queryParams, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/ropingproduct/listAll
-     * Java method: br.cruzsilva.CruzSilva.rest.RopingProductResource.listAll
-     */
-    listAll(options?: O): RestResponse<ResponseDTO<RopingProductDTO[]>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/ropingproduct/listAll`, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/ropingproduct/listExample
-     * Java method: br.cruzsilva.CruzSilva.rest.RopingProductResource.listExample
-     */
-    listExample(ropingproductDTO: RopingProductDTO, options?: O): RestResponse<ResponseDTO<RopingProductDTO[]>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/ropingproduct/listExample`, data: ropingproductDTO, options: options });
-    }
-
-    /**
-     * HTTP GET /api/v1/ropingproduct/obtain
-     * Java method: br.cruzsilva.CruzSilva.rest.RopingProductResource.obtain
-     */
-    obtain(queryParams: { cdnRopingProduct: number; }, options?: O): RestResponse<ResponseDTO<RopingProductDTO>> {
-        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/ropingproduct/obtain`, queryParams: queryParams, options: options });
-    }
-
-    /**
-     * HTTP GET /api/v1/ropingproduct/pagination
-     * Java method: br.cruzsilva.CruzSilva.rest.RopingProductResource.pagination
-     */
-    pagination(queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; filter?: number; }, options?: O): RestResponse<ResponseDTO<Page<RopingProductDTO>>> {
-        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/ropingproduct/pagination`, queryParams: queryParams, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/ropingproduct/paginationFull
-     * Java method: br.cruzsilva.CruzSilva.rest.RopingProductResource.paginationFull
-     */
-    paginationFull(filterMap: { [index: string]: any }, queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; }, options?: O): RestResponse<ResponseDTO<Page<RopingProductDTO>>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/ropingproduct/paginationFull`, queryParams: queryParams, data: filterMap, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/ropingproduct/save
-     * Java method: br.cruzsilva.CruzSilva.rest.RopingProductResource.save
-     */
-    save(ropingproductDTO: RopingProductDTO, options?: O): RestResponse<ResponseDTO<RopingProductDTO>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/ropingproduct/save`, data: ropingproductDTO, options: options });
-    }
-}
-
-export class AuthenticationResourceClient<O> {
-
-    constructor(protected httpClient: HttpClient<O>) {
-    }
-
-    /**
-     * HTTP POST /api/v1/auth/authenticate
-     * Java method: br.cruzsilva.CruzSilva.rest.AuthenticationResource.authenticate
-     */
-    authenticate(request: AuthenticationRequestDTO, options?: O): RestResponse<ResponseDTO<AuthenticatoinResponseDTO>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/auth/authenticate`, data: request, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/auth/reNewToken
-     * Java method: br.cruzsilva.CruzSilva.rest.AuthenticationResource.reNewToken
-     */
-    reNewToken(queryParams: { email: string; }, options?: O): RestResponse<ResponseDTO<UserDTO>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/auth/reNewToken`, queryParams: queryParams, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/auth/register
-     * Java method: br.cruzsilva.CruzSilva.rest.AuthenticationResource.register
-     */
-    register(register: RegisterRequestDTO, options?: O): RestResponse<ResponseDTO<UserDTO>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/auth/register`, data: register, options: options });
-    }
-}
-
-export class GenderResourceClient<O> {
-
-    constructor(protected httpClient: HttpClient<O>) {
-    }
-
-    /**
-     * HTTP DELETE /api/v1/gender/delete
-     * Java method: br.cruzsilva.CruzSilva.rest.GenderResource.delete
-     */
-    delete(queryParams: { cdnGender: number; }, options?: O): RestResponse<ResponseDTO<any>> {
-        return this.httpClient.request({ method: "DELETE", url: uriEncoding`api/v1/gender/delete`, queryParams: queryParams, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/gender/listAll
-     * Java method: br.cruzsilva.CruzSilva.rest.GenderResource.listAll
-     */
-    listAll(options?: O): RestResponse<ResponseDTO<GenderDTO[]>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/gender/listAll`, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/gender/listExample
-     * Java method: br.cruzsilva.CruzSilva.rest.GenderResource.listExample
-     */
-    listExample(genderDTO: GenderDTO, options?: O): RestResponse<ResponseDTO<GenderDTO[]>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/gender/listExample`, data: genderDTO, options: options });
-    }
-
-    /**
-     * HTTP GET /api/v1/gender/obtain
-     * Java method: br.cruzsilva.CruzSilva.rest.GenderResource.obtain
-     */
-    obtain(queryParams: { cdnGender: number; }, options?: O): RestResponse<ResponseDTO<GenderDTO>> {
-        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/gender/obtain`, queryParams: queryParams, options: options });
-    }
-
-    /**
-     * HTTP GET /api/v1/gender/pagination
-     * Java method: br.cruzsilva.CruzSilva.rest.GenderResource.pagination
-     */
-    pagination(queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; filter?: number; }, options?: O): RestResponse<ResponseDTO<Page<GenderDTO>>> {
-        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/gender/pagination`, queryParams: queryParams, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/gender/paginationFull
-     * Java method: br.cruzsilva.CruzSilva.rest.GenderResource.paginationFull
-     */
-    paginationFull(filterMap: { [index: string]: any }, queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; }, options?: O): RestResponse<ResponseDTO<Page<GenderDTO>>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/gender/paginationFull`, queryParams: queryParams, data: filterMap, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/gender/save
-     * Java method: br.cruzsilva.CruzSilva.rest.GenderResource.save
-     */
-    save(genderDTO: GenderDTO, options?: O): RestResponse<ResponseDTO<GenderDTO>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/gender/save`, data: genderDTO, options: options });
-    }
-}
-
-export class TypeClassificationTimeResourceClient<O> {
-
-    constructor(protected httpClient: HttpClient<O>) {
-    }
-
-    /**
-     * HTTP DELETE /api/v1/typeclassificationtime/delete
-     * Java method: br.cruzsilva.CruzSilva.rest.TypeClassificationTimeResource.delete
-     */
-    delete(queryParams: { cdnTypeClassificationTime: number; }, options?: O): RestResponse<ResponseDTO<any>> {
-        return this.httpClient.request({ method: "DELETE", url: uriEncoding`api/v1/typeclassificationtime/delete`, queryParams: queryParams, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/typeclassificationtime/listAll
-     * Java method: br.cruzsilva.CruzSilva.rest.TypeClassificationTimeResource.listAll
-     */
-    listAll(options?: O): RestResponse<ResponseDTO<TypeClassificationTimeDTO[]>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/typeclassificationtime/listAll`, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/typeclassificationtime/listExample
-     * Java method: br.cruzsilva.CruzSilva.rest.TypeClassificationTimeResource.listExample
-     */
-    listExample(typeclassificationtimeDTO: TypeClassificationTimeDTO, options?: O): RestResponse<ResponseDTO<TypeClassificationTimeDTO[]>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/typeclassificationtime/listExample`, data: typeclassificationtimeDTO, options: options });
-    }
-
-    /**
-     * HTTP GET /api/v1/typeclassificationtime/obtain
-     * Java method: br.cruzsilva.CruzSilva.rest.TypeClassificationTimeResource.obtain
-     */
-    obtain(queryParams: { cdnTypeClassificationTime: number; }, options?: O): RestResponse<ResponseDTO<TypeClassificationTimeDTO>> {
-        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/typeclassificationtime/obtain`, queryParams: queryParams, options: options });
-    }
-
-    /**
-     * HTTP GET /api/v1/typeclassificationtime/pagination
-     * Java method: br.cruzsilva.CruzSilva.rest.TypeClassificationTimeResource.pagination
-     */
-    pagination(queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; filter?: number; }, options?: O): RestResponse<ResponseDTO<Page<TypeClassificationTimeDTO>>> {
-        return this.httpClient.request({ method: "GET", url: uriEncoding`api/v1/typeclassificationtime/pagination`, queryParams: queryParams, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/typeclassificationtime/paginationFull
-     * Java method: br.cruzsilva.CruzSilva.rest.TypeClassificationTimeResource.paginationFull
-     */
-    paginationFull(filterMap: { [index: string]: any }, queryParams?: { page?: number; pageSize?: number; sortBy?: string; direction?: string; }, options?: O): RestResponse<ResponseDTO<Page<TypeClassificationTimeDTO>>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/typeclassificationtime/paginationFull`, queryParams: queryParams, data: filterMap, options: options });
-    }
-
-    /**
-     * HTTP POST /api/v1/typeclassificationtime/save
-     * Java method: br.cruzsilva.CruzSilva.rest.TypeClassificationTimeResource.save
-     */
-    save(typeclassificationtimeDTO: TypeClassificationTimeDTO, options?: O): RestResponse<ResponseDTO<TypeClassificationTimeDTO>> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`api/v1/typeclassificationtime/save`, data: typeclassificationtimeDTO, options: options });
-    }
-}
-
 export type RestResponse<R> = Promise<Axios.GenericAxiosResponse<R>>;
 
 export enum Code {
@@ -2016,7 +2106,15 @@ class AxiosHttpClient implements HttpClient<Axios.AxiosRequestConfig> {
     }
 }
 
-export class AxiosJudgeResourceClient extends JudgeResourceClient<Axios.AxiosRequestConfig> {
+export class AxiosRopingResourceClient extends RopingResourceClient<Axios.AxiosRequestConfig> {
+
+    constructor(baseURL: string, axiosInstance: Axios.AxiosInstance = axios.create()) {
+        axiosInstance.defaults.baseURL = baseURL;
+        super(new AxiosHttpClient(axiosInstance));
+    }
+}
+
+export class AxiosRewardKindResourceClient extends RewardKindResourceClient<Axios.AxiosRequestConfig> {
 
     constructor(baseURL: string, axiosInstance: Axios.AxiosInstance = axios.create()) {
         axiosInstance.defaults.baseURL = baseURL;
@@ -2032,7 +2130,103 @@ export class AxiosCityResourceClient extends CityResourceClient<Axios.AxiosReque
     }
 }
 
+export class AxiosGenderAnimalResourceClient extends GenderAnimalResourceClient<Axios.AxiosRequestConfig> {
+
+    constructor(baseURL: string, axiosInstance: Axios.AxiosInstance = axios.create()) {
+        axiosInstance.defaults.baseURL = baseURL;
+        super(new AxiosHttpClient(axiosInstance));
+    }
+}
+
+export class AxiosAnimalResourceClient extends AnimalResourceClient<Axios.AxiosRequestConfig> {
+
+    constructor(baseURL: string, axiosInstance: Axios.AxiosInstance = axios.create()) {
+        axiosInstance.defaults.baseURL = baseURL;
+        super(new AxiosHttpClient(axiosInstance));
+    }
+}
+
+export class AxiosPessoaResourceClient extends PessoaResourceClient<Axios.AxiosRequestConfig> {
+
+    constructor(baseURL: string, axiosInstance: Axios.AxiosInstance = axios.create()) {
+        axiosInstance.defaults.baseURL = baseURL;
+        super(new AxiosHttpClient(axiosInstance));
+    }
+}
+
+export class AxiosRopingProductResourceClient extends RopingProductResourceClient<Axios.AxiosRequestConfig> {
+
+    constructor(baseURL: string, axiosInstance: Axios.AxiosInstance = axios.create()) {
+        axiosInstance.defaults.baseURL = baseURL;
+        super(new AxiosHttpClient(axiosInstance));
+    }
+}
+
+export class AxiosDivisionResourceClient extends DivisionResourceClient<Axios.AxiosRequestConfig> {
+
+    constructor(baseURL: string, axiosInstance: Axios.AxiosInstance = axios.create()) {
+        axiosInstance.defaults.baseURL = baseURL;
+        super(new AxiosHttpClient(axiosInstance));
+    }
+}
+
 export class AxiosCompetitorResourceClient extends CompetitorResourceClient<Axios.AxiosRequestConfig> {
+
+    constructor(baseURL: string, axiosInstance: Axios.AxiosInstance = axios.create()) {
+        axiosInstance.defaults.baseURL = baseURL;
+        super(new AxiosHttpClient(axiosInstance));
+    }
+}
+
+export class AxiosEstateResourceClient extends EstateResourceClient<Axios.AxiosRequestConfig> {
+
+    constructor(baseURL: string, axiosInstance: Axios.AxiosInstance = axios.create()) {
+        axiosInstance.defaults.baseURL = baseURL;
+        super(new AxiosHttpClient(axiosInstance));
+    }
+}
+
+export class AxiosJudgeResourceClient extends JudgeResourceClient<Axios.AxiosRequestConfig> {
+
+    constructor(baseURL: string, axiosInstance: Axios.AxiosInstance = axios.create()) {
+        axiosInstance.defaults.baseURL = baseURL;
+        super(new AxiosHttpClient(axiosInstance));
+    }
+}
+
+export class AxiosCustomerResourceClient extends CustomerResourceClient<Axios.AxiosRequestConfig> {
+
+    constructor(baseURL: string, axiosInstance: Axios.AxiosInstance = axios.create()) {
+        axiosInstance.defaults.baseURL = baseURL;
+        super(new AxiosHttpClient(axiosInstance));
+    }
+}
+
+export class AxiosAuthenticationResourceClient extends AuthenticationResourceClient<Axios.AxiosRequestConfig> {
+
+    constructor(baseURL: string, axiosInstance: Axios.AxiosInstance = axios.create()) {
+        axiosInstance.defaults.baseURL = baseURL;
+        super(new AxiosHttpClient(axiosInstance));
+    }
+}
+
+export class AxiosTypeClassificationResourceClient extends TypeClassificationResourceClient<Axios.AxiosRequestConfig> {
+
+    constructor(baseURL: string, axiosInstance: Axios.AxiosInstance = axios.create()) {
+        axiosInstance.defaults.baseURL = baseURL;
+        super(new AxiosHttpClient(axiosInstance));
+    }
+}
+
+export class AxiosGenderResourceClient extends GenderResourceClient<Axios.AxiosRequestConfig> {
+
+    constructor(baseURL: string, axiosInstance: Axios.AxiosInstance = axios.create()) {
+        axiosInstance.defaults.baseURL = baseURL;
+        super(new AxiosHttpClient(axiosInstance));
+    }
+}
+
+export class AxiosAddressResourceClient extends AddressResourceClient<Axios.AxiosRequestConfig> {
 
     constructor(baseURL: string, axiosInstance: Axios.AxiosInstance = axios.create()) {
         axiosInstance.defaults.baseURL = baseURL;
@@ -2048,7 +2242,15 @@ export class AxiosRopingDivisionRankResourceClient extends RopingDivisionRankRes
     }
 }
 
-export class AxiosAnimalResourceClient extends AnimalResourceClient<Axios.AxiosRequestConfig> {
+export class AxiosBarrelTypeResourceClient extends BarrelTypeResourceClient<Axios.AxiosRequestConfig> {
+
+    constructor(baseURL: string, axiosInstance: Axios.AxiosInstance = axios.create()) {
+        axiosInstance.defaults.baseURL = baseURL;
+        super(new AxiosHttpClient(axiosInstance));
+    }
+}
+
+export class AxiosTypeClassificationTimeResourceClient extends TypeClassificationTimeResourceClient<Axios.AxiosRequestConfig> {
 
     constructor(baseURL: string, axiosInstance: Axios.AxiosInstance = axios.create()) {
         axiosInstance.defaults.baseURL = baseURL;
@@ -2065,110 +2267,6 @@ export class AxiosRopingDivisionResourceClient extends RopingDivisionResourceCli
 }
 
 export class AxiosCountryResourceClient extends CountryResourceClient<Axios.AxiosRequestConfig> {
-
-    constructor(baseURL: string, axiosInstance: Axios.AxiosInstance = axios.create()) {
-        axiosInstance.defaults.baseURL = baseURL;
-        super(new AxiosHttpClient(axiosInstance));
-    }
-}
-
-export class AxiosRopingResourceClient extends RopingResourceClient<Axios.AxiosRequestConfig> {
-
-    constructor(baseURL: string, axiosInstance: Axios.AxiosInstance = axios.create()) {
-        axiosInstance.defaults.baseURL = baseURL;
-        super(new AxiosHttpClient(axiosInstance));
-    }
-}
-
-export class AxiosTypeClassificationResourceClient extends TypeClassificationResourceClient<Axios.AxiosRequestConfig> {
-
-    constructor(baseURL: string, axiosInstance: Axios.AxiosInstance = axios.create()) {
-        axiosInstance.defaults.baseURL = baseURL;
-        super(new AxiosHttpClient(axiosInstance));
-    }
-}
-
-export class AxiosDivisionResourceClient extends DivisionResourceClient<Axios.AxiosRequestConfig> {
-
-    constructor(baseURL: string, axiosInstance: Axios.AxiosInstance = axios.create()) {
-        axiosInstance.defaults.baseURL = baseURL;
-        super(new AxiosHttpClient(axiosInstance));
-    }
-}
-
-export class AxiosBarrelTypeResourceClient extends BarrelTypeResourceClient<Axios.AxiosRequestConfig> {
-
-    constructor(baseURL: string, axiosInstance: Axios.AxiosInstance = axios.create()) {
-        axiosInstance.defaults.baseURL = baseURL;
-        super(new AxiosHttpClient(axiosInstance));
-    }
-}
-
-export class AxiosAddressResourceClient extends AddressResourceClient<Axios.AxiosRequestConfig> {
-
-    constructor(baseURL: string, axiosInstance: Axios.AxiosInstance = axios.create()) {
-        axiosInstance.defaults.baseURL = baseURL;
-        super(new AxiosHttpClient(axiosInstance));
-    }
-}
-
-export class AxiosCustomerResourceClient extends CustomerResourceClient<Axios.AxiosRequestConfig> {
-
-    constructor(baseURL: string, axiosInstance: Axios.AxiosInstance = axios.create()) {
-        axiosInstance.defaults.baseURL = baseURL;
-        super(new AxiosHttpClient(axiosInstance));
-    }
-}
-
-export class AxiosGenderAnimalResourceClient extends GenderAnimalResourceClient<Axios.AxiosRequestConfig> {
-
-    constructor(baseURL: string, axiosInstance: Axios.AxiosInstance = axios.create()) {
-        axiosInstance.defaults.baseURL = baseURL;
-        super(new AxiosHttpClient(axiosInstance));
-    }
-}
-
-export class AxiosEstateResourceClient extends EstateResourceClient<Axios.AxiosRequestConfig> {
-
-    constructor(baseURL: string, axiosInstance: Axios.AxiosInstance = axios.create()) {
-        axiosInstance.defaults.baseURL = baseURL;
-        super(new AxiosHttpClient(axiosInstance));
-    }
-}
-
-export class AxiosRewardKindResourceClient extends RewardKindResourceClient<Axios.AxiosRequestConfig> {
-
-    constructor(baseURL: string, axiosInstance: Axios.AxiosInstance = axios.create()) {
-        axiosInstance.defaults.baseURL = baseURL;
-        super(new AxiosHttpClient(axiosInstance));
-    }
-}
-
-export class AxiosRopingProductResourceClient extends RopingProductResourceClient<Axios.AxiosRequestConfig> {
-
-    constructor(baseURL: string, axiosInstance: Axios.AxiosInstance = axios.create()) {
-        axiosInstance.defaults.baseURL = baseURL;
-        super(new AxiosHttpClient(axiosInstance));
-    }
-}
-
-export class AxiosAuthenticationResourceClient extends AuthenticationResourceClient<Axios.AxiosRequestConfig> {
-
-    constructor(baseURL: string, axiosInstance: Axios.AxiosInstance = axios.create()) {
-        axiosInstance.defaults.baseURL = baseURL;
-        super(new AxiosHttpClient(axiosInstance));
-    }
-}
-
-export class AxiosGenderResourceClient extends GenderResourceClient<Axios.AxiosRequestConfig> {
-
-    constructor(baseURL: string, axiosInstance: Axios.AxiosInstance = axios.create()) {
-        axiosInstance.defaults.baseURL = baseURL;
-        super(new AxiosHttpClient(axiosInstance));
-    }
-}
-
-export class AxiosTypeClassificationTimeResourceClient extends TypeClassificationTimeResourceClient<Axios.AxiosRequestConfig> {
 
     constructor(baseURL: string, axiosInstance: Axios.AxiosInstance = axios.create()) {
         axiosInstance.defaults.baseURL = baseURL;

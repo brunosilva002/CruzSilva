@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { MultiSelectSelectAllChangeEvent } from 'primeng/multiselect';
 import { TableRowSelectEvent, TableLazyLoadEvent } from 'primeng/table';
 import { EnvironmentService } from 'src/app/shared/environment.service';
-import { RopingDivisionDTO, AxiosRopingResourceClient } from 'src/app/shared/java-objects';
+import { RopingDivisionDTO, AxiosRopingResourceClient, AxiosRopingDivisionResourceClient,} from 'src/app/shared/java-objects';
+import { MenuOptionsService } from 'src/app/shared/menu-options.service';
 import { SpinnerDefaultService } from 'src/app/shared/spinner-default/spinner-default.service';
 import { UtilsService } from 'src/app/shared/utils.service';
 
@@ -21,18 +23,19 @@ export class RopingDivisionListComponent implements OnInit {
   teste: number=0;
 
   constructor (
-    private ropingDivisonApi: AxiosRopingResourceClient,
-    private utilService: UtilsService,
-    private spinner: SpinnerDefaultService,
-    private translate: TranslateService,
-    private router: Router,
-    public environment: EnvironmentService,
+    private ropingDivisonApi: AxiosRopingDivisionResourceClient,
+    private utilService     : UtilsService,
+    private spinner         : SpinnerDefaultService,
+    private translate       : TranslateService,
+    private router          : Router,
+    public environment      : EnvironmentService,
+    public menusOptions     : MenuOptionsService
     ){
   } 
 
   onRowSelect(event:TableRowSelectEvent){
     this.router.navigate(['/roping-division'], {
-      queryParams: { cdnRopingDivison: event.data.cdnRopingDivison },
+      queryParams: { cdnRopingDivision: event.data.cdnRopingDivision },
     });
   }
 
@@ -56,10 +59,20 @@ export class RopingDivisionListComponent implements OnInit {
     .finally(()=>{
       this.spinner.hide()
     })
-
   }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    try {
+      await Promise.all([
+        this.translate.get('Name').toPromise(),
+        this.menusOptions.ngOnInit() // Supondo que o MenuOptionsService tenha um método initialize que retorne uma Promise
+      ]);
+            //this.activeRegister.isForUnion=0
+    } catch (error) {
+      console.error("Error initializing component:", error);
+    } finally {
+      this.spinner.hide();
+    }
   }
 
   onNewRegister(){
@@ -67,5 +80,6 @@ export class RopingDivisionListComponent implements OnInit {
       
     });
   }
+
 
 }

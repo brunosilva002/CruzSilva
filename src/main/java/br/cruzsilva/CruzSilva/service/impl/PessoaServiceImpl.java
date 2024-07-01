@@ -1,11 +1,11 @@
 package br.cruzsilva.CruzSilva.service.impl;
 
-import br.cruzsilva.CruzSilva.bo.CustomerBO;
-import br.cruzsilva.CruzSilva.dto.CustomerDTO;
+import br.cruzsilva.CruzSilva.bo.PessoaBO;
+import br.cruzsilva.CruzSilva.dto.PessoaDTO;
 import br.cruzsilva.CruzSilva.dto.ResponseDTO;
 import br.cruzsilva.CruzSilva.exception.BussineRuleException;
 import br.cruzsilva.CruzSilva.exception.ExceptionMessage;
-import br.cruzsilva.CruzSilva.service.CustomerService;
+import br.cruzsilva.CruzSilva.service.PessoaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
@@ -15,44 +15,44 @@ import java.util.Map;
 import java.util.List;
 
 @Component
-public class CustomerServiceImpl implements CustomerService {
+public class PessoaServiceImpl implements PessoaService {
 
     @Autowired
     ExceptionMessage exceptionMessage;
 
     @Autowired
-    CustomerBO customerBO;
+    PessoaBO pessoaBO;
 
     @Override
-    public ResponseDTO<CustomerDTO> save(CustomerDTO CustomerDTO) {
+    public ResponseDTO<PessoaDTO> save(PessoaDTO pessoaDTO) {
         ResponseDTO responseDTO = new ResponseDTO();
 
         try{
             responseDTO.setStatus(ResponseDTO.Status.SUCCESS);
-            responseDTO.setData(customerBO.save(CustomerDTO));
+            responseDTO.setData(pessoaBO.save(pessoaDTO));
             responseDTO.setCode(ResponseDTO.Code.SUCCESS.getCode());
             responseDTO.getMessagens().add(exceptionMessage.getMessage("operation.successfully", new Object[]{}));
         }catch (BussineRuleException e){
             responseDTO.setStatus(ResponseDTO.Status.ERROR);
             responseDTO.setCode(ResponseDTO.Code.ERROR_BUSINESS_RULE.getCode());
             responseDTO.getMessagens().add(e.getMessage());
-            responseDTO.setData(CustomerDTO);
+            responseDTO.setData(pessoaDTO);
         } catch (Exception e){
             responseDTO.setStatus(ResponseDTO.Status.ERROR);
             responseDTO.setCode(ResponseDTO.Code.ERROR_GENERIC.getCode());
             responseDTO.getMessagens().add(e.getMessage());
-            responseDTO.setData(CustomerDTO);
+            responseDTO.setData(pessoaDTO);
         }
         return responseDTO;
     }
 
     @Override
-    public ResponseDTO<CustomerDTO> obtain(Long cdnCustomer) {
+    public ResponseDTO<PessoaDTO> obtain(Long cdnPessoa) {
         ResponseDTO responseDTO = new ResponseDTO();
 
         try{
             responseDTO.setStatus(ResponseDTO.Status.SUCCESS);
-            responseDTO.setData(customerBO.obtain(cdnCustomer));
+            responseDTO.setData(pessoaBO.obtain(cdnPessoa));
             responseDTO.setCode(ResponseDTO.Code.SUCCESS.getCode());
             responseDTO.getMessagens().add(exceptionMessage.getMessage("operation.successfully", new Object[]{}));
         }catch (BussineRuleException e){
@@ -68,12 +68,12 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public ResponseDTO delete(Long cdnCustomer) {
+    public ResponseDTO delete(Long cdnPessoa) {
         ResponseDTO responseDTO = new ResponseDTO();
 
         try{
             responseDTO.setStatus(ResponseDTO.Status.SUCCESS);
-            customerBO.delete(cdnCustomer);
+            pessoaBO.delete(cdnPessoa);
             responseDTO.setCode(ResponseDTO.Code.SUCCESS.getCode());
             responseDTO.getMessagens().add(exceptionMessage.getMessage("operation.successfully", new Object[]{}));
         }catch (BussineRuleException e){
@@ -89,12 +89,12 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public ResponseDTO<Page<CustomerDTO>> pagination(Integer page, Integer pageSize, String sortBy, String direction, Long filter) {
+    public ResponseDTO<Page<PessoaDTO>> pagination(Integer page, Integer pageSize, String sortBy, String direction, Long filter) {
         ResponseDTO responseDTO = new ResponseDTO();
 
         try{
             responseDTO.setStatus(ResponseDTO.Status.SUCCESS);
-            responseDTO.setData(customerBO.pagination(page, pageSize, sortBy, direction, filter));
+            responseDTO.setData(pessoaBO.pagination(page, pageSize, sortBy, direction, filter));
             responseDTO.setCode(ResponseDTO.Code.SUCCESS.getCode());
             responseDTO.getMessagens().add(exceptionMessage.getMessage("operation.successfully", new Object[]{}));
         }catch (BussineRuleException e){
@@ -110,12 +110,12 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public ResponseDTO<List<CustomerDTO>> listAll() {
+    public ResponseDTO<List<PessoaDTO>> listAll() {
         ResponseDTO responseDTO = new ResponseDTO();
 
         try{
             responseDTO.setStatus(ResponseDTO.Status.SUCCESS);
-            responseDTO.setData(customerBO.listAll());
+            responseDTO.setData(pessoaBO.listAll());
             responseDTO.setCode(ResponseDTO.Code.SUCCESS.getCode());
             responseDTO.getMessagens().add(exceptionMessage.getMessage("operation.successfully", new Object[]{}));
         }catch (BussineRuleException e){
@@ -131,12 +131,12 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public ResponseDTO<List<CustomerDTO>> listExample(CustomerDTO CustomerDTO) {
+    public ResponseDTO<List<PessoaDTO>> listExample(PessoaDTO pessoaDTO) {
         ResponseDTO responseDTO = new ResponseDTO();
 
         try{
             responseDTO.setStatus(ResponseDTO.Status.SUCCESS);
-            responseDTO.setData(customerBO.listExample(CustomerDTO));
+            responseDTO.setData(pessoaBO.listExample(pessoaDTO));
             responseDTO.setCode(ResponseDTO.Code.SUCCESS.getCode());
             responseDTO.getMessagens().add(exceptionMessage.getMessage("operation.successfully", new Object[]{}));
         }catch (BussineRuleException e){
@@ -152,12 +152,12 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public ResponseDTO<Page<CustomerDTO>> paginationFull(Integer page, Integer pageSize, String sortBy, String direction, Map<String, Object> filterMap) {
+    public ResponseDTO<Page<PessoaDTO>> paginationFull(Integer page, Integer pageSize, String sortBy, String direction, Map<String, Object> filterMap) {
         ResponseDTO responseDTO = new ResponseDTO();
 
         try{
             responseDTO.setStatus(ResponseDTO.Status.SUCCESS);
-            responseDTO.setData(customerBO.paginationFull(page, pageSize, sortBy, direction, filterMap));
+            responseDTO.setData(pessoaBO.paginationFull(page, pageSize, sortBy, direction, filterMap));
             responseDTO.setCode(ResponseDTO.Code.SUCCESS.getCode());
             responseDTO.getMessagens().add(exceptionMessage.getMessage("operation.successfully", new Object[]{}));
         }catch (BussineRuleException e){

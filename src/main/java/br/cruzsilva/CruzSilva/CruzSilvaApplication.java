@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class CruzSilvaApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(CruzSilvaApplication.class, args);
 	}
 

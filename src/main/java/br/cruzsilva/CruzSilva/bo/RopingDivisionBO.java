@@ -6,6 +6,8 @@ import br.cruzsilva.CruzSilva.mapper.CycleAvoidingMappingContext;
 import br.cruzsilva.CruzSilva.mapper.RopingDivisionMapper;
 import br.cruzsilva.CruzSilva.model.masterDataBase.RopingDivision;
 import br.cruzsilva.CruzSilva.repository.masterDataBase.RopingDivisionRepository;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.persistence.criteria.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +35,7 @@ public class RopingDivisionBO {
 
         RopingDivision ropingdivision = ropingdivisionMapper.toEntity(ropingdivisionDTO, new CycleAvoidingMappingContext());
 
-        utilBO.assingObjectToList(ropingdivision, "ropingdivision");
+        utilBO.assingObjectToList(ropingdivision, "ropingDivision");
 
         ropingdivisionRepository.save(ropingdivision);
 
@@ -113,10 +115,12 @@ public class RopingDivisionBO {
 
         Specification<RopingDivision> spec = (root, query, criteriaBuilder) -> {
             List<Predicate> predicates = new ArrayList<>();
+            ObjectMapper objectMapper = new ObjectMapper();
+
             for (Map.Entry<String, Object> entry : filterMap.entrySet()) {
                 String[] propriedades = entry.getKey().split("\\.");
-                String valor = "";
-                String modo = "";
+//                String valor = "";
+//                String modo = "";
                 Path<?> path = root;
                 if (propriedades.length > 1) {
                     for (String propriedade : propriedades) {
@@ -125,6 +129,10 @@ public class RopingDivisionBO {
                 } else {
                     path = root.get(entry.getKey());
                 }
+
+                String modo = "";
+                Object valor = null;
+
                 for (Map.Entry<String, Object> entry1 : ((Map<String, Object>) entry.getValue()).entrySet()) {
                     if (entry1.getKey().equals("matchMode")) {
                         modo = entry1.getValue().toString();
@@ -154,6 +162,31 @@ public class RopingDivisionBO {
                             break;
                         case "contains":
                             predicates.add(criteriaBuilder.like((Expression<String>) path, "%" + valor + "%"));
+                            break;
+                        case "in":
+                            if (valor instanceof String) {
+                                try {
+                                    // Pré-processar a string JSON para corrigir a formatação : [{name=Oficial, value=true}] -> "[{\"name\":\"Oficial\", \"value\":true}]",
+                                    String jsonString = valor.toString()
+                                            .replace("=", "\":\"")
+                                            .replace("{", "{\"")
+                                            .replace(", ", "\", \"")
+                                            .replace("\"value\":\"","\"value\":")
+                                            .replace("\"{", "{")
+                                            .replace("}\"", "}")
+                                            ;
+                                   // jsonString="[{\"name\":\"Oficial\",\"value\":true}]";
+                                    // Desserializar a string JSON
+                                    List<Map<String, Object>> list = objectMapper.readValue(jsonString, new TypeReference<List<Map<String, Object>>>() {});
+                                    CriteriaBuilder.In<Object> inClause = criteriaBuilder.in(path);
+                                    for (Map<String, Object> item : list) {
+                                        inClause.value(item.get("value"));
+                                    }
+                                    predicates.add(inClause);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            }
                             break;
                     }
                 }

@@ -1,1 +1,246 @@
-<p>roping-division works!</p>
+<app-spinner-default></app-spinner-default>
+<p-toast></p-toast>
+<div class="flex flex-column h-screen">
+    <app-edit-header-div 
+        [labelDiv]="'RopingDivision.singular'">
+    </app-edit-header-div>
+    <div class="flex-grow-1 overflow-hidden divEditCenter">
+        <p-tabView>
+            <p-tabPanel header="{{'CommonData.singular' | translate}}">
+                <p-scrollPanel styleClass="divEditCenterScroll">
+                    <p-fieldset class="" legend="{{'GeneralData.plural' | translate}}" [toggleable]="true">
+                        <div class="col-12 formgrid grid">
+                            <div class="flex flex-column col-6 md:col-1 ">
+                                <label for="firstname2">{{'idInternal.singular' | translate}}</label>
+                                <input pInputText [(ngModel)]="activeRegister.cdnRopingDivision"/>
+                            </div>
+                            <div class="flex flex-column col-6 md:col-1">
+                                <label for="firstname2">{{'Division.singular' | translate}}</label>
+                                <p-autoComplete 
+                                    [(ngModel)]="activeRegister.division!"
+                                    [dropdown]="true" 
+                                    [suggestions]="divisionFiltred" 
+                                    (completeMethod)="selectDivision($event)" 
+                                    [forceSelection]="true"
+                                    [virtualScroll]="true"
+                                    [delay]=300
+                                    [virtualScrollItemSize]="34"
+                                    field="name">
+                                </p-autoComplete>
+                            </div> 
+                            <div class="flex flex-column col-12 md:col-3 ">
+                                <label for="firstname2">{{'Roping.singular' | translate}}</label>
+                                <p-autoComplete 
+                                    [(ngModel)]="activeRegister.roping!"
+                                    [dropdown]="true" 
+                                    [suggestions]="ropingFiltred" 
+                                    (completeMethod)="selectRoping($event)" 
+                                    [forceSelection]="true"
+                                    [virtualScroll]="true"
+                                    [delay]=300
+                                    [virtualScrollItemSize]="34"
+                                    field="name">
+                                </p-autoComplete>
+                            </div> 
+                            <div class="flex flex-column col-6 md:col-2 ">
+                                <label for="firstname2">{{'RewardKind.singular' | translate}}</label>
+                                <p-autoComplete 
+                                    [(ngModel)]="activeRegister.rewardKind!"
+                                    [dropdown]="true" 
+                                    (ngModelChange)="onChangeRewardKind()"
+                                    [suggestions]="rewardKindFiltred" 
+                                    (completeMethod)="selectRewardKind($event)" 
+                                    [forceSelection]="true"
+                                    [virtualScroll]="true"
+                                    [delay]=300
+                                    [virtualScrollItemSize]="34"
+                                    field="name">
+                                </p-autoComplete>
+                            </div> 
+                            <div class="flex flex-column col-6 md:col-2 ">
+                                <label for="username">{{'ValuePrice.singular' | translate}}</label>
+                                <input pInputText [disabled]="isDisabledValuePrice" [(ngModel)]="activeRegister.valuePrice"/>
+                            </div>
+                            <div class="flex flex-column col-6 md:col-2 ">
+                                <label for="username">{{'ValueRate.singular' | translate}}</label>
+                                <input pInputText [disabled]="isDisabledValueRate" [(ngModel)]="activeRegister.valueRate"/>
+                            </div>
+                            <div class="flex flex-column col-6 md:col-1 ">
+                                <label for="username">{{'DisplayOrder.singular' | translate}}</label>
+                                <p-inputNumber [(ngModel)]="activeRegister.displayOrder" inputId="integeronly"></p-inputNumber>
+                            </div>
+                        </div>
+                        <div class="col-12 formgrid grid">
+                            <div class="flex flex-column col-12 md:col-3 ">
+                                <label for="username">{{'Division.singular' | translate}}</label>
+                                <p-selectButton [options]="menusOptions.isOfficialDivisionOptions" [(ngModel)]="activeRegister.isOfficialDivision" [multiple]="false" optionLabel="name" optionValue="value"></p-selectButton>
+                            </div>
+                            <div class="flex flex-column col-12 md:col-3 ">
+                                <label for="username">{{'ForUnion.singular' | translate}}</label>
+                                <p-selectButton [options]="menusOptions.isForUnionOptions" [(ngModel)]="activeRegister.isForUnion" [multiple]="false" optionLabel="name" optionValue="value"></p-selectButton>
+                            </div>
+                            <div class="flex flex-column col-12 md:col-3 ">
+                                <label for="username">{{'Registration.singular' | translate}}</label>
+                                <p-selectButton [options]="menusOptions.isShowEntriesOptions" [(ngModel)]="activeRegister.isShowEntries" [multiple]="false" optionLabel="name" optionValue="value"></p-selectButton>
+                            </div>
+                            <div class="flex flex-column col-12 md:col-3 ">
+                                <label for="username">{{'Notification.singular' | translate}}</label>
+                                <p-selectButton [options]="menusOptions.isSendNotificationOptions" [(ngModel)]="activeRegister.isSendNotification" [multiple]="false" optionLabel="name" optionValue="value"></p-selectButton>
+                            </div>
+                        </div>
+                    </p-fieldset>
+                    <p-fieldset class="col-12" legend="{{'RegistrationData.singular' | translate}}" [toggleable]="true">
+                        <div class="col-12 formgrid grid">
+                            <div class="col-12 formgrid grid">
+                                <div class="flex flex-column col-6 md:col-2 ">
+                                    <label for="username">{{'MaxDateWeb.singular' | translate}}</label>
+                                    <app-calendar-custom [(data)]="activeRegister.maxDateWeb!"></app-calendar-custom>
+                                </div>
+                                <div class="flex flex-column col-6 md:col-2 ">
+                                    <label for="username">{{'MaxDateApp.singular' | translate}}</label>
+                                    <app-calendar-custom [(data)]="activeRegister.maxDateApp!"></app-calendar-custom>
+                                </div>
+                            </div>
+                            <div class="col-12 formgrid grid">
+                                <div class="flex flex-column col-6 md:col-2 ">
+                                    <label for="username">{{'PaceValue.singular' | translate}} 1</label>
+                                    <p-inputNumber [(ngModel)]="activeRegister.paceValue1" inputId="locale-user" [minFractionDigits]="2"></p-inputNumber>
+                                </div>
+                                <div class="flex flex-column col-6 md:col-2 ">
+                                    <label for="username">{{'PaceValue.singular' | translate}} 2</label>
+                                    <p-inputNumber [(ngModel)]="activeRegister.paceValue2" inputId="locale-user" [minFractionDigits]="2"></p-inputNumber>
+                                </div>
+                                <div class="flex flex-column col-6 md:col-2 ">
+                                    <label for="username">{{'PaceValue.singular' | translate}} 3</label>
+                                    <p-inputNumber [(ngModel)]="activeRegister.paceValue3" inputId="locale-user" [minFractionDigits]="2"></p-inputNumber>
+                                </div>
+                                <div class="flex flex-column col-6 md:col-2 ">
+                                    <label for="username">{{'PaceValue.singular' | translate}} 4</label>
+                                    <p-inputNumber [(ngModel)]="activeRegister.paceValue4" inputId="locale-user" [minFractionDigits]="2"></p-inputNumber>
+                                </div>
+                            </div>
+                        </div>
+                    </p-fieldset>
+                    <p-fieldset class="col-12" legend="{{'Role.plural' | translate}}" [toggleable]="true">
+                        <div class="col-12 formgrid grid">
+                            <div class="flex flex-column col-6 md:col-2 ">
+                                <label for="firstname2">{{'BarrelType.singular' | translate}}</label>
+                                <p-autoComplete 
+                                    [(ngModel)]="activeRegister.barrelType!"
+                                    [dropdown]="true" 
+                                    (ngModelChange)="onChangeBarrelType()"
+                                    [suggestions]="barrelTypeFiltred" 
+                                    (completeMethod)="selectBarrelType($event)" 
+                                    [forceSelection]="true"
+                                    [virtualScroll]="true"
+                                    [delay]=300
+                                    [virtualScrollItemSize]="34"
+                                    field="name">
+                                </p-autoComplete>
+                            </div> 
+                            <div class="flex flex-column col-6 md:col-2 ">
+                                <label for="firstname2">{{'TypeClassification.singular' | translate}}</label>
+                                <p-autoComplete 
+                                    [(ngModel)]="activeRegister.typeClassification!"
+                                    [dropdown]="true" 
+                                    (ngModelChange)="onChangeTypeClassification()"
+                                    [suggestions]="typeClassificationFiltred" 
+                                    (completeMethod)="selectTypeClassification($event)" 
+                                    [forceSelection]="true"
+                                    [virtualScroll]="true"
+                                    [delay]=300
+                                    [virtualScrollItemSize]="34"
+                                    field="name">
+                                </p-autoComplete>
+                            </div> 
+                            <div class="flex flex-column col-12 md:col-2 ">
+                                <label for="firstname2">{{'TypeClassificationTime.singular' | translate}}</label>
+                                <p-autoComplete 
+                                    [(ngModel)]="activeRegister.typeClassificationTime!"
+                                    [dropdown]="true" 
+                                    (ngModelChange)="onChangeTypeClassificationTime()"
+                                    [suggestions]="typeClassificationTimeFiltred" 
+                                    (completeMethod)="selectTypeClassificationTime($event)" 
+                                    [forceSelection]="true"
+                                    [virtualScroll]="true"
+                                    [delay]=300
+                                    [virtualScrollItemSize]="34"
+                                    field="name">
+                                </p-autoComplete>
+                            </div> 
+                            <div class="flex flex-column col-6 md:col-2 ">
+                                <label for="username">{{'MinAge.singular' | translate}}</label>
+                                <p-inputNumber [(ngModel)]="activeRegister.minAge" inputId="integeronly"></p-inputNumber>
+                            </div>
+                            <div class="flex flex-column col-6 md:col-2 ">
+                                <label for="username">{{'MaxAge.singular' | translate}}</label>
+                                <p-inputNumber [(ngModel)]="activeRegister.maxAge" inputId="integeronly"></p-inputNumber>
+                            </div>
+                            <div class="flex flex-column col-12 md:col-3 ">
+                                <label for="username">{{'GeneratePaceNextClassificationLabel.singular' | translate}}</label>
+                                <p-selectButton [options]="menusOptions.isGeneratePaceNextClassificationOptions" [(ngModel)]="activeRegister.isGeneratePaceNextClassification" [multiple]="false" optionLabel="name" optionValue="value"></p-selectButton>
+                            </div>
+                            <div class="flex flex-column col-12 md:col-3 ">
+                                <label for="username">{{'ChangeAnimal.singular' | translate}}</label>
+                                <p-selectButton [options]="menusOptions.isAllowChangeAnimalFinalOptions" [(ngModel)]="activeRegister.isAllowChangeAnimalFinal" [multiple]="false" optionLabel="name" optionValue="value"></p-selectButton>
+                            </div>
+                            <div class="flex flex-column col-12 md:col-3 ">
+                                <label for="username">{{'FinalGeneration.singular' | translate}}</label>
+                                <p-selectButton [options]="menusOptions.isFinalRodeoDrawOptions" [(ngModel)]="activeRegister.isFinalRodeoDraw" [multiple]="false" optionLabel="name" optionValue="value"></p-selectButton>
+                            </div>
+                            <div class="flex flex-column col-12 md:col-3 ">
+                                <label for="username">{{'EventType.singular' | translate}}</label>
+                                <p-selectButton [options]="menusOptions.isRodeoOptions" [(ngModel)]="activeRegister.isRodeo" [multiple]="false" optionLabel="name" optionValue="value"></p-selectButton>
+                            </div>
+                        </div>
+                    </p-fieldset>
+                    <p-fieldset class="col-12" legend="{{'Award.plural' | translate}}" [toggleable]="true">
+                        <div class="formgrid grid w-full relative">
+                            <div style="position: absolute; right: 0px; top: -40px; margin: 5px;">
+                                <p-button class="" icon="pi pi-plus" severity="help" class="mr-2" (onClick)="addAwardLine(undefined, -1)"></p-button>          
+                            </div>        
+                            <p-table 
+                                styleClass="p-datatable-striped"
+                                class="w-full"
+                                [value]="activeRegister.ropingDivisionRanks!"
+                                selectionMode="single"
+                                [(selection)]="selectedRopingDivisionRank" 
+                                dataKey="cdnRopingDivisionRank"
+                                (onRowSelect)="editRopingDivisionRank($event)"
+                            >
+                            <ng-template pTemplate="header">
+                                <tr>
+                                    <th>{{"Description.singular"            | translate}}</th>
+                                    <th>{{"RateRegistration.singular"       | translate}}</th>
+                                    <th>{{"ValuePrice.singular"             | translate}}</th>
+                                    <th>{{"Point.singular"                  | translate}}</th>
+                                    <!-- <th style="width: 5rem"></th> -->
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-ropingDivisionRank let-rowIndex="rowIndex">
+                                <tr [pSelectableRow]="ropingDivisionRank">
+                                    <td>{{ ropingDivisionRank.name }}</td>
+                                    <td>{{ ropingDivisionRank.valueRatePrice     | formataNumeroDecimal }}</td>
+                                    <td>{{ ropingDivisionRank.valueRewardPrice   | formataNumeroDecimal}}</td>
+                                    <td>{{ ropingDivisionRank.point              | formataNumeroInteiro}}</td>
+                                    <!-- <td>
+                                        <button type="button" pButton pRipple icon="pi pi-pencil" (click)="editSalesQuoteProduct(salesQuoteProducts, rowIndex)"></button>
+                                    </td> -->
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                    </div>
+                    </p-fieldset>
+ 
+                </p-scrollPanel>
+            </p-tabPanel>
+        </p-tabView>
+    </div>
+    <div class="flex divEditBottom">
+        <div class="flex justify-content-end flex-wrap  w-full">
+                <p-button icon="pi pi-trash" styleClass="p-button-danger" (onClick)="onDelete()"></p-button>
+                <p-button icon="pi pi-save" styleClass="p-button-success" (onClick)="onSave()"></p-button>
+            <p-button icon="pi pi-sign-in" (onClick)="onBack()"></p-button>
+        </div>
+    </div>
+</div>

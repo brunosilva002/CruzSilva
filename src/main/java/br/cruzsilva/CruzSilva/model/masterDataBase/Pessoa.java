@@ -9,59 +9,46 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+
 @Entity
-@Table(name = "animal")
+@Table (name="pessoa")
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-public class Animal implements Serializable {
+@NoArgsConstructor
+public class Pessoa implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "cdn_animal")
-    private Long cdnAnimal;
+    @Column(name = "cdn_pessoa")
+    private Long cdnCity;
 
-    @Column(name = "name")
+    @Column (name = "name")
     private String name;
 
-    @Column(name = "register")
-    private String register;
-
-    @Column(name = "birthday")
-    private LocalDate birthday;
-
-    @Column(name = "animal_breed")
-    private String animalBreed;
-
-    @Column(name = "owner")
-    private String owner;
-
-    @Column(name = "owner_cpf")
-    private String ownerCpf;
-
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "cdn_address", referencedColumnName = "cdn_address")
-    @Fetch(FetchMode.SELECT)
-    private Address address;
+    @Column (name = "code")
+    private String code;
 
     @ManyToOne
-    @JoinColumn(name = "cdn_gender_animal", referencedColumnName = "cdn_gender_animal")
-    private GenderAnimal genderAnimal;
+    @JoinColumn(name = "cdn_estate", referencedColumnName = "cdn_estate")
+    @Fetch(FetchMode.SELECT)
+    private Estate estate;
+
+    @Column (name = "date_created")
+    private LocalDateTime dateCreated;
+
+    @Column (name = "date_updated")
+    private LocalDateTime dateUpdated;
 
     @Column(name = "creation_date")
     private LocalDateTime creationDate;
 
     @Column(name = "creation_user")
     private String creationUser;
-
-    @Column(name = "marcel")
-    private String marcel;
 
     @Column(name = "update_date")
     private LocalDateTime updateDate;
@@ -80,7 +67,9 @@ public class Animal implements Serializable {
         this.updateDate = LocalDateTime.now();
     }
 
-    public Animal(Long cdnAnimal) {
-        this.cdnAnimal = cdnAnimal;
+    public Pessoa(Long cdnCity) {
+        this.cdnCity = cdnCity;
     }
+
+
 }

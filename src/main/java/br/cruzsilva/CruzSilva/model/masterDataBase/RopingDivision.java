@@ -93,27 +93,27 @@ public class RopingDivision implements Serializable {
     @Fetch(FetchMode.SELECT)
     private Roping roping;
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @ManyToOne
     @JoinColumn(name = "cdn_barrel_type", referencedColumnName = "cdn_barrel_type")
     @Fetch(FetchMode.SELECT)
     private BarrelType barrelType;
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @ManyToOne
     @JoinColumn(name = "cdn_division", referencedColumnName = "cdn_division")
     @Fetch(FetchMode.SELECT)
-    private Division divison;
+    private Division division;
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @ManyToOne
     @JoinColumn(name = "cdn_reward_kind", referencedColumnName = "cdn_reward_kind")
     @Fetch(FetchMode.SELECT)
     private RewardKind rewardKind;
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @ManyToOne
     @JoinColumn(name = "cdn_type_classification", referencedColumnName = "cdn_type_classification")
     @Fetch(FetchMode.SELECT)
     private TypeClassification typeClassification;
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @ManyToOne
     @JoinColumn(name = "cdn_type_classification_time", referencedColumnName = "cdn_type_classification_time")
     @Fetch(FetchMode.SELECT)
     private TypeClassificationTime typeClassificationTime;

@@ -31,11 +31,14 @@ public class RopingDivisionRank implements Serializable {
     @Column(name = "rank_number")
     private Long rankNumber;
 
-    @Column(name = "value_rate")
-    private BigDecimal valueRate;
+    @Column(name = "name")
+    private String name;
 
-    @Column(name = "value_reward")
-    private BigDecimal valueReward;
+    @Column(name = "value_rate_price")
+    private BigDecimal valueRatePrice;
+
+    @Column(name = "value_reward_price")
+    private BigDecimal valueRewardPrice;
 
     @Column(name = "point")
     private Long point;

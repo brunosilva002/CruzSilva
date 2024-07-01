@@ -19,8 +19,8 @@ public class CustomerResource extends BaseResource {
     CustomerService customerService;
 
     @PostMapping("/save")
-    public ResponseEntity<ResponseDTO<CustomerDTO>> save (@RequestBody CustomerDTO customerDTO){
-        return (ResponseEntity<ResponseDTO<CustomerDTO>>) findCodeReturn(customerService.save(customerDTO));
+    public ResponseEntity<ResponseDTO<CustomerDTO>> save (@RequestBody CustomerDTO CustomerDTO){
+        return (ResponseEntity<ResponseDTO<CustomerDTO>>) findCodeReturn(customerService.save(CustomerDTO));
     }
 
     @GetMapping("/obtain")
@@ -35,19 +35,19 @@ public class CustomerResource extends BaseResource {
 
     @GetMapping("/pagination")
     ResponseEntity<ResponseDTO<Page<CustomerDTO>>> pagination(@RequestParam(name= "page", defaultValue = "0") Integer page,
-                               @RequestParam(name= "pageSize", defaultValue = "10") Integer pageSize,
-                               @RequestParam(name= "sortBy", defaultValue = "cdnCustomer") String sortBy,
-                               @RequestParam(name= "direction", defaultValue = "DESC") String direction,
-                               @RequestParam(name = "filter",required = false) Long filter) {
+                                                              @RequestParam(name= "pageSize", defaultValue = "10") Integer pageSize,
+                                                              @RequestParam(name= "sortBy", defaultValue = "cdnCustomer") String sortBy,
+                                                              @RequestParam(name= "direction", defaultValue = "DESC") String direction,
+                                                              @RequestParam(name = "filter",required = false) Long filter) {
         return (ResponseEntity<ResponseDTO<Page<CustomerDTO>>>) findCodeReturn(customerService.pagination(page,pageSize,sortBy,direction,filter));
     }
 
     @PostMapping("/paginationFull")
-    ResponseEntity<ResponseDTO<Page<CustomerDTO>>> paginationFull(   @RequestParam(name= "page", defaultValue = "0") Integer page,
-                                                                    @RequestParam(name= "pageSize", defaultValue = "10") Integer pageSize,
-                                                                    @RequestParam(name= "sortBy", defaultValue = "cdnCustomer") String sortBy,
-                                                                    @RequestParam(name= "direction", defaultValue = "DESC") String direction,
-                                                                    @RequestBody Map<String, Object> filterMap) {
+    ResponseEntity<ResponseDTO<Page<CustomerDTO>>> paginationFull(@RequestParam(name= "page", defaultValue = "0") Integer page,
+                                                                  @RequestParam(name= "pageSize", defaultValue = "10") Integer pageSize,
+                                                                  @RequestParam(name= "sortBy", defaultValue = "cdnCustomer") String sortBy,
+                                                                  @RequestParam(name= "direction", defaultValue = "DESC") String direction,
+                                                                  @RequestBody Map<String, Object> filterMap) {
         return (ResponseEntity<ResponseDTO<Page<CustomerDTO>>>) findCodeReturn(customerService.paginationFull(page,pageSize,sortBy,direction,filterMap));
     }
 
@@ -57,8 +57,8 @@ public class CustomerResource extends BaseResource {
     }
 
     @PostMapping("/listExample")
-    public ResponseEntity<ResponseDTO<List<CustomerDTO>>> listExample (@RequestBody CustomerDTO customerDTO){
-        return (ResponseEntity<ResponseDTO<List<CustomerDTO>>>) findCodeReturn(customerService.listExample(customerDTO));
+    public ResponseEntity<ResponseDTO<List<CustomerDTO>>> listExample (@RequestBody CustomerDTO CustomerDTO){
+        return (ResponseEntity<ResponseDTO<List<CustomerDTO>>>) findCodeReturn(customerService.listExample(CustomerDTO));
     }
 
 }

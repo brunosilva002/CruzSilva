@@ -19,17 +19,101 @@
     "singular": "Início",
     "plural": "Início"
   },
+  "StockQty": {
+    "singular": "Qtd Estoque",
+    "plural": "Qtd Estoque"
+  },
+  "StockQtyAvailable": {
+    "singular": "Qtd Estoque Disponivel",
+    "plural": "Qtd Estoque Disponivel"
+  },
+  "RopingProduct": {
+    "singular": "Produtos",
+    "plural": "Produtos"
+  },
+  "StockCost": {
+    "singular": "Custo",
+    "plural": "Custos"
+  },
+  "SalesReleasedUntil": {
+    "singular": "Liberado Até",
+    "plural": "Liberados Até"
+  },
   "RewardKind": {
     "singular": "Tipo de Prêmio",
     "plural": "Tipos de Prêmios"
+  },
+  "ChangeAnimal": {
+    "singular": "Troca de Animal",
+    "plural": "Torcas de Animais"
+  },
+  "NotRodeo": {
+    "singular": "Não Rodeio",
+    "plural": "Não Rodeios"
+  },
+  "Rodeo": {
+    "singular": "Para Rodeio",
+    "plural": "Para Rodeios"
+  },
+  "NotFinalRodeoDraw": {
+    "singular": "Não Gerada",
+    "plural": "Não Gerada"
+  },
+  "RopingDivision": {
+    "singular": "Categoria da Prova",
+    "plural": "categorias das Provas"
+  },
+  "Division": {
+    "singular": "Categoria",
+    "plural": "categorias"
+  },
+  "Award": {
+    "singular": "Premiação",
+    "plural": "Premiações"
+  },
+  "FinalRodeoDraw": {
+    "singular": "Gerado",
+    "plural": "Gerado"
+  },
+  "EventType": {
+    "singular": "Tipo do Evento",
+    "plural": "Tipos dos Eventos"
+  },
+  "FinalGeneration": {
+    "singular": "Geração da Final por Sorteio",
+    "plural": "Gerações das Finais por Sorteio"
+  },
+  "NotAllowChangeAnimalFinal": {
+    "singular": "Não Permite Troca",
+    "plural": "Não Permite Troca"
+  },
+  "AllowChangeAnimalFinal": {
+    "singular": "Permite Troca",
+    "plural": "Permite Troca"
+  },
+  "NotGeneratePaceNextClassification": {
+    "singular": "Não Gera Passada",
+    "plural": "Não Gera Passada"
+  },
+  "GeneratePaceNextClassificationLabel": {
+    "singular": "Gera Passadas Para Próximas Classificatórias?",
+    "plural": "Geram Passadas Para Próximas Classificatórias?"
+  },
+  "GeneratePaceNextClassification": {
+    "singular": "Gera Passada",
+    "plural": "Gera Passada"
   },
   "OfficialDivision": {
     "singular": "Divisão Oficial",
     "plural": "Divisões Oficiais"
   },
-  "ForUnion": {
-    "singular": "Para União",
-    "plural": "Para União"
+  "MinAge": {
+    "singular": "Idade Mínima",
+    "plural": "Idades Mínimas"
+  },
+  "MaxAge": {
+    "singular": "Idade Máxima",
+    "plural": "Idades Máximas"
   },
   "TypeClassification": {
     "singular": "Tipo de Classificação",
@@ -43,17 +127,93 @@
     "singular": "Fim",
     "plural": "Fim"
   },
-  "Dvision": {
-    "singular": "Divisão",
-    "plural": "Divisões"
+  "RegistrationData":{
+    "singular": "Dados da Inscrição",
+    "plural": "Dados das Inscrições"
+  },
+  "ForUnion":{
+    "singular": "Para União",
+    "plural": "Para Uniões"
+  },
+  "NotForUnion":{
+    "singular": "Outro",
+    "plural": "Outros"
+  },
+  "NotSendNotification":{
+    "singular": "Não Enviar",
+    "plural": "Enviar"
+  },
+  "SendNotification":{
+    "singular": "Enviar Notificação",
+    "plural": "Enviar Notificações"
+  },
+  "Notification":{
+    "singular": "Notificação",
+    "plural": "Notificações"
+  },
+  "NotShowEntries":{
+    "singular": "Ocultar a Inscrição",
+    "plural": "Ocultar as Inscrições"
+  },
+  "ShowEntries":{
+    "singular": "Exibir Inscrição",
+    "plural": "Exibir Inscrições"
+  },
+  "Oficial":{
+    "singular": "Oficial",
+    "plural": "Oficiais"
+  },
+  "NotOficial":{
+    "singular": "Não Oficial",
+    "plural": "Não Oficiais"
+  },
+  "Division": {
+    "singular": "Categoria",
+    "plural": "Categoria"
+  },
+  "RateRegistration": {
+    "singular": "% da Inscrição",
+    "plural": "% da Inscrições"
   },
   "RegistrationForm": {
     "singular": "Ficha de Inscrição",
-    "plural": "Fichas de Incrições"
+    "plural": "Fichas de Inscrições"
   },
   "Registration": {
-    "singular": "Ficha",
-    "plural": "Fichas"
+    "singular": "Inscrição",
+    "plural": "Inscrições"
+  },
+  "BarrelType": {
+    "singular": "Tipo da Prova",
+    "plural": "Tipo das Provas"
+  },
+  "Role": {
+    "singular": "Regra",
+    "plural": "Regras"
+  },
+  "PaceValue": {
+    "singular": "Valor da Passada",
+    "plural": "Valores das Passadas"
+  },
+  "Point": {
+    "singular": "Ponto",
+    "plural": "Pontos"
+  },
+  "ValuePrice": {
+    "singular": "Valor do Prêmio",
+    "plural": "Valores dos Prêmios"
+  },
+  "ValueRate": {
+    "singular": "% do Rateio da Inscrição",
+    "plural": "% do Rateio da Inscrição"
+  },
+  "MaxDateWeb": {
+    "singular": "Data Máxima para Registro pela Web",
+    "plural": "Datas Máximas para Registros pela Web"
+  },
+  "MaxDateApp": {
+    "singular": "Data Máxima para Registro pelo App",
+    "plural": "Datas Máximas para Registros pela App"
   },
   "Panel": {
     "singular": "Painel",
@@ -357,6 +517,10 @@
   "Register":{
     "singular":"Registro",
     "plural":"Registros"
+  },
+  "DisplayOrder":{
+    "singular":"Seq. de Exibição",
+    "plural":"Seq. de Exibições"
   },
   "CodeERP":{
     "singular":"Código ERP",

@@ -127,6 +127,10 @@ import { RopingListComponent } from './pages/roping/roping-list/roping-list.comp
 import { RopingProductListComponent } from './pages/roping-product/roping-product-list/roping-product-list.component';
 import { AddressComponent } from './common/address/address.component';
 import { DateFormatPipe } from './common/pipess/date-format.pipe';
+import { ModalEditRopingDivisionRankComponent } from './pages/roping-division/modal-edit-roping-division-rank/modal-edit-roping-division-rank.component';
+import { FormataNumeroInteiroPipe } from './common/pipess/formata-numero-inteiro.pipe';
+import { FormataNumeroDecimalPipe } from './common/pipess/formata-numero-decimal.pipe';
+import { FormataNumeroMoedaPipe } from './common/pipess/formata-numero-moeda.pipe';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -157,7 +161,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     RopingListComponent,
     RopingProductListComponent,
     AddressComponent,
-    DateFormatPipe
+    DateFormatPipe,
+    ModalEditRopingDivisionRankComponent,
+    FormataNumeroInteiroPipe,
+    FormataNumeroDecimalPipe,
+    FormataNumeroMoedaPipe
   ],
   imports: [
     BrowserModule,

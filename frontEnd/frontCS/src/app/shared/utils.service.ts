@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { BreakpointObserver, BreakpointState, Breakpoints } from '@angular/cdk/layout';
+import { Injectable, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { AutoCompleteCompleteEvent } from 'primeng/autocomplete';
@@ -6,11 +7,42 @@ import { AutoCompleteCompleteEvent } from 'primeng/autocomplete';
 @Injectable({
   providedIn: 'root'
 })
-export class UtilsService {
+export class UtilsService implements OnInit{
+
+  currentScreenSize: string = '';
+
+  displayNameMap = new Map([
+    [Breakpoints.XSmall, 'XSmall'],
+    [Breakpoints.Small, 'Small'],
+    [Breakpoints.Medium, 'Medium'],
+    [Breakpoints.Large, 'Large'],
+    [Breakpoints.XLarge, 'XLarge'],
+  ]);
+
 
   constructor(
-    private messageService: MessageService,
+    private messageService      : MessageService,
+    public breakpointObserver   : BreakpointObserver
   ) {}
+
+
+  async ngOnInit(): Promise<void> {
+    console.log("entrou")
+    this.breakpointObserver.observe([
+      Breakpoints.XSmall,
+      Breakpoints.Small,
+      Breakpoints.Medium,
+      Breakpoints.Large,
+      Breakpoints.XLarge
+    ]).subscribe((state: BreakpointState) => {
+      for (const query of Object.keys(state.breakpoints)) {
+        if (state.breakpoints[query]) {
+          this.currentScreenSize = this.displayNameMap.get(query) ?? 'Unknown';
+          console.log(this.currentScreenSize)
+        }
+      }
+    });
+  }
 
   showToast(messages: string[], severityMsg: string) {
     messages.forEach(message => {
@@ -67,4 +99,12 @@ export class UtilsService {
 
 
     }
+}
+
+export enum CurrentScreenSize {
+  XSmall = "XSmall",
+  Small = "Small",
+  Medium = "Medium",
+  Large = "Large",
+  XLarge = "XLarge",
 }

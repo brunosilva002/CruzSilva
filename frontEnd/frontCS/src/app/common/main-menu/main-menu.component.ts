@@ -62,7 +62,7 @@ export class MainMenuComponent implements OnInit{
                   command:this.onClickMenu.bind(this),
               },
               {
-                  label: this.translate.instant('Dvision.plural'),
+                  label: this.translate.instant('Division.plural'),
                   icon: 'pi pi-building',
                   routerLink:"/roping-division-list",
                   command:this.onClickMenu.bind(this),
