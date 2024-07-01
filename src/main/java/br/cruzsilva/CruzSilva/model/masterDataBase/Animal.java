@@ -60,6 +60,9 @@ public class Animal implements Serializable {
     @Column(name = "creation_user")
     private String creationUser;
 
+    @Column(name = "marcel")
+    private String marcel;
+
     @Column(name = "update_date")
     private LocalDateTime updateDate;
 
