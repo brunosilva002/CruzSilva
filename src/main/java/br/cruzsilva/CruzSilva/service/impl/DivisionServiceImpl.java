@@ -172,4 +172,25 @@ public class DivisionServiceImpl implements DivisionService {
         return responseDTO;
     }
 
+    @Override
+    public ResponseDTO<List<DivisionDTO>> saveList(List<DivisionDTO> divisionDTO) {
+        ResponseDTO responseDTO = new ResponseDTO();
+
+        try{
+            responseDTO.setStatus(ResponseDTO.Status.SUCCESS);
+            responseDTO.setData(divisionBO.saveList(divisionDTO));
+            responseDTO.setCode(ResponseDTO.Code.SUCCESS.getCode());
+            responseDTO.getMessagens().add(exceptionMessage.getMessage("operation.successfully", new Object[]{}));
+        }catch (BussineRuleException e){
+            responseDTO.setStatus(ResponseDTO.Status.ERROR);
+            responseDTO.setCode(ResponseDTO.Code.ERROR_BUSINESS_RULE.getCode());
+            responseDTO.getMessagens().add(e.getMessage());
+        } catch (Exception e) {
+            responseDTO.setStatus(ResponseDTO.Status.ERROR);
+            responseDTO.setCode(ResponseDTO.Code.ERROR_GENERIC.getCode());
+            responseDTO.getMessagens().add(e.getMessage());
+        }
+        return responseDTO;
+    }
+
 }

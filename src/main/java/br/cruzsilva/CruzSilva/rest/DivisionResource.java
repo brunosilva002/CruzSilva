@@ -23,6 +23,11 @@ public class DivisionResource extends BaseResource {
         return (ResponseEntity<ResponseDTO<DivisionDTO>>) findCodeReturn(divisionService.save(divisionDTO));
     }
 
+    @PostMapping("/saveList")
+    public ResponseEntity<ResponseDTO<List<DivisionDTO>>> saveList (@RequestBody List<DivisionDTO> divisionDTO){
+        return (ResponseEntity<ResponseDTO<List<DivisionDTO>>>) findCodeReturn(divisionService.saveList(divisionDTO));
+    }
+
     @GetMapping("/obtain")
     public ResponseEntity<ResponseDTO<DivisionDTO>> obtain (@RequestParam Long cdnDivision){
         return (ResponseEntity<ResponseDTO<DivisionDTO>>) findCodeReturn(divisionService.obtain(cdnDivision));

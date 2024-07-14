@@ -24,4 +24,6 @@ public interface DivisionService {
     ResponseDTO delete(Long cdnDivision);
 
     ResponseDTO<Page<DivisionDTO>> paginationFull(Integer page, Integer pageSize, String sortBy, String direction, Map<String, Object> filterMap);
+
+    ResponseDTO<List<DivisionDTO>> saveList(List<DivisionDTO> divisionDTO);
 }

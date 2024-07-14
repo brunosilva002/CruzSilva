@@ -11,6 +11,8 @@ import org.hibernate.annotations.FetchMode;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "roping")
@@ -36,10 +38,41 @@ public class Roping implements Serializable {
     @Column(name = "end_date")
     private LocalDateTime endDate;
 
+    @Column(name = "show_inscription")
+    private Boolean showInscription;
+
+    @Column(name = "url")
+    private String url;
+
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "cdn_address", referencedColumnName = "cdn_address")
     @Fetch(FetchMode.SELECT)
     private Address address;
+
+    @ManyToOne
+    @JoinColumn(name = "cdn_roping_status", referencedColumnName = "cdn_roping_status")
+    @Fetch(FetchMode.SELECT)
+    private RopingStatus ropingStatus;
+
+    @ManyToOne
+    @JoinColumn(name = "cdn_roping_modality", referencedColumnName = "cdn_roping_modality")
+    @Fetch(FetchMode.SELECT)
+    private RopingModality ropingModality;
+
+    @ManyToOne
+    @JoinColumn(name = "cdn_track", referencedColumnName = "cdn_track")
+    @Fetch(FetchMode.SELECT)
+    private Track track;
+
+    @ManyToOne
+    @JoinColumn(name = "cdn_championship_stage", referencedColumnName = "cdn_championship_stage")
+    @Fetch(FetchMode.SELECT)
+    private ChampionshipStage championshipStage;
+
+    @OneToMany(cascade = {CascadeType.ALL}, orphanRemoval = true)
+    @JoinColumn(name = "cdn_roping", referencedColumnName = "cdn_roping")
+    private List<RopingPaymentType> ropingPaymentTypes = new ArrayList<>();
+
 
     @Column(name = "creation_date")
     private LocalDateTime creationDate;

@@ -174,4 +174,9 @@ public class DivisionBO {
         return divisionDTOPage;
     }
 
+    public Object saveList(List<DivisionDTO> divisionDTO) {
+        List<Division> divisionExemple = divisionMapper.toEntity(divisionDTO, new CycleAvoidingMappingContext());
+
+       return divisionRepository.saveAll(divisionExemple);
+    }
 }

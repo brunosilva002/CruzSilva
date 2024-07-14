@@ -91,9 +91,33 @@
     "singular": "Permite Troca",
     "plural": "Permite Troca"
   },
+  "NumberStage": {
+    "singular": "Número da Etapa",
+    "plural": "Números das Etapas"
+  },
   "NotGeneratePaceNextClassification": {
     "singular": "Não Gera Passada",
     "plural": "Não Gera Passada"
+  },
+  "MasterData": {
+    "singular": "Dado Mestre",
+    "plural": "Dados Mestres"
+  },
+  "Championship": {
+    "singular": "Campeonato",
+    "plural": "Campeonatos"
+  },
+  "EntryForm": {
+    "singular": "Formulário de Inscrição",
+    "plural": "Fomrulários de Inscrições"
+  },
+  "Track": {
+    "singular": "Pista",
+    "plural": "Pistats"
+  },
+  "Stage": {
+    "singular": "Etapa",
+    "plural": "Estapas"
   },
   "GeneratePaceNextClassificationLabel": {
     "singular": "Gera Passadas Para Próximas Classificatórias?",

@@ -27,6 +27,23 @@ public class Division implements Serializable {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "gender")
+    private String gender;
+
+    @Column(name = "pro_am_cabeca")
+    private Boolean proAmCabeca;
+
+    @Column(name = "pro_am_pe")
+    private Boolean proAmPe;
+
+    @Column(name = "incentive")
+    private Boolean incentive;
+
+    @Column(name = "test_horse")
+    private Boolean testHorse;
+
+    @Column(name = "consider_ranking")
+    private Boolean considerRanking;
 
     public Division(Long cdnDivision) {
         this.cdnDivision = cdnDivision;

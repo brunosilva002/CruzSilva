@@ -1,7 +1,7 @@
 import { environment } from 'src/environments/environment'
 import axios, { AxiosError } from 'axios'
 import { config } from 'rxjs';
-import { AxiosAddressResourceClient, AxiosAnimalResourceClient, AxiosAuthenticationResourceClient, AxiosBarrelTypeResourceClient, AxiosCityResourceClient, AxiosCompetitorResourceClient, AxiosCountryResourceClient, AxiosCustomerResourceClient, AxiosDivisionResourceClient, AxiosEstateResourceClient, AxiosGenderAnimalResourceClient, AxiosGenderResourceClient, AxiosJudgeResourceClient, AxiosRewardKindResourceClient, AxiosRopingDivisionRankResourceClient, AxiosRopingDivisionResourceClient, AxiosRopingProductResourceClient, AxiosRopingResourceClient, AxiosTypeClassificationResourceClient, AxiosTypeClassificationTimeResourceClient} from './java-objects';
+import { AxiosAddressResourceClient, AxiosAnimalResourceClient, AxiosAuthenticationResourceClient, AxiosBarrelTypeResourceClient, AxiosChampionshipResourceClient, AxiosChampionshipStageResourceClient, AxiosCityResourceClient, AxiosCompetitorResourceClient, AxiosCountryResourceClient, AxiosCustomerResourceClient, AxiosDivisionResourceClient, AxiosEntryFormResourceClient, AxiosEstateResourceClient, AxiosGenderAnimalResourceClient, AxiosGenderResourceClient, AxiosJudgeResourceClient, AxiosPaymentResourceClient, AxiosPaymentTypeResourceClient, AxiosRewardKindResourceClient, AxiosRopingDivisionRankResourceClient, AxiosRopingDivisionResourceClient, AxiosRopingModalityResourceClient, AxiosRopingModalityTypeResourceClient, AxiosRopingPaymentTypeResourceClient, AxiosRopingProductResourceClient, AxiosRopingResourceClient, AxiosRopingStatusResourceClient, AxiosRopingTypeResourceClient, AxiosTrackResourceClient, AxiosTrackStatusResourceClient, AxiosTypeClassificationResourceClient, AxiosTypeClassificationTimeResourceClient} from './java-objects';
 
 // Função para obter um novo token a partir do AxiosAuthenticationResourceClient
 async function getNewToken() {
@@ -138,4 +138,53 @@ export class ListEndPoints {
     static typeClassificationTimeResourceClient(){
       return new AxiosTypeClassificationTimeResourceClient(environment.apiBaseUrl,ListEndPoints.createAxiosInstance());
     }
+
+    static championshipResourceClient(){
+      return new AxiosChampionshipResourceClient(environment.apiBaseUrl,ListEndPoints.createAxiosInstance());
+    }
+
+    static championshipStageResourceClient(){
+      return new AxiosChampionshipStageResourceClient(environment.apiBaseUrl,ListEndPoints.createAxiosInstance());
+    }
+
+    static entryFormResourceClient(){
+      return new AxiosEntryFormResourceClient(environment.apiBaseUrl,ListEndPoints.createAxiosInstance());
+    }
+
+    static paymentResourceClient(){
+      return new AxiosPaymentResourceClient(environment.apiBaseUrl,ListEndPoints.createAxiosInstance());
+    }
+
+    static paymentTypeResourceClient(){
+      return new AxiosPaymentTypeResourceClient(environment.apiBaseUrl,ListEndPoints.createAxiosInstance());
+    }
+
+    static ropingModalityResourceClient(){
+      return new AxiosRopingModalityResourceClient(environment.apiBaseUrl,ListEndPoints.createAxiosInstance());
+    }
+
+    static ropingModalityTypeResourceClient(){
+      return new AxiosRopingModalityTypeResourceClient(environment.apiBaseUrl,ListEndPoints.createAxiosInstance());
+    }
+
+    static ropingPaymentTypeResourceClient(){
+      return new AxiosRopingPaymentTypeResourceClient(environment.apiBaseUrl,ListEndPoints.createAxiosInstance());
+    }
+
+    static ropingStatusResourceClient(){
+      return new AxiosRopingStatusResourceClient(environment.apiBaseUrl,ListEndPoints.createAxiosInstance());
+    }
+
+    static ropingTypeResourceClient(){
+      return new AxiosRopingTypeResourceClient(environment.apiBaseUrl,ListEndPoints.createAxiosInstance());
+    }
+
+    static trackResourceClient(){
+      return new AxiosTrackResourceClient(environment.apiBaseUrl,ListEndPoints.createAxiosInstance());
+    }
+
+    static tackStatusResourceClient(){
+      return new AxiosTrackStatusResourceClient(environment.apiBaseUrl,ListEndPoints.createAxiosInstance());
+    }
+
 }

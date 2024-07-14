@@ -34,7 +34,7 @@ export class RopingDivisionComponent  implements OnInit{
   
   selectedRopingDivisionRank: RopingDivisionRankDTO={};
 
-  ropingDivisionRank:RopingDivisionRankDTO={};
+  ChampionshipStage:RopingDivisionRankDTO={};
 
   ropingDivisionRankPopup: DynamicDialogRef | undefined;
   

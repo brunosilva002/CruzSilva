@@ -28,6 +28,30 @@ export class MainMenuComponent implements OnInit{
           command: this.onClickMenu.bind(this) 
         },
         {
+          label: this.translate.instant('MasterData.plural'),
+          icon: 'pi pi-fw pi-file',
+          items: [
+              {
+                  label: this.translate.instant('Championship.plural'),
+                  icon: 'pi pi-building',
+                  routerLink:"/championship-list",
+                  command: this.onClickMenu.bind(this) 
+              },
+              {
+                label: this.translate.instant('EntryForm.plural'),
+                icon: 'pi pi-building',
+                routerLink:"/entry-form-list",
+                command: this.onClickMenu.bind(this)
+              },
+              {
+                label: this.translate.instant('Track.plural'),
+                icon: 'pi pi-building',
+                routerLink:"/track-list",
+                command: this.onClickMenu.bind(this)
+              },
+          ]
+        },
+        {
           label: this.translate.instant('CommonData.plural'),
           icon: 'pi pi-fw pi-file',
           items: [

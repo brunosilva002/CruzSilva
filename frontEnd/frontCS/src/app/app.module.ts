@@ -105,7 +105,7 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { SpinnerDefaultService } from './shared/spinner-default/spinner-default.service';
 import { SpinnerDefaultComponent } from './shared/spinner-default/spinner-default.component';
 import { UtilsService } from './shared/utils.service';
-import { AxiosAddressResourceClient, AxiosAnimalResourceClient, AxiosAuthenticationResourceClient, AxiosBarrelTypeResourceClient, AxiosCityResourceClient, AxiosCompetitorResourceClient, AxiosCountryResourceClient, AxiosDivisionResourceClient, AxiosEstateResourceClient, AxiosGenderAnimalResourceClient, AxiosGenderResourceClient, AxiosJudgeResourceClient, AxiosRewardKindResourceClient, AxiosRopingDivisionRankResourceClient, AxiosRopingDivisionResourceClient, AxiosRopingProductResourceClient, AxiosRopingResourceClient, AxiosTypeClassificationResourceClient, AxiosTypeClassificationTimeResourceClient } from './shared/java-objects';
+import { AxiosAddressResourceClient, AxiosAnimalResourceClient, AxiosAuthenticationResourceClient, AxiosBarrelTypeResourceClient, AxiosChampionshipResourceClient, AxiosChampionshipStageResourceClient, AxiosCityResourceClient, AxiosCompetitorResourceClient, AxiosCountryResourceClient, AxiosDivisionResourceClient, AxiosEntryFormResourceClient, AxiosEstateResourceClient, AxiosGenderAnimalResourceClient, AxiosGenderResourceClient, AxiosJudgeResourceClient, AxiosPaymentResourceClient, AxiosPaymentTypeResourceClient, AxiosRewardKindResourceClient, AxiosRopingDivisionRankResourceClient, AxiosRopingDivisionResourceClient, AxiosRopingModalityResourceClient, AxiosRopingModalityTypeResourceClient, AxiosRopingPaymentTypeResourceClient, AxiosRopingProductResourceClient, AxiosRopingResourceClient, AxiosRopingStatusResourceClient, AxiosRopingTypeResourceClient, AxiosTrackResourceClient, AxiosTrackStatusResourceClient, AxiosTypeClassificationResourceClient, AxiosTypeClassificationTimeResourceClient } from './shared/java-objects';
 import { ListEndPoints } from './shared/list-endpoints';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { LoginComponent } from './common/login/login.component';
@@ -131,6 +131,13 @@ import { ModalEditRopingDivisionRankComponent } from './pages/roping-division/mo
 import { FormataNumeroInteiroPipe } from './common/pipess/formata-numero-inteiro.pipe';
 import { FormataNumeroDecimalPipe } from './common/pipess/formata-numero-decimal.pipe';
 import { FormataNumeroMoedaPipe } from './common/pipess/formata-numero-moeda.pipe';
+import { EntryFormComponent } from './pages/entry-form/entry-form.component';
+import { EntryFormListComponent } from './pages/entry-form/entry-form-list/entry-form-list.component';
+import { ChampionshipComponent } from './pages/championship/championship.component';
+import { ChampionshipListComponent } from './pages/championship/championship-list/championship-list.component';
+import { TrackComponent } from './pages/track/track.component';
+import { TrackListComponent } from './pages/track/track-list/track-list.component';
+import { ModalEditChampionshipStagesComponent } from './pages/championship/modal-edit-championship-stages/modal-edit-championship-stages.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -165,7 +172,14 @@ export function HttpLoaderFactory(http: HttpClient) {
     ModalEditRopingDivisionRankComponent,
     FormataNumeroInteiroPipe,
     FormataNumeroDecimalPipe,
-    FormataNumeroMoedaPipe
+    FormataNumeroMoedaPipe,
+    EntryFormComponent,
+    EntryFormListComponent,
+    ChampionshipComponent,
+    ChampionshipListComponent,
+    TrackComponent,
+    TrackListComponent,
+    ModalEditChampionshipStagesComponent
   ],
   imports: [
     BrowserModule,
@@ -313,7 +327,18 @@ export function HttpLoaderFactory(http: HttpClient) {
     {provide: AxiosRopingResourceClient                 , useValue: ListEndPoints.ropingResourceClient()},
     {provide: AxiosTypeClassificationResourceClient     , useValue: ListEndPoints.typeClassificationResourceClient()},
     {provide: AxiosTypeClassificationTimeResourceClient , useValue: ListEndPoints.typeClassificationTimeResourceClient()},
-
+    {provide: AxiosChampionshipResourceClient           , useValue: ListEndPoints.championshipResourceClient()},
+    {provide: AxiosChampionshipStageResourceClient      , useValue: ListEndPoints.championshipStageResourceClient()},
+    {provide: AxiosEntryFormResourceClient              , useValue: ListEndPoints.entryFormResourceClient()},
+    {provide: AxiosPaymentResourceClient                , useValue: ListEndPoints.paymentResourceClient()},
+    {provide: AxiosPaymentTypeResourceClient            , useValue: ListEndPoints.paymentTypeResourceClient()},
+    {provide: AxiosRopingModalityResourceClient         , useValue: ListEndPoints.ropingModalityResourceClient()},
+    {provide: AxiosRopingModalityTypeResourceClient     , useValue: ListEndPoints.ropingModalityTypeResourceClient()},
+    {provide: AxiosRopingPaymentTypeResourceClient      , useValue: ListEndPoints.ropingPaymentTypeResourceClient()},
+    {provide: AxiosRopingStatusResourceClient           , useValue: ListEndPoints.ropingStatusResourceClient()},
+    {provide: AxiosRopingTypeResourceClient             , useValue: ListEndPoints.ropingTypeResourceClient()},
+    {provide: AxiosTrackResourceClient                  , useValue: ListEndPoints.trackResourceClient()},
+    {provide: AxiosTrackStatusResourceClient            , useValue: ListEndPoints.tackStatusResourceClient()},
 
 
     ConfirmationService,
