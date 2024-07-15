@@ -138,6 +138,14 @@ import { ChampionshipListComponent } from './pages/championship/championship-lis
 import { TrackComponent } from './pages/track/track.component';
 import { TrackListComponent } from './pages/track/track-list/track-list.component';
 import { ModalEditChampionshipStagesComponent } from './pages/championship/modal-edit-championship-stages/modal-edit-championship-stages.component';
+import { AutoCompleteRopingStatusComponent } from './common/autoComplete/auto-complete-roping-status/auto-complete-roping-status.component';
+import { AutoCompleteGenderComponent } from './common/autoComplete/auto-complete-gender/auto-complete-gender.component';
+import { AutoCompleteDivisionComponent } from './common/autoComplete/auto-complete-division/auto-complete-division.component';
+import { AutoCompleteRopingComponent } from './common/autoComplete/auto-complete-roping/auto-complete-roping.component';
+import { AutoCompleteRewardKindComponent } from './common/autoComplete/auto-complete-reward-kind/auto-complete-reward-kind.component';
+import { AutoCompleteBarrelTypeComponent } from './common/autoComplete/auto-complete-barrel-type/auto-complete-barrel-type.component';
+import { AutoCompleteTypeClassificationComponent } from './common/autoComplete/auto-complete-type-classification/auto-complete-type-classification.component';
+import { AutoCompleteTypeClassificationTimeComponent } from './common/autoComplete/auto-complete-type-classification-time/auto-complete-type-classification-time.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -179,7 +187,15 @@ export function HttpLoaderFactory(http: HttpClient) {
     ChampionshipListComponent,
     TrackComponent,
     TrackListComponent,
-    ModalEditChampionshipStagesComponent
+    ModalEditChampionshipStagesComponent,
+    AutoCompleteRopingStatusComponent,
+    AutoCompleteGenderComponent,
+    AutoCompleteDivisionComponent,
+    AutoCompleteRopingComponent,
+    AutoCompleteRewardKindComponent,
+    AutoCompleteBarrelTypeComponent,
+    AutoCompleteTypeClassificationComponent,
+    AutoCompleteTypeClassificationTimeComponent,
   ],
   imports: [
     BrowserModule,

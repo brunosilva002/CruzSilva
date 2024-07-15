@@ -14,6 +14,7 @@ export class MenuOptionsService implements OnInit {
   isRodeoOptions:any;
   isAllowChangeAnimalFinalOptions:any;
   isFinalRodeoDrawOptions:any;
+  showInscriptionOptions:any;
 
   constructor(
     private translate           : TranslateService,
@@ -56,6 +57,11 @@ export class MenuOptionsService implements OnInit {
     this.isFinalRodeoDrawOptions = [
       { name: this.translate.instant('NotFinalRodeoDraw.singular')   , value: false},
       { name: this.translate.instant('FinalRodeoDraw.singular') , value: true }
+    ];
+
+    this.showInscriptionOptions = [
+      { name: this.translate.instant('NotShowInscriptionOptions.singular')   , value: false},
+      { name: this.translate.instant('ShowInscriptionOptions.singular') , value: true }
     ];
   }
 

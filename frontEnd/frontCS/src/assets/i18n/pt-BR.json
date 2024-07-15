@@ -91,6 +91,26 @@
     "singular": "Permite Troca",
     "plural": "Permite Troca"
   },
+  "ShowInscription": {
+    "singular": "Exibe Inscrição",
+    "plural": "Exibe Inscrições"
+  }, 
+  "NotShowInscriptionOptions": {
+    "singular": "Não Exibir",
+    "plural": "Não Exibir"
+  }, 
+  "ShowInscriptionOptions": {
+    "singular": "Exibir",
+    "plural": "Exibir"
+  }, 
+  "RopingStatus": {
+    "singular": "Status da Prova",
+    "plural": "Status das Provas"
+  }, 
+  "UrlImage": {
+    "singular": "Url da Imagem",
+    "plural": "Url's das Imagens"
+  }, 
   "NumberStage": {
     "singular": "Número da Etapa",
     "plural": "Números das Etapas"

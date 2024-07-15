@@ -14,17 +14,28 @@
                                 <label for="firstname2">{{'idInternal.singular' | translate}}</label>
                                 <input pInputText [(ngModel)]="activeRegister.cdnRoping"/>
                             </div>
-                            <div class="flex flex-column col-6 md:col-2 ">
+                            <div class="flex flex-column col-6 md:col-5 ">
                                 <label for="username">{{'Name.singular' | translate}}</label>
                                 <input pInputText [(ngModel)]="activeRegister.name"/>
                             </div>
-                            <div class="flex flex-column col-6 md:col-2 ">
+                            <div class="flex flex-column col-6 md:col-3 ">
                                 <label for="username">{{'StartDate.singular' | translate}}</label>
                                 <app-calendar-custom [(data)]="activeRegister.startDate!"></app-calendar-custom>
                             </div>
-                            <div class="flex flex-column col-6 md:col-2 ">
+                            <div class="flex flex-column col-6 md:col-3 ">
                                 <label for="username">{{'EndDate.singular' | translate}}</label>
                                 <app-calendar-custom [(data)]="activeRegister.endDate!"></app-calendar-custom>
+                            </div>
+                            <div class="flex flex-column col-12 md:col-3 ">
+                                <label for="username">{{'ShowInscription.singular' | translate}}</label>
+                                <p-selectButton [options]="menusOptions.showInscriptionOptions" [(ngModel)]="activeRegister.showInscription" [multiple]="false" optionLabel="name" optionValue="value"></p-selectButton>
+                            </div>
+                            <div class="flex flex-column col-6 md:col-6 ">
+                                <label for="username">{{'UrlImage.singular' | translate}}</label>
+                                <input pInputText [(ngModel)]="activeRegister.url"/>
+                            </div>
+                            <div class="flex flex-column col-6 md:col-3 ">
+                                <app-auto-complete-roping-status [(input)]="activeRegister.ropingStatus!" (inputChange)="onChageRopingStatus($event)" ></app-auto-complete-roping-status>
                             </div>
                         </div>
                     </p-fieldset>

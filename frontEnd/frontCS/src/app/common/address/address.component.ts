@@ -10,7 +10,7 @@ import { UtilsService } from 'src/app/shared/utils.service';
   templateUrl: './address.component.html',
   styleUrls: ['./address.component.scss']
 })
-export class AddressComponent {
+export class AddressComponent implements OnInit{
 
 
   @Input()
@@ -22,14 +22,16 @@ export class AddressComponent {
 
 
   constructor (
-    private spinner     : SpinnerDefaultService,
     private countryApi  : AxiosCountryResourceClient,
     private estateApi   : AxiosEstateResourceClient,
     private cityApi     : AxiosCityResourceClient,
-    private utilService : UtilsService,
-    private translate   : TranslateService,
   ){
 
+  }
+  ngOnInit(): void {
+    if (!this.address){
+      this.address          = new AddressDTO({});
+    }
   }
 
   selectCountry($event: AutoCompleteCompleteEvent) {
