@@ -19,7 +19,6 @@ export class CompetitorComponent  implements OnInit{
   cdnTabRef: string = 'cdnCompetitor';
   activeRegister: CompetitorDTO ={};
   cdnParam: any
-  genderFiltred: GenderDTO[] = [];
 
   constructor(
     private activatedRoute      : ActivatedRoute,
@@ -30,7 +29,6 @@ export class CompetitorComponent  implements OnInit{
     private spinner             : SpinnerDefaultService,
     private utilService         : UtilsService,
     private router              : Router,
-    private genderApi           : AxiosGenderResourceClient,
   ){
   }
 
@@ -84,22 +82,5 @@ export class CompetitorComponent  implements OnInit{
     this.router.navigate(['/competitor-list'], {
       
     });
-  }
-
-
-  selectGender($event: AutoCompleteCompleteEvent) {
-    let query = $event.query;
-    const filtered: any[] = [];
-
-    this.genderApi.paginationFull({
-      name: {
-        value: query,
-        matchMode: 'contains'
-      }
-    }).then((response)=>{
-      this.genderFiltred = response.data.data!.content!
-    }).finally(()=>{
-
-    })
   }
 }

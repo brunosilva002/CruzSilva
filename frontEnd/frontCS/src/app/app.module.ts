@@ -146,6 +146,7 @@ import { AutoCompleteRewardKindComponent } from './common/autoComplete/auto-comp
 import { AutoCompleteBarrelTypeComponent } from './common/autoComplete/auto-complete-barrel-type/auto-complete-barrel-type.component';
 import { AutoCompleteTypeClassificationComponent } from './common/autoComplete/auto-complete-type-classification/auto-complete-type-classification.component';
 import { AutoCompleteTypeClassificationTimeComponent } from './common/autoComplete/auto-complete-type-classification-time/auto-complete-type-classification-time.component';
+import { AutoCompleteGenderAnimalComponent } from './common/autoComplete/auto-complete-gender-animal/auto-complete-gender-animal.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -196,6 +197,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AutoCompleteBarrelTypeComponent,
     AutoCompleteTypeClassificationComponent,
     AutoCompleteTypeClassificationTimeComponent,
+    AutoCompleteGenderAnimalComponent,
   ],
   imports: [
     BrowserModule,

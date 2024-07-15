@@ -19,9 +19,6 @@ export class RopingProductComponent implements OnInit{
   cdnTabRef: string = 'cdnRopingDivisionProduct';
   activeRegister: RopingProductDTO ={};
   cdnParam: any
-  
-  genderFiltred: GenderDTO[] = [];
-  ropingFiltred: RopingDTO[] = [];
 
 
   constructor(
@@ -29,12 +26,10 @@ export class RopingProductComponent implements OnInit{
     private ropingDivisionProductApi  : AxiosRopingProductResourceClient,
     public dialogService              : DialogService,
     private messageService            : MessageService,
-    private ropingApi                 : AxiosRopingResourceClient,
     private translate                 : TranslateService,
     private spinner                   : SpinnerDefaultService,
     private utilService               : UtilsService,
     private router                    : Router,
-    private genderApi                 : AxiosGenderResourceClient,
   ){
   }
 
@@ -105,35 +100,4 @@ export class RopingProductComponent implements OnInit{
   }
 
 
-  selectGender($event: AutoCompleteCompleteEvent) {
-    let query = $event.query;
-    const filtered: any[] = [];
-
-    this.genderApi.paginationFull({
-      name: {
-        value: query,
-        matchMode: 'contains'
-      }
-    }).then((response)=>{
-      this.genderFiltred = response.data.data!.content!
-    }).finally(()=>{
-
-    })
-  }
-
-  selectRoping($event: AutoCompleteCompleteEvent) {
-    let query = $event.query;
-    const filtered: any[] = [];
-    
-    this.ropingApi.paginationFull({
-      name: {
-        value: query,
-        matchMode: 'contains'
-      }
-    }).then((response)=>{
-      this.ropingFiltred = response.data.data!.content!
-    }).finally(()=>{
-      
-    })
-  }
 }

@@ -22,13 +22,6 @@ export class RopingDivisionComponent  implements OnInit{
   activeRegister: RopingDivisionDTO ={};
   cdnParam: any
   
-  divisionFiltred: DivisionDTO[]=[];
-  rewardKindFiltred: RewardKindDTO[]=[];
-  ropingFiltred: RopingDTO[] = [];
-  barrelTypeFiltred: BarrelTypeDTO[] = [];
-  typeClassificationFiltred: TypeClassificationDTO[]=[];
-  typeClassificationTimeFiltred: TypeClassificationTimeDTO[]=[];
-  
   isDisabledValuePrice: boolean = false;
   isDisabledValueRate: boolean = false;
   
@@ -47,12 +40,6 @@ export class RopingDivisionComponent  implements OnInit{
     private spinner                     : SpinnerDefaultService,
     private utilService                 : UtilsService,
     private router                      : Router,
-    private ropingApi                   : AxiosRopingResourceClient,
-    private divisionApi                 : AxiosDivisionResourceClient,
-    private rewardKindApi               : AxiosRewardKindResourceClient,
-    private barrelTypeApi               : AxiosBarrelTypeResourceClient,
-    private typeClassificationApi       : AxiosTypeClassificationResourceClient,
-    private typeClassificationTimeApi   : AxiosTypeClassificationTimeResourceClient,
     public menusOptions                 : MenuOptionsService,
   ){
     
@@ -125,117 +112,11 @@ export class RopingDivisionComponent  implements OnInit{
       
     });
   }
-  
-
-  selectRoping($event: AutoCompleteCompleteEvent) {
-    let query = $event.query;
-    const filtered: any[] = [];
     
-    this.ropingApi.paginationFull({
-      name: {
-        value: query,
-        matchMode: 'contains'
-      }
-    }).then((response)=>{
-      this.ropingFiltred = response.data.data!.content!
-    }).finally(()=>{
-      
-    })
-  }
-  
-  selectDivision($event: AutoCompleteCompleteEvent) {
-    let query = $event.query;
-    const filtered: any[] = [];
-    
-    this.divisionApi.paginationFull({
-      name: {
-        value: query,
-        matchMode: 'contains'
-      }
-    }).then((response)=>{
-      this.divisionFiltred = response.data.data!.content!
-    }).finally(()=>{
-      
-    })
-  }
-  
-  selectRewardKind($event: AutoCompleteCompleteEvent) {
-    let query = $event.query;
-    const filtered: any[] = [];
-    
-    this.rewardKindApi.paginationFull({
-      name: {
-        value: query,
-        matchMode: 'contains'
-      }
-    }).then((response)=>{
-      this.rewardKindFiltred = response.data.data!.content!
-    }).finally(()=>{
-      
-    })
-  }
-  
-  selectBarrelType($event: AutoCompleteCompleteEvent) {
-    let query = $event.query;
-    const filtered: any[] = [];
-    
-    this.barrelTypeApi.paginationFull({
-      name: {
-        value: query,
-        matchMode: 'contains'
-      }
-    }).then((response)=>{
-      this.barrelTypeFiltred = response.data.data!.content!
-    }).finally(()=>{
-      
-    })
-  }
-
-  selectTypeClassification($event: AutoCompleteCompleteEvent) {
-    let query = $event.query;
-    const filtered: any[] = [];
-
-    this.typeClassificationApi.paginationFull({
-      name: {
-        value: query,
-        matchMode: 'contains'
-      }
-    }).then((response)=>{
-      this.typeClassificationFiltred = response.data.data!.content!
-    }).finally(()=>{
-      
-    })
-  }
-  
-  selectTypeClassificationTime($event: AutoCompleteCompleteEvent) {
-    let query = $event.query;
-    const filtered: any[] = [];
-
-    this.typeClassificationTimeApi.paginationFull({
-      name: {
-        value: query,
-        matchMode: 'contains'
-      }
-    }).then((response)=>{
-      this.typeClassificationTimeFiltred = response.data.data!.content!
-    }).finally(()=>{
-      
-    })
-  }
-  onChangeTypeClassificationTime() {
-  }
-  
-  onChangeTypeClassification() {
-
-  }
-  
   onChangeRewardKind() {
     this.checkDisableFields()
   }
 
-  onChangeBarrelType() {
-  }
-  
   editRopingDivisionRank(ropingDivisionRank: TableRowSelectEvent) {
     this.addAwardLine(ropingDivisionRank.data, ropingDivisionRank.data.lineNumber)
   }
@@ -288,9 +169,11 @@ export class RopingDivisionComponent  implements OnInit{
     if (this.activeRegister.rewardKind?.cdnRewardKind===RewardKind.SUBSCRIPTION){
       this.isDisabledValuePrice=true
       this.isDisabledValueRate=false
+      this.activeRegister.valuePrice=0
     }else if (this.activeRegister.rewardKind?.cdnRewardKind===RewardKind.FIXED_VALUE){
       this.isDisabledValuePrice=false
       this.isDisabledValueRate=true
+      this.activeRegister.valueRate=0
     }
   }
 

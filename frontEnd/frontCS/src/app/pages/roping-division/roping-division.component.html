@@ -15,47 +15,13 @@
                                 <input pInputText [(ngModel)]="activeRegister.cdnRopingDivision"/>
                             </div>
                             <div class="flex flex-column col-6 md:col-1">
-                                <label for="firstname2">{{'Division.singular' | translate}}</label>
-                                <p-autoComplete 
-                                    [(ngModel)]="activeRegister.division!"
-                                    [dropdown]="true" 
-                                    [suggestions]="divisionFiltred" 
-                                    (completeMethod)="selectDivision($event)" 
-                                    [forceSelection]="true"
-                                    [virtualScroll]="true"
-                                    [delay]=300
-                                    [virtualScrollItemSize]="34"
-                                    field="name">
-                                </p-autoComplete>
+                                <app-auto-complete-division [(input)]="activeRegister.division!"></app-auto-complete-division>
                             </div> 
                             <div class="flex flex-column col-12 md:col-3 ">
-                                <label for="firstname2">{{'Roping.singular' | translate}}</label>
-                                <p-autoComplete 
-                                    [(ngModel)]="activeRegister.roping!"
-                                    [dropdown]="true" 
-                                    [suggestions]="ropingFiltred" 
-                                    (completeMethod)="selectRoping($event)" 
-                                    [forceSelection]="true"
-                                    [virtualScroll]="true"
-                                    [delay]=300
-                                    [virtualScrollItemSize]="34"
-                                    field="name">
-                                </p-autoComplete>
+                                <app-auto-complete-roping [(input)]="activeRegister.roping!"></app-auto-complete-roping>
                             </div> 
                             <div class="flex flex-column col-6 md:col-2 ">
-                                <label for="firstname2">{{'RewardKind.singular' | translate}}</label>
-                                <p-autoComplete 
-                                    [(ngModel)]="activeRegister.rewardKind!"
-                                    [dropdown]="true" 
-                                    (ngModelChange)="onChangeRewardKind()"
-                                    [suggestions]="rewardKindFiltred" 
-                                    (completeMethod)="selectRewardKind($event)" 
-                                    [forceSelection]="true"
-                                    [virtualScroll]="true"
-                                    [delay]=300
-                                    [virtualScrollItemSize]="34"
-                                    field="name">
-                                </p-autoComplete>
+                                <app-auto-complete-reward-kind [(input)]="activeRegister.rewardKind!" (inputChange)="onChangeRewardKind()"></app-auto-complete-reward-kind>
                             </div> 
                             <div class="flex flex-column col-6 md:col-2 ">
                                 <label for="username">{{'ValuePrice.singular' | translate}}</label>
@@ -124,49 +90,13 @@
                     <p-fieldset class="col-12" legend="{{'Role.plural' | translate}}" [toggleable]="true">
                         <div class="col-12 formgrid grid">
                             <div class="flex flex-column col-6 md:col-2 ">
-                                <label for="firstname2">{{'BarrelType.singular' | translate}}</label>
-                                <p-autoComplete 
-                                    [(ngModel)]="activeRegister.barrelType!"
-                                    [dropdown]="true" 
-                                    (ngModelChange)="onChangeBarrelType()"
-                                    [suggestions]="barrelTypeFiltred" 
-                                    (completeMethod)="selectBarrelType($event)" 
-                                    [forceSelection]="true"
-                                    [virtualScroll]="true"
-                                    [delay]=300
-                                    [virtualScrollItemSize]="34"
-                                    field="name">
-                                </p-autoComplete>
+                                <app-auto-complete-barrel-type [(input)]="activeRegister.barrelType!"></app-auto-complete-barrel-type>
                             </div> 
                             <div class="flex flex-column col-6 md:col-2 ">
-                                <label for="firstname2">{{'TypeClassification.singular' | translate}}</label>
-                                <p-autoComplete 
-                                    [(ngModel)]="activeRegister.typeClassification!"
-                                    [dropdown]="true" 
-                                    (ngModelChange)="onChangeTypeClassification()"
-                                    [suggestions]="typeClassificationFiltred" 
-                                    (completeMethod)="selectTypeClassification($event)" 
-                                    [forceSelection]="true"
-                                    [virtualScroll]="true"
-                                    [delay]=300
-                                    [virtualScrollItemSize]="34"
-                                    field="name">
-                                </p-autoComplete>
+                                <app-auto-complete-type-classification [(input)]="activeRegister.typeClassification!"></app-auto-complete-type-classification>
                             </div> 
                             <div class="flex flex-column col-12 md:col-2 ">
-                                <label for="firstname2">{{'TypeClassificationTime.singular' | translate}}</label>
-                                <p-autoComplete 
-                                    [(ngModel)]="activeRegister.typeClassificationTime!"
-                                    [dropdown]="true" 
-                                    (ngModelChange)="onChangeTypeClassificationTime()"
-                                    [suggestions]="typeClassificationTimeFiltred" 
-                                    (completeMethod)="selectTypeClassificationTime($event)" 
-                                    [forceSelection]="true"
-                                    [virtualScroll]="true"
-                                    [delay]=300
-                                    [virtualScrollItemSize]="34"
-                                    field="name">
-                                </p-autoComplete>
+                                <app-auto-complete-type-classification-time [(input)]="activeRegister.typeClassificationTime!"></app-auto-complete-type-classification-time>
                             </div> 
                             <div class="flex flex-column col-6 md:col-2 ">
                                 <label for="username">{{'MinAge.singular' | translate}}</label>

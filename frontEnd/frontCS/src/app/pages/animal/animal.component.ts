@@ -86,23 +86,4 @@ export class AnimalComponent implements OnInit{
       
     });
   }
-
-
-  selectGenderAnimal($event: AutoCompleteCompleteEvent) {
-    let query = $event.query;
-    const filtered: any[] = [];
-
-    this.genderAnimalApi.paginationFull({
-      name: {
-        value: query,
-        matchMode: 'contains'
-      }
-    }).then((response)=>{
-      this.genderAnimalFiltred = response.data.data!.content!
-    }).finally(()=>{
-
-    })
-  }
-
-
 }
