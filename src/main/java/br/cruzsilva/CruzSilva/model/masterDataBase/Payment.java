@@ -30,6 +30,9 @@ public class Payment implements Serializable {
     @Column(name = "cdn_payment")
     private Long cdnPayment;
 
+    @Column(name = "num_payment")
+    private Long numPayment;
+
     @Column(name = "payment_date")
     private LocalDate paymentDate;
 
@@ -41,6 +44,10 @@ public class Payment implements Serializable {
     @Fetch(FetchMode.SELECT)
     private PaymentType paymentType;
 
+    @ManyToOne
+    @JoinColumn(name = "cdn_entry_form", referencedColumnName = "cdn_entry_form")
+    @Fetch(FetchMode.SELECT)
+    private EntryForm entryForm;
 
     @Column(name = "creation_date")
     private LocalDateTime creationDate;

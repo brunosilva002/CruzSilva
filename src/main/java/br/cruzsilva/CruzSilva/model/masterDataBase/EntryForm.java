@@ -45,7 +45,7 @@ public class EntryForm implements Serializable {
     @ManyToOne
     @JoinColumn(name = "cdn_roping_type", referencedColumnName = "cdn_roping_type")
     @Fetch(FetchMode.SELECT)
-    private RopingType cdnRopingType;
+    private RopingType ropingType;
 
     @ManyToOne
     @JoinColumn(name = "cdn_competitor", referencedColumnName = "cdn_competitor")

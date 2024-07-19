@@ -24,7 +24,7 @@ public class EntryFormDTO implements Serializable {
     private String note;
     private Roping roping;
     private RopingDivisionDTO ropingDivision;
-    private RopingTypeDTO cdnRopingType;
+    private RopingTypeDTO ropingType;
     private CompetitorDTO competitor;
     private AnimalDTO animal;
     private List<PaymentDTO> payments = new ArrayList<>();

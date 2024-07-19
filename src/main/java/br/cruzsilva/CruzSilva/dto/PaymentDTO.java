@@ -26,5 +26,7 @@ public class PaymentDTO implements Serializable {
     private Long cdnPayment;
     private LocalDate paymentDate;
     private BigDecimal paymentValue;
+    private Long numPayment;
     private PaymentTypeDTO paymentType;
+    private EntryFormDTO entryForm;
 }

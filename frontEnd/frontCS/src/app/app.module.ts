@@ -147,6 +147,10 @@ import { AutoCompleteBarrelTypeComponent } from './common/autoComplete/auto-comp
 import { AutoCompleteTypeClassificationComponent } from './common/autoComplete/auto-complete-type-classification/auto-complete-type-classification.component';
 import { AutoCompleteTypeClassificationTimeComponent } from './common/autoComplete/auto-complete-type-classification-time/auto-complete-type-classification-time.component';
 import { AutoCompleteGenderAnimalComponent } from './common/autoComplete/auto-complete-gender-animal/auto-complete-gender-animal.component';
+import { AutoCompleteRopingDivisionComponent } from './common/autoComplete/auto-complete-roping-division/auto-complete-roping-division.component';
+import { AutoCompleteRopingTypeComponent } from './common/autoComplete/auto-complete-roping-type/auto-complete-roping-type.component';
+import { AutoCompleteAnimalComponent } from './common/autoComplete/auto-complete-animal/auto-complete-animal.component';
+import { ModalEditPaymentComponent } from './pages/entry-form/modal-edit-payment/modal-edit-payment.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -198,6 +202,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     AutoCompleteTypeClassificationComponent,
     AutoCompleteTypeClassificationTimeComponent,
     AutoCompleteGenderAnimalComponent,
+    AutoCompleteRopingDivisionComponent,
+    AutoCompleteRopingTypeComponent,
+    AutoCompleteAnimalComponent,
+    ModalEditPaymentComponent,
   ],
   imports: [
     BrowserModule,

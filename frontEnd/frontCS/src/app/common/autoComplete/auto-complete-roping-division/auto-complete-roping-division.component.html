@@ -1,0 +1,13 @@
+<label for="firstname2">{{'RopingDivision.singular' | translate}}</label>
+<p-autoComplete 
+    [(ngModel)]="input"
+    [dropdown]="true" 
+    (ngModelChange)="onChange()"
+    [suggestions]="filtred" 
+    (completeMethod)="select($event)" 
+    [forceSelection]="true"
+    [virtualScroll]="true"
+    [delay]=300
+    [virtualScrollItemSize]="34"
+    field="name">
+</p-autoComplete>

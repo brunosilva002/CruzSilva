@@ -103,6 +103,10 @@
     "singular": "Exibir",
     "plural": "Exibir"
   }, 
+  "RopingType": {
+    "singular": "Tipo da Prova",
+    "plural": "Tipos das Provas"
+  }, 
   "RopingStatus": {
     "singular": "Status da Prova",
     "plural": "Status das Provas"
@@ -114,6 +118,26 @@
   "NumberStage": {
     "singular": "Número da Etapa",
     "plural": "Números das Etapas"
+  },
+  "Payment": {
+    "singular": "Pagamento",
+    "plural": "Pagamentos"
+  },
+  "NumPayment": {
+    "singular": "Número Pagamento",
+    "plural": "Números Pagamentos"
+  },
+  "PaymentValue": {
+    "singular": "Valor",
+    "plural": "Valores"
+  },
+  "PaymentDate": {
+    "singular": "Data Pagamento",
+    "plural": "Data Pagamento"
+  },
+  "PaymentType": {
+    "singular": "Modo Pagamento",
+    "plural": "Modo Pagamento"
   },
   "NotGeneratePaceNextClassification": {
     "singular": "Não Gera Passada",
@@ -661,6 +685,10 @@
   "HandcapHeeler":{
     "singular":"!HandcapHeeler",
     "plural":"!HandcapHeeler"
+  },
+  "Note":{
+    "singular":"Nota",
+    "plural":"Notas"
   },
   "primeng": {
     "startsWith": "Começa com",
