@@ -7,6 +7,8 @@
     font-feature-settings: var(--font-feature-settings, normal);
     font-size: $fontSize;
     font-weight: $fontWeight;
+
+    padding: 10 !important;
 }
 
 .p-component-overlay {

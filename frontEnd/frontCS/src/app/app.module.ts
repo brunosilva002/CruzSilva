@@ -102,6 +102,7 @@ import { AnimateModule } from 'primeng/animate';
 import { CardModule } from 'primeng/card';
 import { BlockUIModule } from 'primeng/blockui';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+
 import { SpinnerDefaultService } from './shared/spinner-default/spinner-default.service';
 import { SpinnerDefaultComponent } from './shared/spinner-default/spinner-default.component';
 import { UtilsService } from './shared/utils.service';
@@ -151,6 +152,8 @@ import { AutoCompleteRopingDivisionComponent } from './common/autoComplete/auto-
 import { AutoCompleteRopingTypeComponent } from './common/autoComplete/auto-complete-roping-type/auto-complete-roping-type.component';
 import { AutoCompleteAnimalComponent } from './common/autoComplete/auto-complete-animal/auto-complete-animal.component';
 import { ModalEditPaymentComponent } from './pages/entry-form/modal-edit-payment/modal-edit-payment.component';
+import { EventComponent } from './pages/event/event.component';
+import { EventListComponent } from './pages/event/event-list/event-list.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -206,6 +209,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     AutoCompleteRopingTypeComponent,
     AutoCompleteAnimalComponent,
     ModalEditPaymentComponent,
+    EventComponent,
+    EventListComponent,
   ],
   imports: [
     BrowserModule,
