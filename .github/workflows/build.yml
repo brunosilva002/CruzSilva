@@ -6,12 +6,17 @@ on:
       - master
 jobs:
   build:
-    runs-on: ubuntu-latest     
-    outputs:
-      jar_name: ${{ steps.set_jar_name.outputs.jar_name }}
-
+    runs-on: ubuntu-latest   
     steps:
     - uses: actions/checkout@v2
+
+    - name: Set JAR Name with Suffix
+      id: set_jar_name
+      run: |
+          JAR_NAME=$(basename $JAR_NAME)
+          JAR_NAME_WITH_SUFFIX="${JAR_NAME%.jar}-dev.jar"
+          echo "jar_name=$JAR_NAME_WITH_SUFFIX" >> $GITHUB_ENV
+          echo "::set-output name=jar_name::$JAR_NAME_WITH_SUFFIX"
 
     - name: Versao da JDK - 20
       uses: actions/setup-java@v2
@@ -107,6 +112,4 @@ jobs:
         send \"exit\r\"
         expect eof
         "
-
-
         
