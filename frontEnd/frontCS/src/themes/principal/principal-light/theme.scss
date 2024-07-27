@@ -1,6 +1,6 @@
 // $primaryColor: #3B82F6 !default;
-$primaryColor:#CF4520 !default;
-$secundaryColor: #272727 !default;
+$primaryColor:#cf2080 !default;
+$secundaryColor: #f30e0e !default;
 $primaryLightColor: lighten($primaryColor, 20%) !default;
 $primaryDarkColor: darken($primaryColor, 10%) !default;
 $primaryDarkerColor: darken($primaryDarkColor, 10%) !default;
@@ -9,7 +9,7 @@ $secundaryLightColor: #474747 !default;
 $secundaryLighterColor: lighten($secundaryLightColor,20%) !default;
 $primaryTextColor: #ffffff !default;
 
-$bkgButtonStd:rgb(97, 97, 97) !default;
+$bkgButtonStd:rgb(221, 224, 21) !default;
 $bkgButtonStdDarken:darken($bkgButtonStd, 10%) !default;
 $bkgButtonStdLight:lighten($bkgButtonStd, 20%) !default;
 $bkgButtonStdText:rgb(228, 228, 228) !default;

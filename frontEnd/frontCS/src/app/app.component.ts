@@ -24,7 +24,6 @@ export class AppComponent {
   }
 
   ngAfterViewInit() {
-    console.log('lang ');
     this.translateService.use('pt-BR');
     this.translateService.get('primeng')
      .subscribe(res => this.primengConfig.setTranslation(res));
