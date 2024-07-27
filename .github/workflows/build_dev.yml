@@ -42,7 +42,7 @@ jobs:
         username: ${{ secrets.USUARIOCPANEL }}
         password: ${{ secrets.SENHACPANEL }}
         local-dir: ./jar-upload/
-        server-dir: ~/appservers/standalone/DEV/
+        server-dir: ~/appservers/standalone/
 
     - name: Set up Node.js
       uses: actions/setup-node@v3
