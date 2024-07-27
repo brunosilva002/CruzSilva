@@ -67,7 +67,7 @@ jobs:
         username: ${{ secrets.USUARIOCPANEL }}
         password: ${{ secrets.SENHACPANEL }}
         local-dir: ./frontEnd/frontCS/dist/front-cs
-        server-dir: ~/public_html
+        server-dir: ~/public_html/
 
     - name: Instalar o SSH Client
       run: sudo apt-get install openssh-client sshpass expect
