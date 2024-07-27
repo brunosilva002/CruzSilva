@@ -20,7 +20,7 @@ jobs:
           distribution: 'adopt'
 
       - name: Build com Maven
-        run: mvn -B package -DfinalName=CruzSilvaProd --file pom.xml
+        run: mvn -B package install -Pprod
 
       - name: Criando o diretório para o Build do JAR
         run: mkdir ./jar-upload

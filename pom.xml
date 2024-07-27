@@ -102,17 +102,21 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<version>3.2.0</version>
-				<configuration>
-					<finalName>${finalName}</finalName>
-				</configuration>
-			</plugin>
 		</plugins>
 	</build>
 	<profiles>
+		<profile>
+			<id>dev</id>
+			<build>
+				<finalName>${name}_dev</finalName>
+			</build>
+		</profile>
+		<profile>
+			<id>prod</id>
+			<build>
+				<finalName>${name}_prod</finalName>
+			</build>
+		</profile>
 		<profile>
 			<id>build-types</id>
 			<build>
