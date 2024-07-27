@@ -33,7 +33,7 @@ jobs:
         run: echo "::set-output name=jar_name::$(basename $(ls ./jar-upload/*.jar) .jar)"
 
       - name: Usar o nome do JAR em outra etapa
-        run: echo "O nome do arquivo JAR é ${{ steps.jar_name.outputs.jar_name }}"
+        run: echo "O nome do arquivo JAR é ${{ steps.jar_name.outputs.jar_name }} / ${{ steps.jar_name.outputs.name }}"
 
       - name: Enviando os JAR por FTP
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
