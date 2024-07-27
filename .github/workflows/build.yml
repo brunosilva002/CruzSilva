@@ -66,7 +66,7 @@ jobs:
         server: ${{ secrets.HOST }}
         username: ${{ secrets.USUARIOCPANEL }}
         password: ${{ secrets.SENHACPANEL }}
-        local-dir: ./frontEnd/frontCS/dist/front-cs
+        local-dir: ./frontEnd/frontCS/dist/front-cs/
         server-dir: ~/public_html/
 
     - name: Instalar o SSH Client
