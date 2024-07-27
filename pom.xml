@@ -102,6 +102,14 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.2.0</version>
+				<configuration>
+					<finalName>${finalName}</finalName>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 	<profiles>
@@ -158,6 +166,7 @@
 					</plugin>
 				</plugins>
 			</build>
+
 		</profile>
 	</profiles>
 
