@@ -38,11 +38,6 @@ public class City implements Serializable {
     @Fetch(FetchMode.SELECT)
     private Estate estate;
 
-    @Column (name = "date_created")
-    private LocalDateTime dateCreated;
-
-    @Column (name = "date_updated")
-    private LocalDateTime dateUpdated;
 
     @Column(name = "creation_date")
     private LocalDateTime creationDate;
