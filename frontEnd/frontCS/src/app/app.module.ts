@@ -154,6 +154,7 @@ import { AutoCompleteAnimalComponent } from './common/autoComplete/auto-complete
 import { ModalEditPaymentComponent } from './pages/entry-form/modal-edit-payment/modal-edit-payment.component';
 import { EventComponent } from './pages/event/event.component';
 import { EventListComponent } from './pages/event/event-list/event-list.component';
+import { FuncionarioComponent } from './page/funcionario/funcionario.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -211,6 +212,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ModalEditPaymentComponent,
     EventComponent,
     EventListComponent,
+    FuncionarioComponent,
   ],
   imports: [
     BrowserModule,

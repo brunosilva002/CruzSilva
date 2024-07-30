@@ -1,0 +1,620 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="bruno (generated)" id="1722213092223-1">
+        <createTable tableName="address">
+            <column autoIncrement="true" name="cdn_address" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="addressPK"/>
+            </column>
+            <column name="creation_date" type="datetime(6)"/>
+            <column name="creation_user" type="VARCHAR(255)"/>
+            <column name="number" type="VARCHAR(255)"/>
+            <column name="phone" type="VARCHAR(255)"/>
+            <column name="postalCode" type="VARCHAR(255)"/>
+            <column name="street" type="VARCHAR(255)"/>
+            <column name="update_date" type="datetime(6)"/>
+            <column name="update_user" type="VARCHAR(255)"/>
+            <column name="cdn_city" type="BIGINT"/>
+            <column name="cdn_country" type="BIGINT"/>
+            <column name="cdn_estate" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-2">
+        <createTable tableName="animal">
+            <column autoIncrement="true" name="cdn_animal" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="animalPK"/>
+            </column>
+            <column name="animal_breed" type="VARCHAR(255)"/>
+            <column name="birthday" type="date"/>
+            <column name="creation_date" type="datetime(6)"/>
+            <column name="creation_user" type="VARCHAR(255)"/>
+            <column name="marcel" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="owner" type="VARCHAR(255)"/>
+            <column name="owner_cpf" type="VARCHAR(255)"/>
+            <column name="register" type="VARCHAR(255)"/>
+            <column name="update_date" type="datetime(6)"/>
+            <column name="update_user" type="VARCHAR(255)"/>
+            <column name="cdn_address" type="BIGINT"/>
+            <column name="cdn_gender_animal" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-3">
+        <createTable tableName="barrel_type">
+            <column autoIncrement="true" name="cdn_barrel_type" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="barrel_typePK"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-4">
+        <createTable tableName="championship">
+            <column autoIncrement="true" name="cdn_championship" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="championshipPK"/>
+            </column>
+            <column name="creation_date" type="datetime(6)"/>
+            <column name="creation_user" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="update_date" type="datetime(6)"/>
+            <column name="update_user" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-5">
+        <createTable tableName="championship_stage">
+            <column autoIncrement="true" name="cdn_championship_stage" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="championship_stagePK"/>
+            </column>
+            <column name="creation_date" type="datetime(6)"/>
+            <column name="creation_user" type="VARCHAR(255)"/>
+            <column name="end_date" type="date"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="number_stage" type="BIGINT"/>
+            <column name="start_date" type="date"/>
+            <column name="update_date" type="datetime(6)"/>
+            <column name="update_user" type="VARCHAR(255)"/>
+            <column name="cdn_championship" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-6">
+        <createTable tableName="city">
+            <column autoIncrement="true" name="cdn_city" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="cityPK"/>
+            </column>
+            <column name="code" type="VARCHAR(255)"/>
+            <column name="creation_date" type="datetime(6)"/>
+            <column name="creation_user" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="update_date" type="datetime(6)"/>
+            <column name="update_user" type="VARCHAR(255)"/>
+            <column name="cdn_estate" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-7">
+        <createTable tableName="competitor">
+            <column autoIncrement="true" name="cdn_competitor" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="competitorPK"/>
+            </column>
+            <column name="cpf" type="VARCHAR(255)"/>
+            <column name="creation_date" type="datetime(6)"/>
+            <column name="creation_user" type="VARCHAR(255)"/>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="handcap_header" type="VARCHAR(255)"/>
+            <column name="handcap_heeler" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="nick_name" type="VARCHAR(255)"/>
+            <column name="update_date" type="datetime(6)"/>
+            <column name="update_user" type="VARCHAR(255)"/>
+            <column name="cdn_address" type="BIGINT"/>
+            <column name="cdn_gender" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-8">
+        <createTable tableName="country">
+            <column autoIncrement="true" name="cdn_country" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="countryPK"/>
+            </column>
+            <column name="bacen_cod" type="VARCHAR(255)"/>
+            <column name="cod_iso3" type="VARCHAR(255)"/>
+            <column name="code" type="VARCHAR(255)"/>
+            <column name="creation_date" type="datetime(6)"/>
+            <column name="creation_user" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="num_iso" type="VARCHAR(255)"/>
+            <column name="update_date" type="datetime(6)"/>
+            <column name="update_user" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-9">
+        <createTable tableName="division">
+            <column autoIncrement="true" name="cdn_division" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="divisionPK"/>
+            </column>
+            <column name="consider_ranking" type="BIT"/>
+            <column name="gender" type="VARCHAR(255)"/>
+            <column name="incentive" type="BIT"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="pro_am_cabeca" type="BIT"/>
+            <column name="pro_am_pe" type="BIT"/>
+            <column name="test_horse" type="BIT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-10">
+        <createTable tableName="entry_form">
+            <column autoIncrement="true" name="cdn_entry_form" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="entry_formPK"/>
+            </column>
+            <column name="creation_date" type="datetime(6)"/>
+            <column name="creation_user" type="VARCHAR(255)"/>
+            <column name="note" type="VARCHAR(255)"/>
+            <column name="update_date" type="datetime(6)"/>
+            <column name="update_user" type="VARCHAR(255)"/>
+            <column name="cdn_animal" type="BIGINT"/>
+            <column name="cdn_competitor" type="BIGINT"/>
+            <column name="cdn_roping" type="BIGINT"/>
+            <column name="cdn_roping_division" type="BIGINT"/>
+            <column name="cdn_roping_type" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-11">
+        <createTable tableName="estate">
+            <column autoIncrement="true" name="cdn_estate" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="estatePK"/>
+            </column>
+            <column name="code" type="VARCHAR(255)"/>
+            <column name="creation_date" type="datetime(6)"/>
+            <column name="creation_user" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="update_date" type="datetime(6)"/>
+            <column name="update_user" type="VARCHAR(255)"/>
+            <column name="cdn_country" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-12">
+        <createTable tableName="event">
+            <column autoIncrement="true" name="cdn_event" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="eventPK"/>
+            </column>
+            <column name="creation_date" type="datetime(6)"/>
+            <column name="creation_user" type="VARCHAR(255)"/>
+            <column name="nome" type="VARCHAR(255)"/>
+            <column name="update_date" type="datetime(6)"/>
+            <column name="update_user" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-13">
+        <createTable tableName="event_test">
+            <column autoIncrement="true" name="cdn_event_test" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="event_testPK"/>
+            </column>
+            <column name="cdn_test_number" type="BIGINT"/>
+            <column name="creation_date" type="datetime(6)"/>
+            <column name="creation_user" type="VARCHAR(255)"/>
+            <column name="nome" type="VARCHAR(255)"/>
+            <column name="update_date" type="datetime(6)"/>
+            <column name="update_user" type="VARCHAR(255)"/>
+            <column name="cdn_event" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-14">
+        <createTable tableName="gender">
+            <column autoIncrement="true" name="cdn_gender" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="genderPK"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-15">
+        <createTable tableName="gender_animal">
+            <column autoIncrement="true" name="cdn_gender_animal" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="gender_animalPK"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-16">
+        <createTable tableName="judge">
+            <column autoIncrement="true" name="cdn_judge" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="judgePK"/>
+            </column>
+            <column name="cpf" type="VARCHAR(255)"/>
+            <column name="creation_date" type="datetime(6)"/>
+            <column name="creation_user" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="nick_name" type="VARCHAR(255)"/>
+            <column name="update_date" type="datetime(6)"/>
+            <column name="update_user" type="VARCHAR(255)"/>
+            <column name="cdn_address" type="BIGINT"/>
+            <column name="cdn_gender" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-17">
+        <createTable tableName="payment">
+            <column autoIncrement="true" name="cdn_payment" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="paymentPK"/>
+            </column>
+            <column name="creation_date" type="datetime(6)"/>
+            <column name="creation_user" type="VARCHAR(255)"/>
+            <column name="num_payment" type="BIGINT"/>
+            <column name="payment_date" type="date"/>
+            <column name="payment_value" type="DECIMAL(38, 2)"/>
+            <column name="update_date" type="datetime(6)"/>
+            <column name="update_user" type="VARCHAR(255)"/>
+            <column name="cdn_entry_form" type="BIGINT"/>
+            <column name="cdn_payment_type" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-18">
+        <createTable tableName="payment_type">
+            <column autoIncrement="true" name="cdn_payment_type" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="payment_typePK"/>
+            </column>
+            <column name="creation_date" type="datetime(6)"/>
+            <column name="creation_user" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="update_date" type="datetime(6)"/>
+            <column name="update_user" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-19">
+        <createTable tableName="pessoa">
+            <column autoIncrement="true" name="cdn_pessoa" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pessoaPK"/>
+            </column>
+            <column name="code" type="VARCHAR(255)"/>
+            <column name="creation_date" type="datetime(6)"/>
+            <column name="creation_user" type="VARCHAR(255)"/>
+            <column name="date_created" type="datetime(6)"/>
+            <column name="date_updated" type="datetime(6)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="update_date" type="datetime(6)"/>
+            <column name="update_user" type="VARCHAR(255)"/>
+            <column name="cdn_estate" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-20">
+        <createTable tableName="reward_kind">
+            <column autoIncrement="true" name="cdn_reward_kind" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="reward_kindPK"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-21">
+        <createTable tableName="roping">
+            <column autoIncrement="true" name="cdn_roping" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="ropingPK"/>
+            </column>
+            <column name="creation_date" type="datetime(6)"/>
+            <column name="creation_user" type="VARCHAR(255)"/>
+            <column name="end_date" type="datetime(6)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="show_inscription" type="BIT"/>
+            <column name="start_date" type="datetime(6)"/>
+            <column name="update_date" type="datetime(6)"/>
+            <column name="update_user" type="VARCHAR(255)"/>
+            <column name="url" type="VARCHAR(255)"/>
+            <column name="cdn_address" type="BIGINT"/>
+            <column name="cdn_championship_stage" type="BIGINT"/>
+            <column name="cdn_roping_modality" type="BIGINT"/>
+            <column name="cdn_roping_status" type="BIGINT"/>
+            <column name="cdn_track" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-22">
+        <createTable tableName="roping_division">
+            <column autoIncrement="true" name="cdn_roping_division" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="roping_divisionPK"/>
+            </column>
+            <column name="creation_date" type="datetime(6)"/>
+            <column name="creation_user" type="VARCHAR(255)"/>
+            <column name="display_order" type="BIGINT"/>
+            <column name="is_allow_change_animal_final" type="BIT"/>
+            <column name="is_final_rodeo_draw" type="BIT"/>
+            <column name="is_for_union" type="BIT"/>
+            <column name="is_generate_pace_next_classification" type="BIT"/>
+            <column name="is_official_division" type="BIT"/>
+            <column name="is_rodeo" type="BIT"/>
+            <column name="is_send_notification" type="BIT"/>
+            <column name="is_show_entries" type="BIT"/>
+            <column name="max_age" type="BIGINT"/>
+            <column name="max_date_app" type="datetime(6)"/>
+            <column name="max_date_web" type="datetime(6)"/>
+            <column name="min_age" type="BIGINT"/>
+            <column name="pace_value_1" type="DECIMAL(38, 2)"/>
+            <column name="pace_value_2" type="DECIMAL(38, 2)"/>
+            <column name="pace_value_3" type="DECIMAL(38, 2)"/>
+            <column name="pace_value_4" type="DECIMAL(38, 2)"/>
+            <column name="update_date" type="datetime(6)"/>
+            <column name="update_user" type="VARCHAR(255)"/>
+            <column name="value_price" type="DECIMAL(38, 2)"/>
+            <column name="value_rate" type="DECIMAL(38, 2)"/>
+            <column name="cdn_barrel_type" type="BIGINT"/>
+            <column name="cdn_division" type="BIGINT"/>
+            <column name="cdn_reward_kind" type="BIGINT"/>
+            <column name="cdn_roping" type="BIGINT"/>
+            <column name="cdn_type_classification" type="BIGINT"/>
+            <column name="cdn_type_classification_time" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-23">
+        <createTable tableName="roping_division_product">
+            <column autoIncrement="true" name="cdn_roping_division_product" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="roping_division_productPK"/>
+            </column>
+            <column name="creation_date" type="datetime(6)"/>
+            <column name="creation_user" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="sales_released_until" type="datetime(6)"/>
+            <column name="stock_cost" type="DECIMAL(38, 2)"/>
+            <column name="stock_qty" type="DECIMAL(38, 2)"/>
+            <column name="stock_qty_available" type="DECIMAL(38, 2)"/>
+            <column name="update_date" type="datetime(6)"/>
+            <column name="update_user" type="VARCHAR(255)"/>
+            <column name="cdn_roping" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-24">
+        <createTable tableName="roping_division_rank">
+            <column autoIncrement="true" name="cdn_roping_division_rank" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="roping_division_rankPK"/>
+            </column>
+            <column name="creation_date" type="datetime(6)"/>
+            <column name="creation_user" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="point" type="BIGINT"/>
+            <column name="rank_number" type="BIGINT"/>
+            <column name="update_date" type="datetime(6)"/>
+            <column name="update_user" type="VARCHAR(255)"/>
+            <column name="value_rate_price" type="DECIMAL(38, 2)"/>
+            <column name="value_reward_price" type="DECIMAL(38, 2)"/>
+            <column name="cdn_roping_division" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-25">
+        <createTable tableName="roping_modality">
+            <column autoIncrement="true" name="cdn_roping_modality" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="roping_modalityPK"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="cdn_roping_modality_type" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-26">
+        <createTable tableName="roping_modality_type">
+            <column autoIncrement="true" name="cdn_roping_modality_type" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="roping_modality_typePK"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-27">
+        <createTable tableName="roping_payment_type">
+            <column autoIncrement="true" name="cdn_roping_payment_type" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="roping_payment_typePK"/>
+            </column>
+            <column name="creation_date" type="datetime(6)"/>
+            <column name="creation_user" type="VARCHAR(255)"/>
+            <column name="update_date" type="datetime(6)"/>
+            <column name="update_user" type="VARCHAR(255)"/>
+            <column name="cdn_payment_type" type="BIGINT"/>
+            <column name="cdn_roping" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-28">
+        <createTable tableName="roping_status">
+            <column autoIncrement="true" name="cdn_roping_status" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="roping_statusPK"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-29">
+        <createTable tableName="roping_type">
+            <column autoIncrement="true" name="cdn_roping_type" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="roping_typePK"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-30">
+        <createTable tableName="track">
+            <column autoIncrement="true" name="cdn_track" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="trackPK"/>
+            </column>
+            <column name="creation_date" type="datetime(6)"/>
+            <column name="creation_user" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="update_date" type="datetime(6)"/>
+            <column name="update_user" type="VARCHAR(255)"/>
+            <column name="cdn_address" type="BIGINT"/>
+            <column name="cdn_track_status" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-31">
+        <createTable tableName="track_status">
+            <column autoIncrement="true" name="cdn_track_status" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="track_statusPK"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-32">
+        <createTable tableName="type_classification">
+            <column autoIncrement="true" name="cdn_type_classification" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="type_classificationPK"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-33">
+        <createTable tableName="type_classification_time">
+            <column autoIncrement="true" name="cdn_type_classification_time" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="type_classification_timePK"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-34">
+        <createTable tableName="user">
+            <column autoIncrement="true" name="cdn_user" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="userPK"/>
+            </column>
+            <column name="creation_date" type="datetime(6)"/>
+            <column name="creation_user" type="VARCHAR(255)"/>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="last_name" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="password" type="VARCHAR(255)"/>
+            <column name="update_date" type="datetime(6)"/>
+            <column name="update_user" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-35">
+        <createTable tableName="x3_customer">
+            <column autoIncrement="true" name="cdn_customer" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="x3_customerPK"/>
+            </column>
+            <column name="x3_bpcnum" type="VARCHAR(255)"/>
+            <column name="creation_date" type="datetime(6)"/>
+            <column name="creation_user" type="VARCHAR(255)"/>
+            <column name="x3_xqrazao" type="VARCHAR(255)"/>
+            <column name="x3_bpcsta" type="BIT"/>
+            <column name="update_date" type="datetime(6)"/>
+            <column name="update_user" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-36">
+        <addUniqueConstraint columnNames="cdn_address" constraintName="UC_ANIMALCDN_ADDRESS_COL" tableName="animal"/>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-37">
+        <addUniqueConstraint columnNames="cdn_address" constraintName="UC_COMPETITORCDN_ADDRESS_COL" tableName="competitor"/>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-38">
+        <addUniqueConstraint columnNames="cdn_address" constraintName="UC_JUDGECDN_ADDRESS_COL" tableName="judge"/>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-39">
+        <addUniqueConstraint columnNames="cdn_address" constraintName="UC_ROPINGCDN_ADDRESS_COL" tableName="roping"/>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-40">
+        <addUniqueConstraint columnNames="cdn_roping" constraintName="UC_ROPING_PAYMENT_TYPECDN_ROPING_COL" tableName="roping_payment_type"/>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-41">
+        <addUniqueConstraint columnNames="cdn_address" constraintName="UC_TRACKCDN_ADDRESS_COL" tableName="track"/>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-42">
+        <addForeignKeyConstraint baseColumnNames="cdn_track" baseTableName="roping" constraintName="FK12w1005tnhri0t3q1j9v2usgd" deferrable="false" initiallyDeferred="false" referencedColumnNames="cdn_track" referencedTableName="track" validate="true"/>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-43">
+        <addForeignKeyConstraint baseColumnNames="cdn_roping" baseTableName="roping_payment_type" constraintName="FK1tismusfc7pr3clnw76xcjucu" deferrable="false" initiallyDeferred="false" referencedColumnNames="cdn_roping" referencedTableName="roping" validate="true"/>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-44">
+        <addForeignKeyConstraint baseColumnNames="cdn_roping_division" baseTableName="entry_form" constraintName="FK27caoxm4ebjh308wukrptrs48" deferrable="false" initiallyDeferred="false" referencedColumnNames="cdn_roping_division" referencedTableName="roping_division" validate="true"/>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-45">
+        <addForeignKeyConstraint baseColumnNames="cdn_barrel_type" baseTableName="roping_division" constraintName="FK2eonct9ddrsx2l6dwrefd508c" deferrable="false" initiallyDeferred="false" referencedColumnNames="cdn_barrel_type" referencedTableName="barrel_type" validate="true"/>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-46">
+        <addForeignKeyConstraint baseColumnNames="cdn_roping_status" baseTableName="roping" constraintName="FK2jb6h5pvagdvtb1w3ihaqrm8x" deferrable="false" initiallyDeferred="false" referencedColumnNames="cdn_roping_status" referencedTableName="roping_status" validate="true"/>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-47">
+        <addForeignKeyConstraint baseColumnNames="cdn_roping" baseTableName="entry_form" constraintName="FK2q18r3on5jv4xvwthqxu5x4aw" deferrable="false" initiallyDeferred="false" referencedColumnNames="cdn_roping" referencedTableName="roping" validate="true"/>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-48">
+        <addForeignKeyConstraint baseColumnNames="cdn_roping_division" baseTableName="roping_division_rank" constraintName="FK352ppcp35m9610xxtgtscvfir" deferrable="false" initiallyDeferred="false" referencedColumnNames="cdn_roping_division" referencedTableName="roping_division" validate="true"/>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-49">
+        <addForeignKeyConstraint baseColumnNames="cdn_address" baseTableName="judge" constraintName="FK3m1py95odupebehqo866oyyop" deferrable="false" initiallyDeferred="false" referencedColumnNames="cdn_address" referencedTableName="address" validate="true"/>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-50">
+        <addForeignKeyConstraint baseColumnNames="cdn_country" baseTableName="address" constraintName="FK3y9017gqmwi2sc92teqa5bain" deferrable="false" initiallyDeferred="false" referencedColumnNames="cdn_country" referencedTableName="country" validate="true"/>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-51">
+        <addForeignKeyConstraint baseColumnNames="cdn_address" baseTableName="competitor" constraintName="FK61oxqin22gf0v0ncs430m8ts4" deferrable="false" initiallyDeferred="false" referencedColumnNames="cdn_address" referencedTableName="address" validate="true"/>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-52">
+        <addForeignKeyConstraint baseColumnNames="cdn_event" baseTableName="event_test" constraintName="FK6g44ngojd6w8c1yirq7yqgrbb" deferrable="false" initiallyDeferred="false" referencedColumnNames="cdn_event" referencedTableName="event" validate="true"/>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-53">
+        <addForeignKeyConstraint baseColumnNames="cdn_roping" baseTableName="roping_division" constraintName="FK8h1pv4xyqawh1wdhu42nlgpmi" deferrable="false" initiallyDeferred="false" referencedColumnNames="cdn_roping" referencedTableName="roping" validate="true"/>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-54">
+        <addForeignKeyConstraint baseColumnNames="cdn_roping_type" baseTableName="entry_form" constraintName="FK92uvg8hd6iu1ni8oauogcnwil" deferrable="false" initiallyDeferred="false" referencedColumnNames="cdn_roping_type" referencedTableName="roping_type" validate="true"/>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-55">
+        <addForeignKeyConstraint baseColumnNames="cdn_type_classification" baseTableName="roping_division" constraintName="FK9ekhvfegs3636qmbw8ludhm9e" deferrable="false" initiallyDeferred="false" referencedColumnNames="cdn_type_classification" referencedTableName="type_classification" validate="true"/>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-56">
+        <addForeignKeyConstraint baseColumnNames="cdn_address" baseTableName="track" constraintName="FKa7f4f4wgqxa98ayfe2eg2pghe" deferrable="false" initiallyDeferred="false" referencedColumnNames="cdn_address" referencedTableName="address" validate="true"/>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-57">
+        <addForeignKeyConstraint baseColumnNames="cdn_gender" baseTableName="judge" constraintName="FKaitg81odw6h94kspuolji8gx0" deferrable="false" initiallyDeferred="false" referencedColumnNames="cdn_gender" referencedTableName="gender" validate="true"/>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-58">
+        <addForeignKeyConstraint baseColumnNames="cdn_address" baseTableName="roping" constraintName="FKajctv8pakk3kt0jy4w95xvkso" deferrable="false" initiallyDeferred="false" referencedColumnNames="cdn_address" referencedTableName="address" validate="true"/>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-59">
+        <addForeignKeyConstraint baseColumnNames="cdn_reward_kind" baseTableName="roping_division" constraintName="FKb53d3bwh1v1dg6g69w1kngmn9" deferrable="false" initiallyDeferred="false" referencedColumnNames="cdn_reward_kind" referencedTableName="reward_kind" validate="true"/>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-60">
+        <addForeignKeyConstraint baseColumnNames="cdn_track_status" baseTableName="track" constraintName="FKb91ck06fygpkv0tiyn5gakrep" deferrable="false" initiallyDeferred="false" referencedColumnNames="cdn_track_status" referencedTableName="track_status" validate="true"/>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-61">
+        <addForeignKeyConstraint baseColumnNames="cdn_roping_modality" baseTableName="roping" constraintName="FKc11jat7l3eqsr8c229v6c8hvr" deferrable="false" initiallyDeferred="false" referencedColumnNames="cdn_roping_modality" referencedTableName="roping_modality" validate="true"/>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-62">
+        <addForeignKeyConstraint baseColumnNames="cdn_gender_animal" baseTableName="animal" constraintName="FKc6qfuai9md4dcc0c2lkdrbyvy" deferrable="false" initiallyDeferred="false" referencedColumnNames="cdn_gender_animal" referencedTableName="gender_animal" validate="true"/>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-63">
+        <addForeignKeyConstraint baseColumnNames="cdn_payment_type" baseTableName="payment" constraintName="FKcoxk6t910wv3g8xrx4lcgu8qx" deferrable="false" initiallyDeferred="false" referencedColumnNames="cdn_payment_type" referencedTableName="payment_type" validate="true"/>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-64">
+        <addForeignKeyConstraint baseColumnNames="cdn_championship_stage" baseTableName="roping" constraintName="FKefvhpo6ega1jyhbnxmwhcv6rp" deferrable="false" initiallyDeferred="false" referencedColumnNames="cdn_championship_stage" referencedTableName="championship_stage" validate="true"/>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-65">
+        <addForeignKeyConstraint baseColumnNames="cdn_animal" baseTableName="entry_form" constraintName="FKfpc19wt21ta0axo3q7tthktbg" deferrable="false" initiallyDeferred="false" referencedColumnNames="cdn_animal" referencedTableName="animal" validate="true"/>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-66">
+        <addForeignKeyConstraint baseColumnNames="cdn_competitor" baseTableName="entry_form" constraintName="FKg5bak91h80ms6cm842ycxhxg3" deferrable="false" initiallyDeferred="false" referencedColumnNames="cdn_competitor" referencedTableName="competitor" validate="true"/>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-67">
+        <addForeignKeyConstraint baseColumnNames="cdn_division" baseTableName="roping_division" constraintName="FKh4yyagfc4i08b5pioyu8e8pyx" deferrable="false" initiallyDeferred="false" referencedColumnNames="cdn_division" referencedTableName="division" validate="true"/>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-68">
+        <addForeignKeyConstraint baseColumnNames="cdn_estate" baseTableName="address" constraintName="FKj0ne8f2m81yl6npvbys0ql4r1" deferrable="false" initiallyDeferred="false" referencedColumnNames="cdn_estate" referencedTableName="estate" validate="true"/>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-69">
+        <addForeignKeyConstraint baseColumnNames="cdn_type_classification_time" baseTableName="roping_division" constraintName="FKjfpdnnybaedxqg7dg8qxcrwmq" deferrable="false" initiallyDeferred="false" referencedColumnNames="cdn_type_classification_time" referencedTableName="type_classification_time" validate="true"/>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-70">
+        <addForeignKeyConstraint baseColumnNames="cdn_city" baseTableName="address" constraintName="FKjrmhbl1ggm3fd54loa6mxwsoq" deferrable="false" initiallyDeferred="false" referencedColumnNames="cdn_city" referencedTableName="city" validate="true"/>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-71">
+        <addForeignKeyConstraint baseColumnNames="cdn_gender" baseTableName="competitor" constraintName="FKjyve69v0pari748a1c11oqbfa" deferrable="false" initiallyDeferred="false" referencedColumnNames="cdn_gender" referencedTableName="gender" validate="true"/>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-72">
+        <addForeignKeyConstraint baseColumnNames="cdn_payment_type" baseTableName="roping_payment_type" constraintName="FKkahieq1h7k38yy51jnbv9sf7f" deferrable="false" initiallyDeferred="false" referencedColumnNames="cdn_payment_type" referencedTableName="payment_type" validate="true"/>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-73">
+        <addForeignKeyConstraint baseColumnNames="cdn_roping_modality_type" baseTableName="roping_modality" constraintName="FKlvevuocvoa5qugi2sahnco4d2" deferrable="false" initiallyDeferred="false" referencedColumnNames="cdn_roping_modality_type" referencedTableName="roping_modality_type" validate="true"/>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-74">
+        <addForeignKeyConstraint baseColumnNames="cdn_address" baseTableName="animal" constraintName="FKo7twu8qx5hgxfx7qb1xbicjxr" deferrable="false" initiallyDeferred="false" referencedColumnNames="cdn_address" referencedTableName="address" validate="true"/>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-75">
+        <addForeignKeyConstraint baseColumnNames="cdn_country" baseTableName="estate" constraintName="FKplby0thlhh5p3ckbje5fa6shl" deferrable="false" initiallyDeferred="false" referencedColumnNames="cdn_country" referencedTableName="country" validate="true"/>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-76">
+        <addForeignKeyConstraint baseColumnNames="cdn_championship" baseTableName="championship_stage" constraintName="FKq92nf2gva2d23d9onyqfbm0e" deferrable="false" initiallyDeferred="false" referencedColumnNames="cdn_championship" referencedTableName="championship" validate="true"/>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-77">
+        <addForeignKeyConstraint baseColumnNames="cdn_estate" baseTableName="pessoa" constraintName="FKrapyse9gpoy0xw1x26owj6f3q" deferrable="false" initiallyDeferred="false" referencedColumnNames="cdn_estate" referencedTableName="estate" validate="true"/>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-78">
+        <addForeignKeyConstraint baseColumnNames="cdn_entry_form" baseTableName="payment" constraintName="FKsqqdjnavlc64g33fjqderh6oj" deferrable="false" initiallyDeferred="false" referencedColumnNames="cdn_entry_form" referencedTableName="entry_form" validate="true"/>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-79">
+        <addForeignKeyConstraint baseColumnNames="cdn_estate" baseTableName="city" constraintName="FKsurxkgmx12gx8ps5p57yng6ii" deferrable="false" initiallyDeferred="false" referencedColumnNames="cdn_estate" referencedTableName="estate" validate="true"/>
+    </changeSet>
+    <changeSet author="bruno (generated)" id="1722213092223-80">
+        <addForeignKeyConstraint baseColumnNames="cdn_roping" baseTableName="roping_division_product" constraintName="FKtd87wv8f6rrgdof8hkt2nof9n" deferrable="false" initiallyDeferred="false" referencedColumnNames="cdn_roping" referencedTableName="roping" validate="true"/>
+    </changeSet>
+</databaseChangeLog>

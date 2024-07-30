@@ -1,7 +1,3 @@
-/*
-    Bruno Silva - 27-07-24
-    Inserção dos dados de tabelas menus fixo
-*/
 CREATE VIEW `city_estate` AS
 SELECT a.*, b.name as name_estate
 FROM easy_roper2.city 			a

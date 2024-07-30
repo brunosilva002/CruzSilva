@@ -1,6 +1,5 @@
 package br.cruzsilva.CruzSilva.config;
 
-import org.flywaydb.core.Flyway;
 import org.springframework.beans.factory.SmartInitializingSingleton;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -18,20 +17,5 @@ import javax.sql.DataSource;
 import java.util.HashMap;
 import java.util.Map;
 
-@Configuration
 public class MasterDataBaseConfiguration {
-
-    @Bean
-    public Flyway flyway(DataSource dataSource) {
-        return Flyway.configure()
-                .dataSource(dataSource)
-                .locations("classpath:db/migration")
-                .baselineOnMigrate(true)
-                .load();
-    }
-
-    @Bean
-    public SmartInitializingSingleton flywayInitializer(Flyway flyway) {
-        return () -> flyway.migrate();
-    }
 }
