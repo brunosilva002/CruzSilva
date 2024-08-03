@@ -1,0 +1,13 @@
+<configuration>
+    <!-- Inclui a configuração base do Spring Boot -->
+    <include resource="org/springframework/boot/logging/logback/base.xml" />
+
+    <!-- Configurações específicas para JasperReports -->
+    <logger name="net.sf.jasperreports" level="DEBUG" />
+    <logger name="net.sf.jasperreports.engine" level="DEBUG" />
+
+    <!-- Configurações gerais do root logger -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+    </root>
+</configuration>
